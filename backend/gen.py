@@ -94,8 +94,8 @@ class Gen:
     def set_style(self, style="default"):
         # show style list with numbers        
         if style == "default":
-            style_choice = input("Enter the number of the style you want to use (default is 1): ").strip()
-            if not style_choice:
+            # style_choice = input("Enter the number of the style you want to use (default is 1): ").strip()
+            # if not style_choice:
                 style_choice = "1"
         else:
             style_choice = styles.index(style) + 1 if style in styles else "1"

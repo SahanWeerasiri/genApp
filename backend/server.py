@@ -6,6 +6,8 @@ from flask import Flask, request, jsonify, make_response
 from flask_cors import CORS
 import dotenv
 from gen import Gen
+import queue
+import threading
 
 # Load environment variables
 dotenv.load_dotenv()
@@ -37,6 +39,16 @@ users_db = {
 
 # Store refresh tokens (in production, use a database)
 refresh_tokens = set()
+
+# Job queue for prompt jobs
+job_queue = queue.Queue()
+
+# Pool size for Gen objects
+GEN_POOL_SIZE = 1  # You can adjust this number
+# Pre-initialize Gen() objects
+gen_pool = [Gen() for _ in range(GEN_POOL_SIZE)]
+# Track which Gen objects are available
+pool_locks = [threading.Lock() for _ in range(GEN_POOL_SIZE)]
 
 
 def generate_tokens(user_id, role):
@@ -314,32 +326,51 @@ def get_profile():
     except Exception as e:
         return jsonify({'message': 'Internal server error'}), 500
 
+from styles import styles  # Make sure this is imported
+
 @app.route('/api/generate', methods=['POST'])
 @token_required
 def generate_image():
-    """Generate image (dummy implementation)"""
+    """Generate image using Gen pool and job queue."""
     try:
         data = request.get_json()
-        
         if not data or not data.get('prompt'):
             return jsonify({'message': 'Prompt is required'}), 400
-        
+
         prompt = data['prompt']
-        style = data.get('style', 'default')
-        
-        # Dummy image generation logic (replace with actual model call)
-        # generated_image_url = f"https://dummyimage.com/600x400/000/fff&text={prompt.replace(' ', '+')}"
+        style = data.get('style')
 
-        # get the available generator
+        # Validate style
+        if not style or style not in styles:
+            style = list(styles.keys())[0]  # Use first style as default
 
-        
+        # Prepare synchronization primitives
+        result_container = {}
+        done_event = threading.Event()
+
+        def job_callback(image_b64):
+            result_container['image'] = image_b64
+            done_event.set()
+
+        # Submit job to queue
+        job_queue.put({
+            'prompt': prompt,
+            'style': style,
+            'callback': job_callback
+        })
+
+        # Wait for job to complete (timeout after 60 seconds)
+        finished = done_event.wait(timeout=60)
+        if not finished or 'image' not in result_container:
+            return jsonify({'message': 'Image generation timed out'}), 500
+
+        image_b64 = result_container['image']
         return jsonify({
             'message': 'Image generated successfully',
-            'image': generated_image_url,
+            'image': image_b64,
             'prompt': prompt,
             'style': style
         }), 200
-        
     except Exception as e:
         return jsonify({'message': 'Internal server error'}), 500
 
@@ -418,14 +449,45 @@ def internal_error(error):
     return jsonify({'message': 'Internal server error'}), 500
 
 
+def gen_worker(worker_id):
+    while True:
+        job = job_queue.get()  # Wait for a job
+        if job is None:
+            break  # Shutdown signal
+        # Find an available Gen object
+        for i, lock in enumerate(pool_locks):
+            if lock.acquire(blocking=False):
+                try:
+                    gen = gen_pool[i]
+                    # Assume job is a dict with 'prompt' and 'callback' keys
+                    prompt = job['prompt']
+                    style = job.get('style', None)
+                    # Generate image using play
+                    image = gen.play(prompt, style)
+                    # Call the callback with the result
+                    if 'callback' in job:
+                        job['callback'](image)
+                finally:
+                    lock.release()
+                break
+        else:
+            # No Gen available, requeue the job
+            job_queue.put(job)
+        job_queue.task_done()
+
+# Start worker threads
+NUM_WORKERS = GEN_POOL_SIZE
+for worker_id in range(NUM_WORKERS):
+    threading.Thread(target=gen_worker, args=(worker_id,), daemon=True).start()
+
 if __name__ == '__main__':
     print("Starting Flask server...")
     print("Dummy users available:")
     print("Admin: admin@example.com / admin123")
     print("User: user@example.com / user123")
     
-    # default generators count = 10
-    for i in range(10):
-        app.config['generators'][i] = Gen()
-        print(f"Starting generator {i}...")
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    # default generators count = 2
+    # for i in range(2):
+    #     app.config['generators'][i] = Gen()
+    #     print(f"Starting generator {i}...")
+    app.run(debug=False, host='0.0.0.0', port=5000, use_reloader=False)
