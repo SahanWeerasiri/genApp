@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'providers/theme_provider.dart';
 import 'providers/auth_provider.dart';
 import 'providers/image_provider.dart' as custom;
@@ -8,7 +10,25 @@ import 'screens/auth/login_screen.dart';
 import 'screens/main_screen.dart';
 import 'utils/logger.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  try {
+    // Check if Firebase is already initialized
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    AppLogger.info('Firebase initialized successfully');
+  } on FirebaseException catch (e) {
+    if (e.code == 'duplicate-app') {
+      AppLogger.info('Firebase already initialized');
+    } else {
+      AppLogger.error('Firebase initialization failed: $e');
+    }
+  } catch (e) {
+    AppLogger.error('Firebase initialization failed: $e');
+  }
+
   AppLogger.info('App started');
   runApp(const MyApp());
 }
