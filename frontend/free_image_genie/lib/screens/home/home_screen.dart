@@ -15,7 +15,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _promptController = TextEditingController();
-  String _selectedStyle = 'Realistic';
+  String _selectedStyle = 'Painted Anime';
 
   @override
   void dispose() {
@@ -25,23 +25,23 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _generateImage() async {
     if (_promptController.text.trim().isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please enter a prompt')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Please enter a prompt')));
       return;
     }
 
     AppLogger.info('Generate button pressed');
     try {
       await context.read<app.ImageProvider>().generateImage(
-            _promptController.text.trim(),
-            _selectedStyle,
-          );
+        _promptController.text.trim(),
+        _selectedStyle,
+      );
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Generation failed: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Generation failed: $e')));
       }
     }
   }
@@ -52,10 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final imageProvider = context.watch<app.ImageProvider>();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Free Image Genie'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: const Text('Free Image Genie'), centerTitle: true),
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -114,9 +111,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: 24),
 
                 // Generated Image Display
-                if (imageProvider.currentImageUrl != null)
+                if (imageProvider.currentImageBytes != null ||
+                    imageProvider.currentImageUrl != null)
                   GeneratedImageDisplay(
-                    imageUrl: imageProvider.currentImageUrl!,
+                    imageBytes: imageProvider.currentImageBytes,
+                    imageUrl: imageProvider.currentImageUrl,
+                    prompt: _promptController.text.trim(),
+                    style: _selectedStyle,
                   ),
               ],
             ),

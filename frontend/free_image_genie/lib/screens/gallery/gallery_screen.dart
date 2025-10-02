@@ -3,8 +3,33 @@ import 'package:provider/provider.dart';
 import '../../providers/image_provider.dart' as app;
 import '../../widgets/gallery/gallery_item.dart';
 
-class GalleryScreen extends StatelessWidget {
+class GalleryScreen extends StatefulWidget {
   const GalleryScreen({super.key});
+
+  @override
+  State<GalleryScreen> createState() => _GalleryScreenState();
+}
+
+class _GalleryScreenState extends State<GalleryScreen> {
+  bool _isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadGallery();
+  }
+
+  Future<void> _loadGallery() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    await context.read<app.ImageProvider>().loadGalleryFromDevice();
+
+    setState(() {
+      _isLoading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +40,17 @@ class GalleryScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Gallery'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: _isLoading ? null : _loadGallery,
+            tooltip: 'Refresh Gallery',
+          ),
+        ],
       ),
-      body: imageProvider.gallery.isEmpty
+      body: _isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : imageProvider.gallery.isEmpty
           ? Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -40,6 +74,12 @@ class GalleryScreen extends StatelessWidget {
                       color: theme.colorScheme.onBackground.withOpacity(0.4),
                     ),
                   ),
+                  const SizedBox(height: 16),
+                  ElevatedButton.icon(
+                    onPressed: _loadGallery,
+                    icon: const Icon(Icons.refresh),
+                    label: const Text('Refresh'),
+                  ),
                 ],
               ),
             )
@@ -53,9 +93,7 @@ class GalleryScreen extends StatelessWidget {
               ),
               itemCount: imageProvider.gallery.length,
               itemBuilder: (context, index) {
-                return GalleryItem(
-                  image: imageProvider.gallery[index],
-                );
+                return GalleryItem(image: imageProvider.gallery[index]);
               },
             ),
     );

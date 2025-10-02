@@ -329,7 +329,7 @@ def get_profile():
 from styles import styles  # Make sure this is imported
 
 @app.route('/api/generate', methods=['POST'])
-@token_required
+# @token_required
 def generate_image():
     """Generate image using Gen pool and job queue."""
     try:
