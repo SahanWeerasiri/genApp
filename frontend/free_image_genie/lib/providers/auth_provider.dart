@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../utils/logger.dart';
+import '../services/firestore_service.dart';
+import '../models/user_profile.dart';
 
 class AuthProvider extends ChangeNotifier {
   bool _isAuthenticated = false;
@@ -67,6 +69,10 @@ class AuthProvider extends ChangeNotifier {
       _userEmail = user.email ?? '';
       _userName = user.displayName ?? '';
       _userPhotoUrl = user.photoURL ?? '';
+
+      // Create or check user profile in Firestore
+      await _ensureUserProfile(user);
+
       AppLogger.info('Firebase user authenticated: ${user.email}');
     } else {
       _isAuthenticated = false;
@@ -78,6 +84,40 @@ class AuthProvider extends ChangeNotifier {
     }
 
     notifyListeners();
+  }
+
+  /// Ensure user profile exists in Firestore, create if it doesn't
+  Future<void> _ensureUserProfile(User user) async {
+    try {
+      AppLogger.info('Ensuring user profile exists for: ${user.email}');
+
+      // Check if profile already exists
+      final existingProfile = await FirestoreService.getUserProfile(user.uid);
+
+      if (existingProfile == null) {
+        // Create new profile
+        final profile = UserProfile(
+          uid: user.uid,
+          email: user.email ?? '',
+          name: user.displayName ?? '',
+          photoUrl: user.photoURL ?? '',
+          tokenCount: 5, // Initial 5 tokens
+          createdAt: DateTime.now(),
+          updatedAt: DateTime.now(),
+        );
+
+        final success = await FirestoreService.createUserProfile(profile);
+        if (success) {
+          AppLogger.info('User profile created successfully');
+        } else {
+          AppLogger.error('Failed to create user profile');
+        }
+      } else {
+        AppLogger.info('User profile already exists');
+      }
+    } catch (e) {
+      AppLogger.error('Error ensuring user profile: $e');
+    }
   }
 
   Future<void> _initializeGoogleSignIn() async {

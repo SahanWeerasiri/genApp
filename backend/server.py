@@ -8,6 +8,8 @@ import dotenv
 from gen import Gen
 import queue
 import threading
+from firestore_service import firestore_service
+from in_memory_store import in_memory_store
 
 # Load environment variables
 dotenv.load_dotenv()
@@ -329,9 +331,8 @@ def get_profile():
 from styles import styles  # Make sure this is imported
 
 @app.route('/api/generate', methods=['POST'])
-# @token_required
 def generate_image():
-    """Generate image using Gen pool and job queue."""
+    """Generate image using Gen pool and job queue with token validation."""
     try:
         data = request.get_json()
         if not data or not data.get('prompt'):
@@ -339,10 +340,46 @@ def generate_image():
 
         prompt = data['prompt']
         style = data.get('style')
+        user_id = data.get('userId')
 
         # Validate style
         if not style or style not in styles:
             style = list(styles.keys())[0]  # Use first style as default
+
+        # Check token availability if user_id is provided
+        if user_id:
+            try:
+                # Try Firestore first, fallback to in-memory store
+                has_tokens = False
+                consumed = False
+                
+                try:
+                    has_tokens = firestore_service.check_token_availability(user_id)
+                    if has_tokens:
+                        consumed = firestore_service.consume_token(user_id)
+                except Exception as firestore_error:
+                    print(f"Firestore error: {firestore_error}")
+                    print("Falling back to in-memory token store")
+                    has_tokens = in_memory_store.check_token_availability(user_id)
+                    if has_tokens:
+                        consumed = in_memory_store.consume_token(user_id)
+                
+                if not has_tokens:
+                    return jsonify({
+                        'message': 'Insufficient tokens. Please watch an ad or purchase more tokens.',
+                        'error_code': 'INSUFFICIENT_TOKENS'
+                    }), 402  # Payment Required
+                
+                if not consumed:
+                    return jsonify({
+                        'message': 'Failed to consume token. Please try again.',
+                        'error_code': 'TOKEN_CONSUMPTION_FAILED'
+                    }), 500
+                    
+            except Exception as token_error:
+                print(f"Token validation error for user {user_id}: {token_error}")
+                # Continue without token validation if both systems fail
+                print("Proceeding without token validation (both systems failed)")
 
         # Prepare synchronization primitives
         result_container = {}
@@ -362,16 +399,27 @@ def generate_image():
         # Wait for job to complete (timeout after 60 seconds)
         finished = done_event.wait(timeout=60)
         if not finished or 'image' not in result_container:
+            # If image generation failed and we consumed a token, we should ideally refund it
+            # For now, we'll just log the issue
+            if user_id:
+                print(f"Image generation timed out for user {user_id}, token may need refund")
             return jsonify({'message': 'Image generation timed out'}), 500
 
         image_b64 = result_container['image']
+        
+        # Log successful generation
+        if user_id:
+            print(f"Image generated successfully for user {user_id}")
+        
         return jsonify({
             'message': 'Image generated successfully',
             'image': image_b64,
             'prompt': prompt,
             'style': style
         }), 200
+        
     except Exception as e:
+        print(f"Error in generate_image: {e}")
         return jsonify({'message': 'Internal server error'}), 500
 
 @app.route('/api/admin/users', methods=['GET'])
@@ -427,6 +475,96 @@ def user_dashboard():
         }), 200
         
     except Exception as e:
+        return jsonify({'message': 'Internal server error'}), 500
+
+
+@app.route('/api/user/tokens/<user_id>', methods=['GET'])
+def get_user_tokens(user_id):
+    """Get user's token count"""
+    try:
+        # Try Firestore first, fallback to in-memory store
+        try:
+            user_profile = firestore_service.get_user_profile(user_id)
+            if user_profile:
+                return jsonify({
+                    'tokenCount': user_profile.get('tokenCount', 0),
+                    'userId': user_id,
+                    'source': 'firestore'
+                }), 200
+        except Exception as firestore_error:
+            print(f"Firestore error: {firestore_error}")
+        
+        # Fallback to in-memory store
+        user_profile = in_memory_store.get_user_profile(user_id)
+        return jsonify({
+            'tokenCount': user_profile.get('tokenCount', 5),
+            'userId': user_id,
+            'source': 'memory'
+        }), 200
+        
+    except Exception as e:
+        print(f"Error getting user tokens: {e}")
+        return jsonify({'message': 'Internal server error'}), 500
+
+
+@app.route('/api/user/profile/<user_id>', methods=['GET'])
+def get_user_profile_endpoint(user_id):
+    """Get user's full profile"""
+    try:
+        # Try Firestore first, fallback to in-memory store
+        try:
+            user_profile = firestore_service.get_user_profile(user_id)
+            if user_profile:
+                return jsonify({
+                    'profile': user_profile,
+                    'userId': user_id,
+                    'source': 'firestore'
+                }), 200
+        except Exception as firestore_error:
+            print(f"Firestore error: {firestore_error}")
+        
+        # Fallback to in-memory store
+        user_profile = in_memory_store.get_user_profile(user_id)
+        return jsonify({
+            'profile': user_profile,
+            'userId': user_id,
+            'source': 'memory'
+        }), 200
+        
+    except Exception as e:
+        print(f"Error getting user profile: {e}")
+        return jsonify({'message': 'Internal server error'}), 500
+
+
+@app.route('/api/user/tokens/<user_id>/add', methods=['POST'])
+def add_user_tokens(user_id):
+    """Add tokens to user's account (for watching ads, etc.)"""
+    try:
+        data = request.get_json()
+        tokens_to_add = data.get('tokens', 10)  # Default 10 tokens
+        
+        # Try Firestore first, fallback to in-memory store
+        success = False
+        try:
+            # For Firestore, we'd need to implement add_tokens method
+            # For now, just use in-memory store
+            success = in_memory_store.add_tokens(user_id, tokens_to_add)
+        except Exception as firestore_error:
+            print(f"Firestore error: {firestore_error}")
+            success = in_memory_store.add_tokens(user_id, tokens_to_add)
+        
+        if success:
+            user_profile = in_memory_store.get_user_profile(user_id)
+            return jsonify({
+                'message': f'Added {tokens_to_add} tokens successfully',
+                'tokenCount': user_profile.get('tokenCount', 0),
+                'userId': user_id
+            }), 200
+        else:
+            return jsonify({'message': 'Failed to add tokens'}), 500
+            
+    except Exception as e:
+        print(f"Error adding tokens: {e}")
         return jsonify({'message': 'Internal server error'}), 500
 
 

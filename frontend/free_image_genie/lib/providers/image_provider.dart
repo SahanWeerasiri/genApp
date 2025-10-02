@@ -101,9 +101,15 @@ class ImageProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> generateImage(String prompt, String style) async {
+  Future<void> generateImage(
+    String prompt,
+    String style, {
+    String? userId,
+  }) async {
     try {
-      AppLogger.info('Generating image with prompt: $prompt, style: $style');
+      AppLogger.info(
+        'Generating image with prompt: $prompt, style: $style, userId: $userId',
+      );
       _isGenerating = true;
       notifyListeners();
 
@@ -111,6 +117,7 @@ class ImageProvider extends ChangeNotifier {
       final response = await ApiService.generateImage(
         prompt: prompt,
         style: style,
+        userId: userId, // Pass userId to backend
       );
 
       if (response != null) {
@@ -131,8 +138,8 @@ class ImageProvider extends ChangeNotifier {
         _currentImageBytes = imageBytes;
         _currentImageUrl = null; // Clear URL since we're using bytes
         _gallery.insert(0, generatedImage);
-        _tokens -= 1;
 
+        // Note: Token reduction is now handled by the backend and UserProfileProvider
         AppLogger.info('Image generated successfully');
       } else {
         throw Exception('Failed to generate image');

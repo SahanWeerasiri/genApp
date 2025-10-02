@@ -2,25 +2,44 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/theme_provider.dart';
-import '../../providers/image_provider.dart' as app;
+import '../../providers/user_profile_provider.dart';
 import '../../utils/logger.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _loadUserProfile();
+    });
+  }
+
+  Future<void> _loadUserProfile() async {
+    final authProvider = context.read<AuthProvider>();
+    final userProfileProvider = context.read<UserProfileProvider>();
+
+    if (authProvider.isAuthenticated && authProvider.userId.isNotEmpty) {
+      await userProfileProvider.loadUserProfile(authProvider.userId);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final authProvider = context.watch<AuthProvider>();
     final themeProvider = context.watch<ThemeProvider>();
-    final imageProvider = context.watch<app.ImageProvider>();
+    final userProfileProvider = context.watch<UserProfileProvider>();
     final isDark = theme.brightness == Brightness.dark;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: const Text('Profile'), centerTitle: true),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -97,7 +116,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       const SizedBox(width: 12),
                       Text(
-                        '${imageProvider.tokens}',
+                        '${userProfileProvider.tokenCount}',
                         style: const TextStyle(
                           fontSize: 48,
                           fontWeight: FontWeight.bold,
@@ -109,17 +128,15 @@ class ProfileScreen extends StatelessWidget {
                   const SizedBox(height: 8),
                   const Text(
                     'Available Tokens',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white70,
-                    ),
+                    style: TextStyle(fontSize: 16, color: Colors.white70),
                   ),
                   const SizedBox(height: 16),
                   ElevatedButton.icon(
                     onPressed: () async {
                       AppLogger.info('Watch ad button pressed');
-                      await imageProvider.watchAdForTokens();
-                      if (context.mounted) {
+                      // Use UserProfileProvider to add tokens
+                      final success = await userProfileProvider.addTokens(10);
+                      if (context.mounted && success) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text('🎉 +10 tokens earned!'),
@@ -164,7 +181,9 @@ class ProfileScreen extends StatelessWidget {
                   // Theme Toggle
                   ListTile(
                     leading: Icon(
-                      isDark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
+                      isDark
+                          ? Icons.dark_mode_rounded
+                          : Icons.light_mode_rounded,
                       color: theme.colorScheme.primary,
                     ),
                     title: const Text('Dark Mode'),
@@ -195,7 +214,9 @@ class ProfileScreen extends StatelessWidget {
                         context: context,
                         builder: (context) => AlertDialog(
                           title: const Text('Logout'),
-                          content: const Text('Are you sure you want to logout?'),
+                          content: const Text(
+                            'Are you sure you want to logout?',
+                          ),
                           actions: [
                             TextButton(
                               onPressed: () => Navigator.pop(context),
@@ -208,7 +229,9 @@ class ProfileScreen extends StatelessWidget {
                               },
                               child: Text(
                                 'Logout',
-                                style: TextStyle(color: theme.colorScheme.error),
+                                style: TextStyle(
+                                  color: theme.colorScheme.error,
+                                ),
                               ),
                             ),
                           ],

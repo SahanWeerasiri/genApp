@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/image_provider.dart' as app;
+import '../../providers/auth_provider.dart';
+import '../../providers/user_profile_provider.dart';
 import '../../widgets/home/prompt_input.dart';
 import '../../widgets/home/style_selector.dart';
 import '../../widgets/home/generated_image_display.dart';
@@ -32,11 +34,43 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     AppLogger.info('Generate button pressed');
+
+    final authProvider = context.read<AuthProvider>();
+    final userProfileProvider = context.read<UserProfileProvider>();
+
+    // Check if user is authenticated
+    if (!authProvider.isAuthenticated) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Please sign in to generate images')),
+        );
+      }
+      return;
+    }
+
+    // Check token availability
+    final hasTokens = await userProfileProvider.checkTokenAvailability();
+    if (!hasTokens) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('No tokens available. Watch an ad to earn more!'),
+          ),
+        );
+      }
+      return;
+    }
+
     try {
+      // Generate image with user ID
       await context.read<app.ImageProvider>().generateImage(
         _promptController.text.trim(),
         _selectedStyle,
+        userId: authProvider.userId,
       );
+
+      // If successful, consume token from user profile
+      await userProfileProvider.consumeToken();
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(
