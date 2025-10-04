@@ -5,7 +5,8 @@ import '../utils/logger.dart';
 class ApiService {
   // Backend API configuration
   static const String _baseUrl =
-      'http://10.10.18.95:5000'; // Android emulator localhost
+      'http://192.168.1.2:5000'; // Use your actual backend IP
+  // static const String _baseUrl = 'http://10.10.18.95:5000'; // Alternative IP
   // static const String _baseUrl = 'http://localhost:5000'; // Use this for iOS simulator or web
   // static const String _baseUrl = 'http://YOUR_COMPUTER_IP:5000'; // Use this for physical device
 
@@ -126,23 +127,41 @@ class ApiService {
   static Future<bool> addTokensToUser(String userId, int tokens) async {
     try {
       final url = Uri.parse('$_baseUrl/api/user/tokens/$userId/add');
+      print('DEBUG: ApiService.addTokensToUser - URL: $url');
+      print('DEBUG: ApiService.addTokensToUser - Tokens: $tokens');
+
+      final requestBody = {'tokens': tokens};
+      print('DEBUG: ApiService.addTokensToUser - Request body: $requestBody');
+
       final response = await http.post(
         url,
         headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'tokens': tokens}),
+        body: jsonEncode(requestBody),
+      );
+
+      print(
+        'DEBUG: ApiService.addTokensToUser - Response status: ${response.statusCode}',
+      );
+      print(
+        'DEBUG: ApiService.addTokensToUser - Response body: ${response.body}',
       );
 
       AppLogger.info('Add tokens API Response status: ${response.statusCode}');
 
       if (response.statusCode == 200) {
         AppLogger.info('Tokens added successfully');
+        print('DEBUG: ApiService.addTokensToUser - Success');
         return true;
       } else {
         AppLogger.error('Failed to add tokens: ${response.statusCode}');
+        print(
+          'DEBUG: ApiService.addTokensToUser - Failed with status: ${response.statusCode}',
+        );
         return false;
       }
     } catch (e) {
       AppLogger.error('Error adding tokens: $e');
+      print('DEBUG: ApiService.addTokensToUser - Exception: $e');
       return false;
     }
   }

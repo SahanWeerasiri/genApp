@@ -541,26 +541,48 @@ def add_user_tokens(user_id):
     """Add tokens to user's account (for watching ads, etc.)"""
     try:
         data = request.get_json()
-        tokens_to_add = data.get('tokens', 10)  # Default 10 tokens
+        tokens_to_add = data.get('tokens', 2)  # Default 2 tokens
+        
+        print(f"Adding {tokens_to_add} tokens to user {user_id}")
         
         # Try Firestore first, fallback to in-memory store
         success = False
         try:
-            # For Firestore, we'd need to implement add_tokens method
-            # For now, just use in-memory store
-            success = in_memory_store.add_tokens(user_id, tokens_to_add)
+            # Use Firestore service to add tokens
+            success = firestore_service.add_tokens(user_id, tokens_to_add)
+            print(f"Firestore add_tokens result: {success}")
         except Exception as firestore_error:
             print(f"Firestore error: {firestore_error}")
+            success = False
+        
+        # If Firestore fails, use in-memory store as fallback
+        if not success:
+            print("Firestore failed, using in-memory store fallback")
             success = in_memory_store.add_tokens(user_id, tokens_to_add)
         
         if success:
-            user_profile = in_memory_store.get_user_profile(user_id)
+            # Get updated token count from Firestore or in-memory store
+            try:
+                user_profile = firestore_service.get_user_profile(user_id)
+                if user_profile:
+                    token_count = user_profile.get('tokenCount', 0)
+                    print(f"Updated token count from Firestore: {token_count}")
+                else:
+                    # Fallback to in-memory store
+                    user_profile = in_memory_store.get_user_profile(user_id)
+                    token_count = user_profile.get('tokenCount', 0)
+                    print(f"Updated token count from in-memory store: {token_count}")
+            except Exception as e:
+                print(f"Error getting updated token count: {e}")
+                token_count = 0
+            
             return jsonify({
                 'message': f'Added {tokens_to_add} tokens successfully',
-                'tokenCount': user_profile.get('tokenCount', 0),
+                'tokenCount': token_count,
                 'userId': user_id
             }), 200
         else:
+            print("Both Firestore and in-memory store failed")
             return jsonify({'message': 'Failed to add tokens'}), 500
             
     except Exception as e:

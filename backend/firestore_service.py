@@ -140,6 +140,34 @@ class FirestoreService:
             logger.error(f"Error consuming token for user {user_id}: {e}")
             return False
     
+    def add_tokens(self, user_id: str, tokens_to_add: int) -> bool:
+        """Add tokens to user's account"""
+        try:
+            # Get current user profile
+            user_profile = self.get_user_profile(user_id)
+            if not user_profile:
+                logger.error(f"User {user_id} not found when adding tokens")
+                return False
+            
+            current_tokens = user_profile.get('tokenCount', 0)
+            new_token_count = current_tokens + tokens_to_add
+            
+            # Update token count
+            updated_data = {
+                'tokenCount': new_token_count,
+                'updatedAt': '2024-01-01T00:00:00Z'  # You might want to use actual timestamp
+            }
+            
+            success = self.update_user_profile(user_id, updated_data)
+            if success:
+                logger.info(f"Added {tokens_to_add} tokens for user {user_id}. New total: {new_token_count}")
+            
+            return success
+            
+        except Exception as e:
+            logger.error(f"Error adding tokens for user {user_id}: {e}")
+            return False
+    
     def get_user_profile(self, user_id: str) -> Optional[Dict[str, Any]]:
         """Get user profile from Firestore"""
         try:

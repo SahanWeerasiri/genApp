@@ -23,7 +23,7 @@ def test_user_tokens(user_id):
     print(f"User tokens: {response.status_code} - {response.json()}")
     return response.json() if response.status_code == 200 else None
 
-def test_add_tokens(user_id, tokens=10):
+def test_add_tokens(user_id, tokens=2):
     """Test adding tokens to user"""
     print(f"\nTesting add tokens for {user_id}...")
     data = {"tokens": tokens}
@@ -111,7 +111,7 @@ def main():
     initial_tokens = test_user_tokens(test_user_id)
     
     # Test 2: Add tokens
-    test_add_tokens(test_user_id, 5)
+    test_add_tokens(test_user_id, 2)
     
     # Test 3: Check tokens after adding
     updated_tokens = test_user_tokens(test_user_id)
@@ -132,7 +132,7 @@ def main():
     print("TEST SUMMARY")
     print("="*50)
     print(f"Initial tokens: {initial_tokens}")
-    print(f"After adding 5: {updated_tokens}")
+    print(f"After adding 2: {updated_tokens}")
     print(f"After 1st generation: {after_generation_tokens}")
     print(f"Final tokens: {final_tokens}")
     

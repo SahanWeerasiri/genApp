@@ -212,18 +212,27 @@ class UserProfileProvider extends ChangeNotifier {
 
   /// Add tokens (for watching ads, purchases, etc.)
   Future<bool> addTokens(int tokensToAdd) async {
-    if (_userProfile == null) return false;
+    print('DEBUG: addTokens called with $tokensToAdd tokens');
+
+    if (_userProfile == null) {
+      print('DEBUG: No user profile found');
+      return false;
+    }
 
     try {
       AppLogger.info(
         'Adding $tokensToAdd tokens for user: ${_userProfile!.uid}',
       );
+      print('DEBUG: Calling ApiService.addTokensToUser...');
 
       // Try to add tokens via backend API
       final success = await ApiService.addTokensToUser(
         _userProfile!.uid,
         tokensToAdd,
       );
+
+      print('DEBUG: ApiService.addTokensToUser returned: $success');
+
       if (success) {
         // Update local profile
         _userProfile = _userProfile!.copyWith(
@@ -234,14 +243,21 @@ class UserProfileProvider extends ChangeNotifier {
         AppLogger.info(
           'Tokens added via API. New total: ${_userProfile!.tokenCount}',
         );
+        print(
+          'DEBUG: Tokens added successfully via API. New total: ${_userProfile!.tokenCount}',
+        );
         return true;
       }
 
+      print('DEBUG: API failed, trying Firestore fallback...');
       // Fallback to Firestore
       final firestoreSuccess = await FirestoreService.addTokens(
         _userProfile!.uid,
         tokensToAdd,
       );
+
+      print('DEBUG: Firestore addTokens returned: $firestoreSuccess');
+
       if (firestoreSuccess) {
         // Update local profile
         _userProfile = _userProfile!.copyWith(
@@ -252,12 +268,17 @@ class UserProfileProvider extends ChangeNotifier {
         AppLogger.info(
           'Tokens added via Firestore. New total: ${_userProfile!.tokenCount}',
         );
+        print(
+          'DEBUG: Tokens added successfully via Firestore. New total: ${_userProfile!.tokenCount}',
+        );
         return true;
       }
 
+      print('DEBUG: Both API and Firestore failed');
       return false;
     } catch (e) {
       AppLogger.error('Error adding tokens: $e');
+      print('DEBUG: Exception in addTokens: $e');
       return false;
     }
   }

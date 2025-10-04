@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/theme_provider.dart';
 import '../../providers/user_profile_provider.dart';
+import '../../widgets/rewarded_ad_button.dart';
 import '../../utils/logger.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -28,6 +29,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (authProvider.isAuthenticated && authProvider.userId.isNotEmpty) {
       await userProfileProvider.loadUserProfile(authProvider.userId);
     }
+  }
+
+  void _onAdRewardEarned() {
+    print('DEBUG: _onAdRewardEarned called');
+
+    // Add 2 tokens to the user's profile
+    context.read<UserProfileProvider>().addTokens(2);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('You earned 2 tokens!'),
+        backgroundColor: Colors.green,
+        duration: Duration(seconds: 3),
+      ),
+    );
+
+    print('DEBUG: _onAdRewardEarned completed');
   }
 
   @override
@@ -131,33 +149,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     style: TextStyle(fontSize: 16, color: Colors.white70),
                   ),
                   const SizedBox(height: 16),
-                  ElevatedButton.icon(
-                    onPressed: () async {
-                      AppLogger.info('Watch ad button pressed');
-                      // Use UserProfileProvider to add tokens
-                      final success = await userProfileProvider.addTokens(10);
-                      if (context.mounted && success) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('🎉 +10 tokens earned!'),
-                          ),
-                        );
-                      }
-                    },
-                    icon: const Icon(Icons.play_circle_outline_rounded),
-                    label: const Text('Watch Ad for Tokens'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      foregroundColor: theme.colorScheme.primary,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 24,
-                        vertical: 12,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                  ),
+                  RewardedAdButton(onRewardEarned: _onAdRewardEarned),
+                  const SizedBox(height: 8),
+                  const RewardAdInfo(),
                 ],
               ),
             ),

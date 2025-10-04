@@ -9,6 +9,7 @@ import 'providers/image_provider.dart' as custom;
 import 'providers/user_profile_provider.dart';
 import 'screens/auth/login_screen.dart';
 import 'screens/main_screen.dart';
+import 'services/admob_service.dart';
 import 'utils/logger.dart';
 
 void main() async {
@@ -28,6 +29,16 @@ void main() async {
     }
   } catch (e) {
     AppLogger.error('Firebase initialization failed: $e');
+  }
+
+  // Initialize AdMob
+  try {
+    await AdMobService.initialize();
+    // Preload first ad
+    AdMobService.instance.preloadAds();
+    AppLogger.info('AdMob initialized successfully');
+  } catch (e) {
+    AppLogger.error('AdMob initialization failed: $e');
   }
 
   AppLogger.info('App started');
