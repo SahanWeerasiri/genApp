@@ -1,6 +1,7 @@
 import os
 import jwt
 import datetime
+import logging
 from functools import wraps
 from flask import Flask, request, jsonify, make_response
 from flask_cors import CORS
@@ -8,6 +9,10 @@ import dotenv
 from gen import Gen
 from firestore_service import firestore_service
 from in_memory_store import in_memory_store
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Load environment variables
 dotenv.load_dotenv()
@@ -47,9 +52,14 @@ def get_gen_instance():
     """Get or create the Gen instance for this worker process"""
     global gen_instance
     if gen_instance is None:
-        print("Initializing Gen instance for this worker...")
-        gen_instance = Gen()
-        print("Gen instance initialized successfully")
+        try:
+            logger.info("Initializing Gen instance for this worker...")
+            gen_instance = Gen()
+            logger.info("Gen instance initialized successfully")
+        except Exception as e:
+            logger.error(f"Failed to initialize Gen instance: {e}")
+            # Don't raise the exception, just log it
+            gen_instance = None
     return gen_instance
 
 
@@ -188,6 +198,7 @@ def signup():
         }), 201
         
     except Exception as e:
+        logger.error(f"Error in signup: {e}")
         return jsonify({'message': 'Internal server error'}), 500
 
 
@@ -229,6 +240,7 @@ def signin():
         }), 200
         
     except Exception as e:
+        logger.error(f"Error in signin: {e}")
         return jsonify({'message': 'Internal server error'}), 500
 
 
@@ -276,6 +288,7 @@ def refresh_token():
         }), 200
         
     except Exception as e:
+        logger.error(f"Error in refresh: {e}")
         return jsonify({'message': 'Internal server error'}), 500
 
 
@@ -294,6 +307,7 @@ def logout():
         return jsonify({'message': 'Logged out successfully'}), 200
         
     except Exception as e:
+        logger.error(f"Error in logout: {e}")
         return jsonify({'message': 'Internal server error'}), 500
 
 
@@ -326,10 +340,16 @@ def get_profile():
         }), 200
         
     except Exception as e:
+        logger.error(f"Error in get_profile: {e}")
         return jsonify({'message': 'Internal server error'}), 500
 
 
-from styles import styles  # Make sure this is imported
+# Import styles - add error handling
+try:
+    from styles import styles
+except ImportError:
+    logger.warning("Could not import styles, using default")
+    styles = {'default': 'default style'}
 
 
 @app.route('/api/generate', methods=['POST'])
@@ -362,8 +382,8 @@ def generate_image():
                     if has_tokens:
                         consumed = firestore_service.consume_token(user_id)
                 except Exception as firestore_error:
-                    print(f"Firestore error: {firestore_error}")
-                    print("Falling back to in-memory token store")
+                    logger.error(f"Firestore error: {firestore_error}")
+                    logger.info("Falling back to in-memory token store")
                     has_tokens = in_memory_store.check_token_availability(user_id)
                     if has_tokens:
                         consumed = in_memory_store.consume_token(user_id)
@@ -381,24 +401,27 @@ def generate_image():
                     }), 500
                     
             except Exception as token_error:
-                print(f"Token validation error for user {user_id}: {token_error}")
+                logger.error(f"Token validation error for user {user_id}: {token_error}")
                 # Continue without token validation if both systems fail
-                print("Proceeding without token validation (both systems failed)")
+                logger.info("Proceeding without token validation (both systems failed)")
 
         # Get Gen instance and generate image directly
         try:
-            # gen = get_gen_instance()
+            gen = get_gen_instance()
+            if gen is None:
+                return jsonify({'message': 'Image generation service not available'}), 503
+                
             image_b64 = gen.play(prompt, style)
             
             if not image_b64:
                 # If image generation failed and we consumed a token, we should ideally refund it
                 if user_id:
-                    print(f"Image generation failed for user {user_id}, token may need refund")
+                    logger.warning(f"Image generation failed for user {user_id}, token may need refund")
                 return jsonify({'message': 'Image generation failed'}), 500
             
             # Log successful generation
             if user_id:
-                print(f"Image generated successfully for user {user_id}")
+                logger.info(f"Image generated successfully for user {user_id}")
             
             return jsonify({
                 'message': 'Image generated successfully',
@@ -408,14 +431,14 @@ def generate_image():
             }), 200
             
         except Exception as gen_error:
-            print(f"Generation error: {gen_error}")
+            logger.error(f"Generation error: {gen_error}")
             # If image generation failed and we consumed a token, we should ideally refund it
             if user_id:
-                print(f"Image generation error for user {user_id}, token may need refund")
+                logger.warning(f"Image generation error for user {user_id}, token may need refund")
             return jsonify({'message': 'Image generation error'}), 500
         
     except Exception as e:
-        print(f"Error in generate_image: {e}")
+        logger.error(f"Error in generate_image: {e}")
         return jsonify({'message': 'Internal server error'}), 500
 
 
@@ -440,6 +463,7 @@ def get_all_users():
         }), 200
         
     except Exception as e:
+        logger.error(f"Error in get_all_users: {e}")
         return jsonify({'message': 'Internal server error'}), 500
 
 
@@ -458,6 +482,7 @@ def admin_dashboard():
         }), 200
         
     except Exception as e:
+        logger.error(f"Error in admin_dashboard: {e}")
         return jsonify({'message': 'Internal server error'}), 500
 
 
@@ -472,6 +497,7 @@ def user_dashboard():
         }), 200
         
     except Exception as e:
+        logger.error(f"Error in user_dashboard: {e}")
         return jsonify({'message': 'Internal server error'}), 500
 
 
@@ -489,7 +515,7 @@ def get_user_tokens(user_id):
                     'source': 'firestore'
                 }), 200
         except Exception as firestore_error:
-            print(f"Firestore error: {firestore_error}")
+            logger.error(f"Firestore error: {firestore_error}")
         
         # Fallback to in-memory store
         user_profile = in_memory_store.get_user_profile(user_id)
@@ -500,7 +526,7 @@ def get_user_tokens(user_id):
         }), 200
         
     except Exception as e:
-        print(f"Error getting user tokens: {e}")
+        logger.error(f"Error getting user tokens: {e}")
         return jsonify({'message': 'Internal server error'}), 500
 
 
@@ -518,7 +544,7 @@ def get_user_profile_endpoint(user_id):
                     'source': 'firestore'
                 }), 200
         except Exception as firestore_error:
-            print(f"Firestore error: {firestore_error}")
+            logger.error(f"Firestore error: {firestore_error}")
         
         # Fallback to in-memory store
         user_profile = in_memory_store.get_user_profile(user_id)
@@ -529,7 +555,7 @@ def get_user_profile_endpoint(user_id):
         }), 200
         
     except Exception as e:
-        print(f"Error getting user profile: {e}")
+        logger.error(f"Error getting user profile: {e}")
         return jsonify({'message': 'Internal server error'}), 500
 
 
@@ -540,21 +566,21 @@ def add_user_tokens(user_id):
         data = request.get_json()
         tokens_to_add = data.get('tokens', 2)  # Default 2 tokens
         
-        print(f"Adding {tokens_to_add} tokens to user {user_id}")
+        logger.info(f"Adding {tokens_to_add} tokens to user {user_id}")
         
         # Try Firestore first, fallback to in-memory store
         success = False
         try:
             # Use Firestore service to add tokens
             success = firestore_service.add_tokens(user_id, tokens_to_add)
-            print(f"Firestore add_tokens result: {success}")
+            logger.info(f"Firestore add_tokens result: {success}")
         except Exception as firestore_error:
-            print(f"Firestore error: {firestore_error}")
+            logger.error(f"Firestore error: {firestore_error}")
             success = False
         
         # If Firestore fails, use in-memory store as fallback
         if not success:
-            print("Firestore failed, using in-memory store fallback")
+            logger.info("Firestore failed, using in-memory store fallback")
             success = in_memory_store.add_tokens(user_id, tokens_to_add)
         
         if success:
@@ -563,14 +589,14 @@ def add_user_tokens(user_id):
                 user_profile = firestore_service.get_user_profile(user_id)
                 if user_profile:
                     token_count = user_profile.get('tokenCount', 0)
-                    print(f"Updated token count from Firestore: {token_count}")
+                    logger.info(f"Updated token count from Firestore: {token_count}")
                 else:
                     # Fallback to in-memory store
                     user_profile = in_memory_store.get_user_profile(user_id)
                     token_count = user_profile.get('tokenCount', 0)
-                    print(f"Updated token count from in-memory store: {token_count}")
+                    logger.info(f"Updated token count from in-memory store: {token_count}")
             except Exception as e:
-                print(f"Error getting updated token count: {e}")
+                logger.error(f"Error getting updated token count: {e}")
                 token_count = 0
             
             return jsonify({
@@ -579,35 +605,49 @@ def add_user_tokens(user_id):
                 'userId': user_id
             }), 200
         else:
-            print("Both Firestore and in-memory store failed")
+            logger.error("Both Firestore and in-memory store failed")
             return jsonify({'message': 'Failed to add tokens'}), 500
             
     except Exception as e:
-        print(f"Error adding tokens: {e}")
+        logger.error(f"Error adding tokens: {e}")
         return jsonify({'message': 'Internal server error'}), 500
 
 
 @app.route('/api/health', methods=['GET'])
 def health_check():
-    """Health check endpoint"""
-    return jsonify({
-        'status': 'healthy',
-        'timestamp': datetime.datetime.now(datetime.UTC).isoformat(),
-        'gen_initialized': gen_instance is not None
-    }), 200
+    """Health check endpoint with better error handling"""
+    try:
+        return jsonify({
+            'status': 'healthy',
+            'timestamp': datetime.datetime.now(datetime.UTC).isoformat(),
+            'gen_initialized': gen_instance is not None
+        }), 200
+    except Exception as e:
+        logger.error(f"Error in health_check: {e}")
+        return jsonify({
+            'status': 'unhealthy',
+            'error': str(e),
+            'timestamp': datetime.datetime.now(datetime.UTC).isoformat()
+        }), 500
 
 
 @app.route('/api/warmup', methods=['POST'])
 def warmup():
     """Warmup endpoint to initialize Gen instance"""
-    global gen_instance
     try:
-        gen_instance = get_gen_instance()
+        gen = get_gen_instance()
+        if gen is None:
+            return jsonify({
+                'message': 'Failed to initialize Gen instance',
+                'status': 'error'
+            }), 500
+        
         return jsonify({
             'message': 'Gen instance initialized successfully',
             'status': 'ready'
         }), 200
     except Exception as e:
+        logger.error(f"Error in warmup: {e}")
         return jsonify({
             'message': f'Failed to initialize Gen instance: {str(e)}',
             'status': 'error'
@@ -621,6 +661,7 @@ def not_found(error):
 
 @app.errorhandler(500)
 def internal_error(error):
+    logger.error(f"Internal server error: {error}")
     return jsonify({'message': 'Internal server error'}), 500
 
 
