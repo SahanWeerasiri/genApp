@@ -334,9 +334,9 @@ from styles import styles  # Make sure this is imported
 
 @app.route('/api/generate', methods=['POST'])
 def generate_image():
+    """Generate image using simple direct approach with token validation."""
     global gen_instance
     gen = gen_instance
-    """Generate image using simple direct approach with token validation."""
     try:
         data = request.get_json()
         if not data or not data.get('prompt'):
@@ -600,8 +600,9 @@ def health_check():
 @app.route('/api/warmup', methods=['POST'])
 def warmup():
     """Warmup endpoint to initialize Gen instance"""
+    global gen_instance
     try:
-        gen = get_gen_instance()
+        gen_instance = get_gen_instance()
         return jsonify({
             'message': 'Gen instance initialized successfully',
             'status': 'ready'
@@ -630,8 +631,8 @@ if __name__ == '__main__':
     print("User: user@example.com / user123")
     print("Gen instance will be initialized on first request or warmup call")
     
-    gen_instance = get_gen_instance()
+    # gen_instance = get_gen_instance()
     
-    print("Gen instance initialized successfully")
+    # print("Gen instance initialized successfully")
 
     app.run(debug=False, host='0.0.0.0', port=5000, use_reloader=False)
