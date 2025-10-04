@@ -41,8 +41,9 @@ def initialize_gen_async():
     global gen, gen_initialization_status
     
     with gen_initialization_lock:
-        if gen_initialization_status != "none":
-            return  # Already initialized or in progress
+        if gen is not None:  # Check if gen object already exists
+            gen_initialization_status = "initialized"
+            return  # Already initialized
         
         gen_initialization_status = "pending"
     
@@ -236,9 +237,12 @@ def get_profile(userId):
 @app.route('/api/gen-status', methods=['GET'])
 def check_gen_status():
     """Check Gen object initialization status"""
-    global gen_initialization_status
+    global gen_initialization_status, gen
     
+    # Update status based on actual gen object state
     with gen_initialization_lock:
+        if gen is not None:
+            gen_initialization_status = "initialized"
         status = gen_initialization_status
     
     return jsonify({
@@ -255,17 +259,19 @@ def check_gen_status():
 @app.route('/api/initialize-gen', methods=['POST'])
 def initialize_gen_endpoint():
     """Initialize Gen object asynchronously"""
-    global gen_initialization_status
+    global gen_initialization_status, gen
     
     with gen_initialization_lock:
+        # Check actual gen object state, not just status variable
+        if gen is not None:
+            gen_initialization_status = "initialized"
+            return jsonify({
+                'status': 'initialized',
+                'worker_pid': os.getpid(),
+                'message': 'Gen object already initialized'
+            }), 200
+        
         current_status = gen_initialization_status
-    
-    if current_status == "initialized":
-        return jsonify({
-            'status': 'initialized',
-            'worker_pid': os.getpid(),
-            'message': 'Gen object already initialized'
-        }), 200
     
     if current_status == "pending":
         return jsonify({
@@ -291,8 +297,11 @@ def generate_image():
     """Generate image using Gen object"""
     try:
         # Check if Gen object is initialized
-        global gen_initialization_status
+        global gen_initialization_status, gen
         with gen_initialization_lock:
+            # Update status based on actual gen object state
+            if gen is not None:
+                gen_initialization_status = "initialized"
             status = gen_initialization_status
         
         if status == "none":
