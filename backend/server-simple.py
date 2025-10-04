@@ -54,8 +54,16 @@ def get_gen_instance():
     if gen_instance is None:
         try:
             logger.info("Initializing Gen instance for this worker...")
+            # Add memory management
+            import gc
+            gc.collect()  # Force garbage collection before initialization
+            
             gen_instance = Gen()
             logger.info("Gen instance initialized successfully")
+            
+            # Force another garbage collection after initialization
+            gc.collect()
+            
         except Exception as e:
             logger.error(f"Failed to initialize Gen instance: {e}")
             # Don't raise the exception, just log it
@@ -633,24 +641,34 @@ def health_check():
 
 @app.route('/api/warmup', methods=['POST'])
 def warmup():
-    """Warmup endpoint to initialize Gen instance"""
+    """Warmup endpoint to initialize Gen instance with better error handling"""
     try:
+        # Force garbage collection before initialization
+        import gc
+        gc.collect()
+        
         gen = get_gen_instance()
         if gen is None:
             return jsonify({
-                'message': 'Failed to initialize Gen instance',
-                'status': 'error'
+                'message': 'Failed to initialize Gen instance - possibly due to memory constraints',
+                'status': 'error',
+                'suggestion': 'Try restarting the service or increasing memory allocation'
             }), 500
+        
+        # Test the instance with a simple operation if possible
+        logger.info("Gen instance warmup completed successfully")
         
         return jsonify({
             'message': 'Gen instance initialized successfully',
-            'status': 'ready'
+            'status': 'ready',
+            'memory_info': 'Garbage collection performed'
         }), 200
     except Exception as e:
         logger.error(f"Error in warmup: {e}")
         return jsonify({
             'message': f'Failed to initialize Gen instance: {str(e)}',
-            'status': 'error'
+            'status': 'error',
+            'error_type': type(e).__name__
         }), 500
 
 
@@ -663,6 +681,31 @@ def not_found(error):
 def internal_error(error):
     logger.error(f"Internal server error: {error}")
     return jsonify({'message': 'Internal server error'}), 500
+
+
+@app.route('/api/memory', methods=['GET'])
+def memory_status():
+    """Check memory usage"""
+    try:
+        import psutil
+        import os
+        
+        process = psutil.Process(os.getpid())
+        memory_info = process.memory_info()
+        
+        return jsonify({
+            'memory_usage_mb': round(memory_info.rss / 1024 / 1024, 2),
+            'memory_percent': round(process.memory_percent(), 2),
+            'gen_initialized': gen_instance is not None,
+            'pid': os.getpid()
+        }), 200
+    except ImportError:
+        return jsonify({
+            'error': 'psutil not available - install with: pip install psutil',
+            'gen_initialized': gen_instance is not None
+        }), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 
 if __name__ == '__main__':
