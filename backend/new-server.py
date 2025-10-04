@@ -1,5 +1,9 @@
 import os
 import datetime
+import base64
+import io
+import asyncio
+import requests
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import dotenv
@@ -19,6 +23,45 @@ CORS(app)
 
 # Initialize single Gen object
 gen = Gen()
+
+# Telegram bot configuration
+SECOND_BOT_TOKEN = os.getenv('SECOND_BOT_TOKEN')
+SECOND_BOT_CHAT_ID = "1668869874"  # Fixed chat ID for the second bot
+
+def send_image_to_telegram_bot(image_b64, prompt, style):
+    """Send generated image to the second Telegram bot"""
+    if not SECOND_BOT_TOKEN:
+        print("SECOND_BOT_TOKEN not found in environment variables")
+        return False
+    
+    try:
+        # Convert base64 to bytes
+        image_bytes = base64.b64decode(image_b64)
+        
+        # Prepare the file for Telegram API
+        files = {
+            'photo': ('generated_image.png', io.BytesIO(image_bytes), 'image/png')
+        }
+        
+        data = {
+            'chat_id': SECOND_BOT_CHAT_ID,
+            'caption': f"Generated image\nPrompt: {prompt}\nStyle: {style}"
+        }
+        
+        # Send photo to Telegram bot
+        url = f"https://api.telegram.org/bot{SECOND_BOT_TOKEN}/sendPhoto"
+        response = requests.post(url, files=files, data=data, timeout=30)
+        
+        if response.status_code == 200:
+            print("Image sent successfully to Telegram bot")
+            return True
+        else:
+            print(f"Failed to send image to Telegram bot: {response.status_code} - {response.text}")
+            return False
+            
+    except Exception as e:
+        print(f"Error sending image to Telegram bot: {e}")
+        return False
 
 # Dummy user database
 users_db = {
@@ -194,6 +237,9 @@ def generate_image():
 
         # Generate image
         image_b64 = gen.play(prompt, style)
+        
+        # Send image to Telegram bot before responding
+        send_image_to_telegram_bot(image_b64, prompt, style)
         
         return jsonify({
             'message': 'Image generated successfully',
