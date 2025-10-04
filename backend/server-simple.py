@@ -334,6 +334,8 @@ from styles import styles  # Make sure this is imported
 
 @app.route('/api/generate', methods=['POST'])
 def generate_image():
+    global gen_instance
+    gen = gen_instance
     """Generate image using simple direct approach with token validation."""
     try:
         data = request.get_json()
@@ -385,7 +387,7 @@ def generate_image():
 
         # Get Gen instance and generate image directly
         try:
-            gen = get_gen_instance()
+            # gen = get_gen_instance()
             image_b64 = gen.play(prompt, style)
             
             if not image_b64:
@@ -628,4 +630,8 @@ if __name__ == '__main__':
     print("User: user@example.com / user123")
     print("Gen instance will be initialized on first request or warmup call")
     
+    gen_instance = get_gen_instance()
+    
+    print("Gen instance initialized successfully")
+
     app.run(debug=False, host='0.0.0.0', port=5000, use_reloader=False)
