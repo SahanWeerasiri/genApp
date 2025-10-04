@@ -131,7 +131,7 @@ def signout():
 def get_profile():
     """Get user profile"""
     try:
-        user_id = request.current_user['id']
+        user_id = request.headers.get('X-User-ID') or request.args.get('userId')
         
         user = None
         email = None
