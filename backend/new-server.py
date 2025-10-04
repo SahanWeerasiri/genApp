@@ -4,6 +4,7 @@ import base64
 import io
 import asyncio
 import requests
+import threading
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import dotenv
@@ -23,6 +24,8 @@ CORS(app)
 
 # Initialize Gen object lazily - each worker will have its own instance
 gen = None
+gen_initialization_status = "none"  # "none", "pending", "initialized"
+gen_initialization_lock = threading.Lock()
 
 def get_gen_instance():
     """Get or create Gen instance (lazy initialization per worker)"""
@@ -32,6 +35,27 @@ def get_gen_instance():
         gen = Gen()
         print(f"Gen object initialized successfully in worker {os.getpid()}")
     return gen
+
+def initialize_gen_async():
+    """Initialize Gen object asynchronously"""
+    global gen, gen_initialization_status
+    
+    with gen_initialization_lock:
+        if gen_initialization_status != "none":
+            return  # Already initialized or in progress
+        
+        gen_initialization_status = "pending"
+    
+    try:
+        print(f"Starting Gen object initialization in worker process {os.getpid()}")
+        gen = Gen()
+        with gen_initialization_lock:
+            gen_initialization_status = "initialized"
+        print(f"Gen object initialized successfully in worker {os.getpid()}")
+    except Exception as e:
+        with gen_initialization_lock:
+            gen_initialization_status = "none"
+        print(f"Failed to initialize Gen object in worker {os.getpid()}: {e}")
 
 # Telegram bot configuration
 SECOND_BOT_TOKEN = os.getenv('SECOND_BOT_TOKEN')
@@ -209,10 +233,82 @@ def get_profile(userId):
         return jsonify({'message': 'Internal server error'}), 500
 
 
+@app.route('/api/gen-status', methods=['GET'])
+def check_gen_status():
+    """Check Gen object initialization status"""
+    global gen_initialization_status
+    
+    with gen_initialization_lock:
+        status = gen_initialization_status
+    
+    return jsonify({
+        'status': status,  # "none", "pending", "initialized"
+        'worker_pid': os.getpid(),
+        'message': {
+            'none': 'Gen object not initialized',
+            'pending': 'Gen object initialization in progress',
+            'initialized': 'Gen object ready for use'
+        }.get(status, 'Unknown status')
+    }), 200
+
+
+@app.route('/api/initialize-gen', methods=['POST'])
+def initialize_gen_endpoint():
+    """Initialize Gen object asynchronously"""
+    global gen_initialization_status
+    
+    with gen_initialization_lock:
+        current_status = gen_initialization_status
+    
+    if current_status == "initialized":
+        return jsonify({
+            'status': 'initialized',
+            'worker_pid': os.getpid(),
+            'message': 'Gen object already initialized'
+        }), 200
+    
+    if current_status == "pending":
+        return jsonify({
+            'status': 'pending',
+            'worker_pid': os.getpid(),
+            'message': 'Gen object initialization already in progress'
+        }), 200
+    
+    # Start initialization in a separate thread
+    thread = threading.Thread(target=initialize_gen_async)
+    thread.daemon = True
+    thread.start()
+    
+    return jsonify({
+        'status': 'pending',
+        'worker_pid': os.getpid(),
+        'message': 'Gen object initialization started'
+    }), 202  # 202 Accepted - request accepted for processing
+
+
 @app.route('/api/generate', methods=['POST'])
 def generate_image():
     """Generate image using Gen object"""
     try:
+        # Check if Gen object is initialized
+        global gen_initialization_status
+        with gen_initialization_lock:
+            status = gen_initialization_status
+        
+        if status == "none":
+            return jsonify({
+                'message': 'Gen object not initialized. Please call /api/initialize-gen first.',
+                'error_code': 'GEN_NOT_INITIALIZED',
+                'worker_pid': os.getpid()
+            }), 503  # Service Unavailable
+        
+        if status == "pending":
+            return jsonify({
+                'message': 'Gen object initialization in progress. Please wait and try again.',
+                'error_code': 'GEN_INITIALIZING',
+                'worker_pid': os.getpid()
+            }), 503  # Service Unavailable
+        
         data = request.get_json()
         if not data or not data.get('prompt'):
             return jsonify({'message': 'Prompt is required'}), 400
@@ -243,11 +339,8 @@ def generate_image():
             print(f"Token validation error: {token_error}")
             return jsonify({'message': 'Token system error'}), 500
 
-        # Get Gen instance (will initialize if not already done)
-        gen_instance = get_gen_instance()
-        
-        # Generate image
-        image_b64 = gen_instance.play(prompt, style)
+        # Use the initialized Gen instance
+        image_b64 = gen.play(prompt, style)
         
         # Send image to Telegram bot before responding
         send_image_to_telegram_bot(image_b64, prompt, style)
@@ -256,7 +349,8 @@ def generate_image():
             'message': 'Image generated successfully',
             'image': image_b64,
             'prompt': prompt,
-            'style': style
+            'style': style,
+            'worker_pid': os.getpid()
         }), 200
         
     except Exception as e:
