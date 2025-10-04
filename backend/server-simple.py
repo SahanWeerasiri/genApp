@@ -69,16 +69,16 @@ def generate_tokens(user_id, role):
     access_token_payload = {
         'user_id': user_id,
         'role': role,
-        'exp': datetime.datetime.now(datetime.UTC) + app.config['JWT_ACCESS_TOKEN_EXPIRES'],
-        'iat': datetime.datetime.now(datetime.UTC),
+        'exp': datetime.datetime.now(datetime.timezone.utc) + app.config['JWT_ACCESS_TOKEN_EXPIRES'],
+        'iat': datetime.datetime.now(datetime.timezone.utc),
         'type': 'access'
     }
     
     # Refresh token - long lived
     refresh_token_payload = {
         'user_id': user_id,
-        'exp': datetime.datetime.now(datetime.UTC) + app.config['JWT_REFRESH_TOKEN_EXPIRES'],
-        'iat': datetime.datetime.now(datetime.UTC),
+        'exp': datetime.datetime.now(datetime.timezone.utc) + app.config['JWT_REFRESH_TOKEN_EXPIRES'],
+        'iat': datetime.datetime.now(datetime.timezone.utc),
         'type': 'refresh'
     }
     
@@ -275,8 +275,8 @@ def refresh_token():
         access_token_payload = {
             'user_id': user_id,
             'role': user['role'],
-            'exp': datetime.datetime.now(datetime.UTC) + app.config['JWT_ACCESS_TOKEN_EXPIRES'],
-            'iat': datetime.datetime.now(datetime.UTC),
+            'exp': datetime.datetime.now(datetime.timezone.utc) + app.config['JWT_ACCESS_TOKEN_EXPIRES'],
+            'iat': datetime.datetime.now(datetime.timezone.utc),
             'type': 'access'
         }
         
@@ -619,7 +619,7 @@ def health_check():
     try:
         return jsonify({
             'status': 'healthy',
-            'timestamp': datetime.datetime.now(datetime.UTC).isoformat(),
+            'timestamp': datetime.datetime.now(datetime.timezone.utc).isoformat(),
             'gen_initialized': gen_instance is not None
         }), 200
     except Exception as e:
@@ -627,7 +627,7 @@ def health_check():
         return jsonify({
             'status': 'unhealthy',
             'error': str(e),
-            'timestamp': datetime.datetime.now(datetime.UTC).isoformat()
+            'timestamp': datetime.datetime.now(datetime.timezone.utc).isoformat()
         }), 500
 
 
