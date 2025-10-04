@@ -315,6 +315,15 @@ def health_check():
     }), 200
 
 
+# if __name__ == '__main__':
+#     print("Starting Flask server...")
+#     print("Available users:")
+#     print("Admin: admin@example.com / admin123")
+#     print("User: user@example.com / user123")
+#     print("Gen object initialized successfully")
+    
+#     app.run(debug=False, host='0.0.0.0', port=5000, use_reloader=False)
+
 if __name__ == '__main__':
     print("Starting Flask server...")
     print("Available users:")
@@ -322,4 +331,33 @@ if __name__ == '__main__':
     print("User: user@example.com / user123")
     print("Gen object initialized successfully")
     
-    app.run(debug=False, host='0.0.0.0', port=5000, use_reloader=False)
+    # Use environment variable for workers or default to 1
+    workers = int(os.getenv('WORKERS', 1))
+    
+    if workers > 1:
+        # Run with gunicorn programmatically
+        from gunicorn.app.base import BaseApplication
+        
+        class FlaskApplication(BaseApplication):
+            def __init__(self, app, options=None):
+                self.application = app
+                self.options = options or {}
+                super().__init__()
+            
+            def load_config(self):
+                for key, value in self.options.items():
+                    self.cfg.set(key.lower(), value)
+            
+            def load(self):
+                return self.application
+        
+        options = {
+            'bind': '0.0.0.0:5000',
+            'workers': workers,
+            'timeout': 120
+        }
+        
+        FlaskApplication(app, options).run()
+    else:
+        # Run single worker with Flask dev server
+        app.run(debug=False, host='0.0.0.0', port=5000, use_reloader=False)
