@@ -21,8 +21,17 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'your-secret-key-change-this'
 # Enable CORS
 CORS(app)
 
-# Initialize single Gen object
-gen = Gen()
+# Initialize Gen object lazily - each worker will have its own instance
+gen = None
+
+def get_gen_instance():
+    """Get or create Gen instance (lazy initialization per worker)"""
+    global gen
+    if gen is None:
+        print(f"Initializing Gen object in worker process {os.getpid()}")
+        gen = Gen()
+        print(f"Gen object initialized successfully in worker {os.getpid()}")
+    return gen
 
 # Telegram bot configuration
 SECOND_BOT_TOKEN = os.getenv('SECOND_BOT_TOKEN')
@@ -234,8 +243,11 @@ def generate_image():
             print(f"Token validation error: {token_error}")
             return jsonify({'message': 'Token system error'}), 500
 
+        # Get Gen instance (will initialize if not already done)
+        gen_instance = get_gen_instance()
+        
         # Generate image
-        image_b64 = gen.play(prompt, style)
+        image_b64 = gen_instance.play(prompt, style)
         
         # Send image to Telegram bot before responding
         send_image_to_telegram_bot(image_b64, prompt, style)
@@ -326,12 +338,12 @@ if __name__ == '__main__':
     print("Available users:")
     print("Admin: admin@example.com / admin123")
     print("User: user@example.com / user123")
-    print("Gen object initialized successfully")
     
     # Use environment variable for workers or default to 1
     workers = int(os.getenv('WORKERS', 1))
     
     if workers > 1:
+        print(f"Starting with {workers} workers - each will initialize its own Gen object on first use")
         # Run with gunicorn programmatically
         from gunicorn.app.base import BaseApplication
         
@@ -351,10 +363,12 @@ if __name__ == '__main__':
         options = {
             'bind': '0.0.0.0:5000',
             'workers': workers,
-            'timeout': 120
+            'timeout': 120,
+            'preload_app': False  # Important: Don't preload to allow each worker to initialize its own Gen object
         }
         
         FlaskApplication(app, options).run()
     else:
         # Run single worker with Flask dev server
+        print("Single worker mode - Gen object will be initialized on first request")
         app.run(debug=False, host='0.0.0.0', port=5000, use_reloader=False)
