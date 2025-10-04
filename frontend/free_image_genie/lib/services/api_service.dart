@@ -5,7 +5,7 @@ import '../utils/logger.dart';
 class ApiService {
   // Backend API configuration
   static const String _baseUrl =
-      'http://192.168.1.2:5000'; // Use your actual backend IP
+      'http://68.233.117.166:5000'; // Use your actual backend IP
   // static const String _baseUrl = 'http://10.10.18.95:5000'; // Alternative IP
   // static const String _baseUrl = 'http://localhost:5000'; // Use this for iOS simulator or web
   // static const String _baseUrl = 'http://YOUR_COMPUTER_IP:5000'; // Use this for physical device
