@@ -170,12 +170,12 @@ def signout():
         return jsonify({'message': 'Internal server error'}), 500
 
 
-@app.route('/api/profile', methods=['GET'])
-def get_profile():
+@app.route('/api/profile/<userId>', methods=['GET'])
+def get_profile(userId):
     """Get user profile"""
     try:
-        user_id = request.headers.get('X-User-ID') or request.args.get('userId')
-        
+        user_id = userId
+
         user = None
         email = None
         for user_email, user_data in users_db.items():
@@ -201,7 +201,6 @@ def get_profile():
 
 
 @app.route('/api/generate', methods=['POST'])
-
 def generate_image():
     """Generate image using Gen object"""
     try:
@@ -254,7 +253,6 @@ def generate_image():
 
 
 @app.route('/api/user/tokens/<user_id>', methods=['GET'])
-
 def get_user_tokens(user_id):
     """Get user's token count"""
     try:
@@ -281,7 +279,6 @@ def get_user_tokens(user_id):
 
 
 @app.route('/api/user/tokens/<user_id>/add', methods=['POST'])
-
 def add_user_tokens(user_id):
     """Add tokens to user's account"""
     try:
