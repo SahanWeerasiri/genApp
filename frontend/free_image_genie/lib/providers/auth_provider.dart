@@ -1,21 +1,26 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:http/http.dart' as http;
 import '../utils/logger.dart';
-import '../services/firestore_service.dart';
-import '../models/user_profile.dart';
 
 class AuthProvider extends ChangeNotifier {
   bool _isAuthenticated = false;
+  bool _isLoading = false;
   String _userEmail = '';
   String _userName = '';
   String _userPhotoUrl = '';
   String _userId = '';
-  GoogleSignInAccount? _currentUser;
-  User? _firebaseUser;
-  final bool _isAuthorized = false;
+  int _tokenCount = 0;
   String _errorMessage = '';
+
+  // Secure storage for access token
+  static const FlutterSecureStorage _secureStorage = FlutterSecureStorage();
+  static const String _tokenKey = 'access_token';
+  static const String _refreshTokenKey = 'refresh_token';
 
   // Google Sign-In instance
   final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
@@ -23,15 +28,17 @@ class AuthProvider extends ChangeNotifier {
   // Firebase Auth instance
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
+  // Backend API configuration
+  static const String _baseUrl = 'http://68.233.117.166:5000';
+
   // Getters
   bool get isAuthenticated => _isAuthenticated;
+  bool get isLoading => _isLoading;
   String get userEmail => _userEmail;
   String get userName => _userName;
   String get userPhotoUrl => _userPhotoUrl;
   String get userId => _userId;
-  GoogleSignInAccount? get currentUser => _currentUser;
-  User? get firebaseUser => _firebaseUser;
-  bool get isAuthorized => _isAuthorized;
+  int get tokenCount => _tokenCount;
   String get errorMessage => _errorMessage;
 
   AuthProvider() {
@@ -39,246 +46,247 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future<void> _initializeAuth() async {
-    await _initializeGoogleSignIn();
-    await _initializeFirebaseAuth();
-  }
-
-  Future<void> _initializeFirebaseAuth() async {
+    _setLoading(true);
     try {
-      // Listen to Firebase Auth state changes
-      _firebaseAuth.authStateChanges().listen(_handleFirebaseAuthStateChange);
+      // Check if we have a stored access token
+      final storedToken = await _secureStorage.read(key: _tokenKey);
 
-      // Check if user is already signed in
-      final user = _firebaseAuth.currentUser;
-      if (user != null) {
-        await _handleFirebaseAuthStateChange(user);
-      }
-    } catch (e) {
-      AppLogger.error('Firebase Auth initialization error: $e');
-      _errorMessage = 'Failed to initialize Firebase Auth';
-      notifyListeners();
-    }
-  }
+      if (storedToken != null) {
+        AppLogger.info('Found stored access token, verifying...');
+        final isValid = await _verifyToken(storedToken);
 
-  Future<void> _handleFirebaseAuthStateChange(User? user) async {
-    _firebaseUser = user;
-
-    if (user != null) {
-      _isAuthenticated = true;
-      _userId = user.uid;
-      _userEmail = user.email ?? '';
-      _userName = user.displayName ?? '';
-      _userPhotoUrl = user.photoURL ?? '';
-
-      // Create or check user profile in Firestore
-      await _ensureUserProfile(user);
-
-      AppLogger.info('Firebase user authenticated: ${user.email}');
-    } else {
-      _isAuthenticated = false;
-      _userId = '';
-      _userEmail = '';
-      _userName = '';
-      _userPhotoUrl = '';
-      AppLogger.info('Firebase user signed out');
-    }
-
-    notifyListeners();
-  }
-
-  /// Ensure user profile exists in Firestore, create if it doesn't
-  Future<void> _ensureUserProfile(User user) async {
-    try {
-      AppLogger.info('Ensuring user profile exists for: ${user.email}');
-
-      // Check if profile already exists
-      final existingProfile = await FirestoreService.getUserProfile(user.uid);
-
-      if (existingProfile == null) {
-        // Create new profile
-        final profile = UserProfile(
-          uid: user.uid,
-          email: user.email ?? '',
-          name: user.displayName ?? '',
-          photoUrl: user.photoURL ?? '',
-          tokenCount: 5, // Initial 5 tokens
-          createdAt: DateTime.now(),
-          updatedAt: DateTime.now(),
-        );
-
-        final success = await FirestoreService.createUserProfile(profile);
-        if (success) {
-          AppLogger.info('User profile created successfully');
+        if (isValid) {
+          AppLogger.info('Stored token is valid, user authenticated');
+          _setLoading(false);
+          return;
         } else {
-          AppLogger.error('Failed to create user profile');
+          AppLogger.info('Stored token is invalid, attempting refresh...');
+          final refreshSuccess = await _refreshAccessToken();
+          if (refreshSuccess) {
+            AppLogger.info('Token refreshed successfully');
+            _setLoading(false);
+            return;
+          } else {
+            AppLogger.info('Token refresh failed, clearing stored tokens');
+            await _clearStoredTokens();
+          }
         }
-      } else {
-        AppLogger.info('User profile already exists');
       }
+
+      AppLogger.info('No valid stored token found, user needs to sign in');
+      _setLoading(false);
     } catch (e) {
-      AppLogger.error('Error ensuring user profile: $e');
+      AppLogger.error('Auth initialization error: $e');
+      _errorMessage = 'Failed to initialize authentication';
+      _setLoading(false);
     }
   }
 
-  Future<void> _initializeGoogleSignIn() async {
+  void _setLoading(bool loading) {
+    _isLoading = loading;
+    notifyListeners();
+  }
+
+  Future<bool> _verifyToken(String token) async {
     try {
-      // Initialize Google Sign-In
-      await _googleSignIn.initialize();
+      final url = Uri.parse('$_baseUrl/api/verify');
+      final response = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({'access_token': token}),
+      );
 
-      // Listen to authentication events
-      _googleSignIn.authenticationEvents.listen(_handleAuthenticationEvent);
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        final user = data['user'];
 
-      // Attempt lightweight authentication on app start
-      await _googleSignIn.attemptLightweightAuthentication();
+        _isAuthenticated = true;
+        _userId = user['uid'];
+        _userEmail = user['email'] ?? '';
+        _userName = user['name'] ?? '';
+        _userPhotoUrl = user['photoUrl'] ?? '';
+        _tokenCount = user['tokenCount'] ?? 0;
+        _errorMessage = '';
+
+        notifyListeners();
+        return true;
+      }
+      return false;
     } catch (e) {
-      AppLogger.error('Google Sign-In initialization error: $e');
-      _errorMessage = 'Failed to initialize Google Sign-In';
-      notifyListeners();
+      AppLogger.error('Token verification error: $e');
+      return false;
     }
   }
 
-  Future<void> _handleAuthenticationEvent(
-    GoogleSignInAuthenticationEvent event,
-  ) async {
-    final GoogleSignInAccount? user = switch (event) {
-      GoogleSignInAuthenticationEventSignIn() => event.user,
-      GoogleSignInAuthenticationEventSignOut() => null,
-    };
+  Future<bool> _refreshAccessToken() async {
+    try {
+      final refreshToken = await _secureStorage.read(key: _refreshTokenKey);
+      if (refreshToken == null) return false;
 
-    setState(() {
-      _currentUser = user;
-      _isAuthenticated = user != null;
-      _errorMessage = '';
-    });
+      final url = Uri.parse('$_baseUrl/api/refresh');
+      final response = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({'refresh_token': refreshToken}),
+      );
 
-    if (user != null) {
-      _userEmail = user.email;
-      _userName = user.displayName ?? '';
-      _userPhotoUrl = user.photoUrl ?? '';
-      AppLogger.info('User signed in: ${user.email}');
-    } else {
-      _userEmail = '';
-      _userName = '';
-      _userPhotoUrl = '';
-      AppLogger.info('User signed out');
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        final newAccessToken = data['access_token'];
+
+        await _secureStorage.write(key: _tokenKey, value: newAccessToken);
+        return await _verifyToken(newAccessToken);
+      }
+      return false;
+    } catch (e) {
+      AppLogger.error('Token refresh error: $e');
+      return false;
     }
-
-    notifyListeners();
   }
 
-  void setState(VoidCallback fn) {
-    fn();
-    notifyListeners();
+  Future<void> _clearStoredTokens() async {
+    await _secureStorage.delete(key: _tokenKey);
+    await _secureStorage.delete(key: _refreshTokenKey);
   }
 
   Future<void> signInWithGoogle() async {
     try {
-      AppLogger.info('Attempting Google sign in with Firebase');
+      _setLoading(true);
       _errorMessage = '';
-      notifyListeners();
 
-      // Trigger the authentication flow
+      AppLogger.info('Starting Google sign in...');
+
+      // Sign out from any previous Firebase session
+      await _firebaseAuth.signOut();
+      await _googleSignIn.signOut();
+
+      // Start Google Sign-In flow
       final GoogleSignInAccount? googleUser = await _googleSignIn
           .authenticate();
 
       if (googleUser == null) {
-        AppLogger.info('Sign in cancelled by user');
+        AppLogger.info('Google sign in cancelled by user');
+        _setLoading(false);
         return;
       }
 
-      // Try to get the authentication token
-      try {
-        final GoogleSignInAuthentication googleAuth =
-            await googleUser.authentication;
+      AppLogger.info('Google sign in successful, getting authentication...');
 
-        // Try to create Firebase credential with available tokens
-        AuthCredential? credential;
+      // Get Google authentication
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
 
-        // Check what tokens are available and create credential accordingly
-        if (googleAuth.idToken != null) {
-          credential = GoogleAuthProvider.credential(
-            idToken: googleAuth.idToken,
-          );
-        }
+      // Create Firebase credential
+      final credential = GoogleAuthProvider.credential(
+        idToken: googleAuth.idToken,
+      );
 
-        if (credential != null) {
-          // Sign in to Firebase with the Google credential
-          final UserCredential userCredential = await _firebaseAuth
-              .signInWithCredential(credential);
-          AppLogger.info(
-            'Firebase sign in successful: ${userCredential.user?.email}',
-          );
-        } else {
-          // Fallback: create anonymous user and update profile
-          final UserCredential userCredential = await _firebaseAuth
-              .signInAnonymously();
-          await userCredential.user?.updateDisplayName(googleUser.displayName);
-          await userCredential.user?.updatePhotoURL(googleUser.photoUrl);
-          AppLogger.info(
-            'Firebase anonymous sign in with Google profile: ${googleUser.email}',
-          );
-        }
-      } catch (authError) {
-        AppLogger.error('Firebase auth error: $authError');
-        // Fallback to anonymous sign in with Google profile data
-        final UserCredential userCredential = await _firebaseAuth
-            .signInAnonymously();
-        await userCredential.user?.updateDisplayName(googleUser.displayName);
-        await userCredential.user?.updatePhotoURL(googleUser.photoUrl);
-        AppLogger.info(
-          'Firebase fallback sign in with Google profile: ${googleUser.email}',
-        );
+      // Sign in to Firebase
+      final UserCredential userCredential = await _firebaseAuth
+          .signInWithCredential(credential);
+      final User? user = userCredential.user;
+
+      if (user == null) {
+        throw Exception('Firebase authentication failed');
       }
 
-      _currentUser = googleUser;
+      AppLogger.info(
+        'Firebase authentication successful, registering with backend...',
+      );
 
-      // The Firebase auth state change listener will handle updating the UI state
+      // Register/login with backend
+      await _registerWithBackend(user, googleUser);
     } catch (e) {
       AppLogger.error('Sign in error: $e');
       _errorMessage = _getErrorMessage(e);
+      _isAuthenticated = false;
+      _setLoading(false);
       notifyListeners();
       rethrow;
     }
   }
 
-  Future<void> signUpWithGoogle() async {
-    // Sign up is the same as sign in for Google OAuth
-    return signInWithGoogle();
-  }
-
-  Future<void> logout() async {
+  Future<void> _registerWithBackend(
+    User firebaseUser,
+    GoogleSignInAccount googleUser,
+  ) async {
     try {
-      AppLogger.info('Logging out');
+      final url = Uri.parse('$_baseUrl/api/register');
 
-      // Sign out from Firebase Auth
-      await _firebaseAuth.signOut();
+      final requestBody = {
+        'uid': firebaseUser.uid,
+        'email': firebaseUser.email ?? googleUser.email,
+        'name': firebaseUser.displayName ?? googleUser.displayName ?? 'User',
+        'photoUrl': firebaseUser.photoURL ?? googleUser.photoUrl ?? '',
+      };
 
-      // Sign out from Google Sign-In
-      await _googleSignIn.disconnect();
+      AppLogger.info('Registering with backend: ${requestBody['email']}');
 
-      // Clear local state
-      _isAuthenticated = false;
-      _userEmail = '';
-      _userName = '';
-      _userPhotoUrl = '';
-      _userId = '';
-      _currentUser = null;
-      _firebaseUser = null;
-      _errorMessage = '';
+      final response = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode(requestBody),
+      );
 
-      notifyListeners();
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final data = jsonDecode(response.body);
+        final accessToken = data['access_token'];
+        final refreshToken = data['refresh_token'];
+        final user = data['user'];
+
+        // Store tokens securely
+        await _secureStorage.write(key: _tokenKey, value: accessToken);
+        await _secureStorage.write(key: _refreshTokenKey, value: refreshToken);
+
+        // Update user state
+        _isAuthenticated = true;
+        _userId = user['uid'];
+        _userEmail = user['email'] ?? '';
+        _userName = user['name'] ?? '';
+        _userPhotoUrl = user['photoUrl'] ?? '';
+        _tokenCount = user['tokenCount'] ?? 0;
+        _errorMessage = '';
+
+        AppLogger.info('Backend registration successful, user authenticated');
+      } else {
+        final errorData = jsonDecode(response.body);
+        throw Exception('Backend registration failed: ${errorData['message']}');
+      }
     } catch (e) {
-      AppLogger.error('Logout error: $e');
-      _errorMessage = 'Failed to logout';
+      AppLogger.error('Backend registration error: $e');
+      throw Exception('Failed to register with backend: $e');
+    } finally {
+      _setLoading(false);
       notifyListeners();
     }
+  }
+
+  Future<String?> getAccessToken() async {
+    return await _secureStorage.read(key: _tokenKey);
+  }
+
+  Future<void> updateTokenCount(int newCount) async {
+    _tokenCount = newCount;
+    notifyListeners();
   }
 
   String _getErrorMessage(dynamic error) {
     if (error is GoogleSignInException) {
       return switch (error.code) {
-        GoogleSignInExceptionCode.canceled => 'Sign in canceled',
+        GoogleSignInExceptionCode.canceled => 'Sign in cancelled',
         _ => 'Google Sign-In error: ${error.description}',
+      };
+    }
+    if (error is FirebaseAuthException) {
+      return switch (error.code) {
+        'account-exists-with-different-credential' =>
+          'Account exists with different credentials',
+        'invalid-credential' => 'Invalid credentials',
+        'operation-not-allowed' => 'Operation not allowed',
+        'user-disabled' => 'User account has been disabled',
+        'user-not-found' => 'User not found',
+        'wrong-password' => 'Wrong password',
+        _ => 'Authentication error: ${error.message}',
       };
     }
     return 'An unexpected error occurred: $error';

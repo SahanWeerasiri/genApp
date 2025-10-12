@@ -6,9 +6,8 @@ import 'firebase_options.dart';
 import 'providers/theme_provider.dart';
 import 'providers/auth_provider.dart';
 import 'providers/image_provider.dart' as custom;
-import 'providers/user_profile_provider.dart';
 import 'screens/auth/login_screen.dart';
-import 'screens/main_screen.dart';
+import 'screens/home/home_screen.dart';
 import 'services/admob_service.dart';
 import 'utils/logger.dart';
 
@@ -55,7 +54,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => custom.ImageProvider()),
-        ChangeNotifierProvider(create: (_) => UserProfileProvider()),
       ],
       child: Consumer<ThemeProvider>(
         builder: (context, themeProvider, child) {
@@ -67,8 +65,41 @@ class MyApp extends StatelessWidget {
             themeMode: themeProvider.themeMode,
             home: Consumer<AuthProvider>(
               builder: (context, authProvider, child) {
+                if (authProvider.isLoading) {
+                  // Show loading screen while checking authentication
+                  return Scaffold(
+                    body: Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: themeProvider.themeMode == ThemeMode.dark
+                              ? [Colors.black, Colors.grey.shade900]
+                              : [Colors.blue.shade50, Colors.blue.shade100],
+                        ),
+                      ),
+                      child: const Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircularProgressIndicator(),
+                            SizedBox(height: 16),
+                            Text(
+                              'Loading...',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                }
+
                 return authProvider.isAuthenticated
-                    ? const MainScreen()
+                    ? const HomeScreen()
                     : const LoginScreen();
               },
             ),

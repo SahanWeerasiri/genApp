@@ -1,6 +1,9 @@
 import os
 import jwt
 import datetime
+import base64
+import io
+import requests
 from functools import wraps
 from flask import Flask, request, jsonify, make_response
 from flask_cors import CORS
@@ -10,47 +13,38 @@ import queue
 import threading
 from firestore_service import firestore_service
 from in_memory_store import in_memory_store
+from styles import styles
 
 # Load environment variables
 dotenv.load_dotenv()
 
 app = Flask(__name__)
+
+# Get configuration from environment variables
+PORT = int(os.getenv('PORT', 5000))
+WORKER_ID = os.getenv('WORKER_ID', 'worker-1')
+
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'your-secret-key-change-this')
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = datetime.timedelta(minutes=15)
 app.config['JWT_REFRESH_TOKEN_EXPIRES'] = datetime.timedelta(days=30)
-app.config['generators'] = {}
 
 # Enable CORS
 CORS(app)
 
-# Dummy user database (replace with actual database later)
-users_db = {
-    'admin@example.com': {
-        'password': 'admin123',
-        'role': 'admin',
-        'id': 1,
-        'name': 'Admin User'
-    },
-    'user@example.com': {
-        'password': 'user123',
-        'role': 'user',
-        'id': 2,
-        'name': 'Regular User'
-    }
-}
-
 # Store refresh tokens (in production, use a database)
 refresh_tokens = set()
+
+# Telegram bot configuration
+SECOND_BOT_TOKEN = os.getenv('SECOND_BOT_TOKEN')
+SECOND_BOT_CHAT_ID = "1668869874"  # Fixed chat ID for the second bot
 
 # Job queue for prompt jobs
 job_queue = queue.Queue()
 
-# Pool size for Gen objects
-GEN_POOL_SIZE = 1  # You can adjust this number
-# Pre-initialize Gen() objects
-gen_pool = [Gen() for _ in range(GEN_POOL_SIZE)]
-# Track which Gen objects are available
-pool_locks = [threading.Lock() for _ in range(GEN_POOL_SIZE)]
+# Single Gen object per worker instance
+print(f"Worker {WORKER_ID}: Initializing Gen object...")
+gen = Gen(worker_id=WORKER_ID)
+gen_lock = threading.Lock()  # Ensure thread safety for the single Gen object
 
 
 def generate_tokens(user_id, role):
@@ -101,6 +95,42 @@ def verify_token(token, token_type='access'):
         return None
 
 
+def send_image_to_telegram_bot(image_b64, prompt, style):
+    """Send generated image to the second Telegram bot"""
+    if not SECOND_BOT_TOKEN:
+        print("SECOND_BOT_TOKEN not found in environment variables")
+        return False
+    
+    try:
+        # Convert base64 to bytes
+        image_bytes = base64.b64decode(image_b64)
+        
+        # Prepare the file for Telegram API
+        files = {
+            'photo': ('generated_image.png', io.BytesIO(image_bytes), 'image/png')
+        }
+        
+        data = {
+            'chat_id': SECOND_BOT_CHAT_ID,
+            'caption': f"🔥 Health Check Image Generated! 🔥\nPrompt: {prompt}\nStyle: {style}\nWorker: {WORKER_ID}\nPort: {PORT}"
+        }
+        
+        # Send photo to Telegram bot
+        url = f"https://api.telegram.org/bot{SECOND_BOT_TOKEN}/sendPhoto"
+        response = requests.post(url, files=files, data=data, timeout=30)
+        
+        if response.status_code == 200:
+            print("Health check image sent successfully to Telegram bot")
+            return True
+        else:
+            print(f"Failed to send health check image to Telegram bot: {response.status_code} - {response.text}")
+            return False
+            
+    except Exception as e:
+        print(f"Error sending health check image to Telegram bot: {e}")
+        return False
+
+
 def token_required(f):
     """Middleware to require valid access token"""
     @wraps(f)
@@ -131,206 +161,188 @@ def token_required(f):
     return decorated
 
 
-def admin_required(f):
-    """Middleware to require admin role"""
-    @wraps(f)
-    def decorated(*args, **kwargs):
-        if not hasattr(request, 'current_user'):
-            return jsonify({'message': 'Authentication required'}), 401
-        
-        if request.current_user['role'] != 'admin':
-            return jsonify({'message': 'Admin access required'}), 403
-        
-        return f(*args, **kwargs)
-    return decorated
-
-
-@app.route('/api/signup', methods=['POST'])
-def signup():
-    """Dummy signup endpoint"""
+@app.route('/api/register', methods=['POST'])
+def register():
+    """Register user with Firebase UID and create Firestore profile"""
     try:
         data = request.get_json()
         
-        if not data or not data.get('email') or not data.get('password'):
-            return jsonify({'message': 'Email and password are required'}), 400
+        if not data or not data.get('uid'):
+            return jsonify({'message': 'Firebase UID is required'}), 400
         
-        email = data['email']
-        password = data['password']
+        uid = data['uid']
+        email = data.get('email', '')
         name = data.get('name', 'User')
-        role = data.get('role', 'user')  # Default to user role
+        photo_url = data.get('photoUrl', '')
         
-        # Check if user already exists
-        if email in users_db:
-            return jsonify({'message': 'User already exists'}), 409
+        print(f"Registering user with UID: {uid}, email: {email}")
         
-        # Create new user (dummy implementation)
-        user_id = len(users_db) + 1
-        users_db[email] = {
-            'password': password,  # In production, hash this password
-            'role': role,
-            'id': user_id,
-            'name': name
-        }
+        try:
+            # Check if user already exists in Firestore
+            existing_profile = firestore_service.get_user_profile(uid)
+            if existing_profile:
+                print(f"User {uid} already exists, returning existing data")
+                # Generate access token for existing user
+                access_token, refresh_token = generate_tokens(uid, 'user')
+                
+                return jsonify({
+                    'message': 'User already exists',
+                    'access_token': access_token,
+                    'refresh_token': refresh_token,
+                    'user': {
+                        'uid': uid,
+                        'email': email,
+                        'name': name,
+                        'photoUrl': photo_url,
+                        'tokenCount': existing_profile.get('tokenCount', 5)
+                    }
+                }), 200
+            
+            # Create new user profile in Firestore
+            user_profile = {
+                'uid': uid,
+                'email': email,
+                'name': name,
+                'photoUrl': photo_url,
+                'tokenCount': 5,  # Default 5 tokens
+                'createdAt': datetime.datetime.now(datetime.UTC).isoformat(),
+                'updatedAt': datetime.datetime.now(datetime.UTC).isoformat()
+            }
+            
+            success = firestore_service.create_user_profile(user_profile)
+            if not success:
+                print(f"Failed to create user profile in Firestore for {uid}")
+                return jsonify({'message': 'Failed to create user profile'}), 500
+            
+            print(f"User profile created successfully in Firestore for {uid}")
+            
+        except Exception as firestore_error:
+            print(f"Firestore error: {firestore_error}")
+            print("Falling back to in-memory store")
+            
+            # Fallback to in-memory store
+            existing_profile = in_memory_store.get_user_profile(uid)
+            if existing_profile:
+                print(f"User {uid} already exists in memory store")
+                access_token, refresh_token = generate_tokens(uid, 'user')
+                
+                return jsonify({
+                    'message': 'User already exists',
+                    'access_token': access_token,
+                    'refresh_token': refresh_token,
+                    'user': {
+                        'uid': uid,
+                        'email': email,
+                        'name': name,
+                        'photoUrl': photo_url,
+                        'tokenCount': existing_profile.get('tokenCount', 5)
+                    }
+                }), 200
+            
+            # Create new user in memory store
+            user_profile = {
+                'uid': uid,
+                'email': email,
+                'name': name,
+                'photoUrl': photo_url,
+                'tokenCount': 5,
+                'createdAt': datetime.datetime.now(datetime.UTC).isoformat(),
+                'updatedAt': datetime.datetime.now(datetime.UTC).isoformat()
+            }
+            
+            success = in_memory_store.create_user_profile(user_profile)
+            if not success:
+                return jsonify({'message': 'Failed to create user profile'}), 500
         
-        # Generate tokens
-        access_token, refresh_token = generate_tokens(user_id, role)
+        # Generate access and refresh tokens
+        access_token, refresh_token = generate_tokens(uid, 'user')
         
         return jsonify({
-            'message': 'User created successfully',
+            'message': 'User registered successfully',
             'access_token': access_token,
             'refresh_token': refresh_token,
             'user': {
-                'id': user_id,
+                'uid': uid,
                 'email': email,
                 'name': name,
-                'role': role
+                'photoUrl': photo_url,
+                'tokenCount': 5
             }
         }), 201
         
     except Exception as e:
+        print(f"Registration error: {e}")
         return jsonify({'message': 'Internal server error'}), 500
 
 
-@app.route('/api/signin', methods=['POST'])
-def signin():
-    """Dummy signin endpoint"""
+@app.route('/api/verify', methods=['GET', 'POST'])
+def verify():
+    """Verify access token and return user data"""
     try:
-        data = request.get_json()
+        access_token = None
         
-        if not data or not data.get('email') or not data.get('password'):
-            return jsonify({'message': 'Email and password are required'}), 400
+        # Support both POST body and GET Authorization header
+        if request.method == 'POST':
+            data = request.get_json()
+            if data and data.get('access_token'):
+                access_token = data['access_token']
         
-        email = data['email']
-        password = data['password']
+        # If no token in body, check Authorization header
+        if not access_token:
+            auth_header = request.headers.get('Authorization')
+            if auth_header and auth_header.startswith('Bearer '):
+                access_token = auth_header.split(' ')[1]
         
-        # Check if user exists
-        if email not in users_db:
-            return jsonify({'message': 'Invalid credentials'}), 401
+        if not access_token:
+            return jsonify({'message': 'Access token is required'}), 400
         
-        user = users_db[email]
-        
-        # Verify password (dummy check - in production, use proper password hashing)
-        if user['password'] != password:
-            return jsonify({'message': 'Invalid credentials'}), 401
-        
-        # Generate tokens
-        access_token, refresh_token = generate_tokens(user['id'], user['role'])
-        
-        return jsonify({
-            'message': 'Login successful',
-            'access_token': access_token,
-            'refresh_token': refresh_token,
-            'user': {
-                'id': user['id'],
-                'email': email,
-                'name': user['name'],
-                'role': user['role']
-            }
-        }), 200
-        
-    except Exception as e:
-        return jsonify({'message': 'Internal server error'}), 500
-
-
-@app.route('/api/refresh', methods=['POST'])
-def refresh_token():
-    """Refresh access token using refresh token"""
-    try:
-        data = request.get_json()
-        
-        if not data or not data.get('refresh_token'):
-            return jsonify({'message': 'Refresh token is required'}), 400
-        
-        refresh_token = data['refresh_token']
-        
-        # Verify refresh token
-        payload = verify_token(refresh_token, 'refresh')
+        # Verify the token
+        payload = verify_token(access_token, 'access')
         if not payload:
-            return jsonify({'message': 'Invalid or expired refresh token'}), 401
+            return jsonify({'message': 'Invalid or expired token'}), 401
         
-        # Find user
         user_id = payload['user_id']
-        user = None
-        for email, user_data in users_db.items():
-            if user_data['id'] == user_id:
-                user = user_data
-                break
         
-        if not user:
-            return jsonify({'message': 'User not found'}), 404
+        try:
+            # Get user profile from Firestore
+            user_profile = firestore_service.get_user_profile(user_id)
+            if user_profile:
+                return jsonify({
+                    'message': 'Token valid',
+                    'user': {
+                        'uid': user_id,
+                        'email': user_profile.get('email', ''),
+                        'name': user_profile.get('name', 'User'),
+                        'photoUrl': user_profile.get('photoUrl', ''),
+                        'tokenCount': user_profile.get('tokenCount', 5)
+                    }
+                }), 200
+        except Exception as firestore_error:
+            print(f"Firestore error: {firestore_error}")
         
-        # Generate new access token
-        access_token_payload = {
-            'user_id': user_id,
-            'role': user['role'],
-            'exp': datetime.datetime.now(datetime.UTC) + app.config['JWT_ACCESS_TOKEN_EXPIRES'],
-            'iat': datetime.datetime.now(datetime.UTC),
-            'type': 'access'
-        }
+        # Fallback to in-memory store
+        user_profile = in_memory_store.get_user_profile(user_id)
+        if user_profile:
+            return jsonify({
+                'message': 'Token valid',
+                'user': {
+                    'uid': user_id,
+                    'email': user_profile.get('email', ''),
+                    'name': user_profile.get('name', 'User'),
+                    'photoUrl': user_profile.get('photoUrl', ''),
+                    'tokenCount': user_profile.get('tokenCount', 5)
+                }
+            }), 200
         
-        new_access_token = jwt.encode(access_token_payload, app.config['SECRET_KEY'], algorithm='HS256')
-        
-        return jsonify({
-            'access_token': new_access_token,
-            'message': 'Token refreshed successfully'
-        }), 200
-        
-    except Exception as e:
-        return jsonify({'message': 'Internal server error'}), 500
-
-
-@app.route('/api/logout', methods=['POST'])
-@token_required
-def logout():
-    """Logout user and invalidate refresh token"""
-    try:
-        data = request.get_json()
-        
-        if data and data.get('refresh_token'):
-            refresh_token = data['refresh_token']
-            # Remove refresh token from store
-            refresh_tokens.discard(refresh_token)
-        
-        return jsonify({'message': 'Logged out successfully'}), 200
+        return jsonify({'message': 'User not found'}), 404
         
     except Exception as e:
+        print(f"Verification error: {e}")
         return jsonify({'message': 'Internal server error'}), 500
 
-
-@app.route('/api/profile', methods=['GET'])
-@token_required
-def get_profile():
-    """Get user profile (requires authentication)"""
-    try:
-        user_id = request.current_user['id']
-        
-        # Find user
-        user = None
-        email = None
-        for user_email, user_data in users_db.items():
-            if user_data['id'] == user_id:
-                user = user_data
-                email = user_email
-                break
-        
-        if not user:
-            return jsonify({'message': 'User not found'}), 404
-        
-        return jsonify({
-            'user': {
-                'id': user['id'],
-                'email': email,
-                'name': user['name'],
-                'role': user['role']
-            }
-        }), 200
-        
-    except Exception as e:
-        return jsonify({'message': 'Internal server error'}), 500
-
-from styles import styles  # Make sure this is imported
 
 @app.route('/api/generate', methods=['POST'])
+@token_required
 def generate_image():
     """Generate image using Gen pool and job queue with token validation."""
     try:
@@ -340,46 +352,47 @@ def generate_image():
 
         prompt = data['prompt']
         style = data.get('style')
-        user_id = data.get('userId')
+        user_id = request.current_user['id']  # Get from authenticated token
 
         # Validate style
         if not style or style not in styles:
             style = list(styles.keys())[0]  # Use first style as default
 
-        # Check token availability if user_id is provided
-        if user_id:
+        # Check token availability
+        try:
+            # Try Firestore first, fallback to in-memory store
+            has_tokens = False
+            consumed = False
+            
             try:
-                # Try Firestore first, fallback to in-memory store
-                has_tokens = False
-                consumed = False
+                has_tokens = firestore_service.check_token_availability(user_id)
+                if has_tokens:
+                    consumed = firestore_service.consume_token(user_id)
+            except Exception as firestore_error:
+                print(f"Firestore error: {firestore_error}")
+                print("Falling back to in-memory token store")
+                has_tokens = in_memory_store.check_token_availability(user_id)
+                if has_tokens:
+                    consumed = in_memory_store.consume_token(user_id)
+            
+            if not has_tokens:
+                return jsonify({
+                    'message': 'Insufficient tokens. Please watch an ad or purchase more tokens.',
+                    'error_code': 'INSUFFICIENT_TOKENS'
+                }), 402  # Payment Required
+            
+            if not consumed:
+                return jsonify({
+                    'message': 'Failed to consume token. Please try again.',
+                    'error_code': 'TOKEN_CONSUMPTION_FAILED'
+                }), 500
                 
-                try:
-                    has_tokens = firestore_service.check_token_availability(user_id)
-                    if has_tokens:
-                        consumed = firestore_service.consume_token(user_id)
-                except Exception as firestore_error:
-                    print(f"Firestore error: {firestore_error}")
-                    print("Falling back to in-memory token store")
-                    has_tokens = in_memory_store.check_token_availability(user_id)
-                    if has_tokens:
-                        consumed = in_memory_store.consume_token(user_id)
-                
-                if not has_tokens:
-                    return jsonify({
-                        'message': 'Insufficient tokens. Please watch an ad or purchase more tokens.',
-                        'error_code': 'INSUFFICIENT_TOKENS'
-                    }), 402  # Payment Required
-                
-                if not consumed:
-                    return jsonify({
-                        'message': 'Failed to consume token. Please try again.',
-                        'error_code': 'TOKEN_CONSUMPTION_FAILED'
-                    }), 500
-                    
-            except Exception as token_error:
-                print(f"Token validation error for user {user_id}: {token_error}")
-                # Continue without token validation if both systems fail
-                print("Proceeding without token validation (both systems failed)")
+        except Exception as token_error:
+            print(f"Token validation error for user {user_id}: {token_error}")
+            return jsonify({
+                'message': 'Token validation failed. Please try again.',
+                'error_code': 'TOKEN_VALIDATION_FAILED'
+            }), 500
 
         # Prepare synchronization primitives
         result_container = {}
@@ -401,15 +414,13 @@ def generate_image():
         if not finished or 'image' not in result_container:
             # If image generation failed and we consumed a token, we should ideally refund it
             # For now, we'll just log the issue
-            if user_id:
-                print(f"Image generation timed out for user {user_id}, token may need refund")
+            print(f"Image generation timed out for user {user_id}, token may need refund")
             return jsonify({'message': 'Image generation timed out'}), 500
 
         image_b64 = result_container['image']
         
         # Log successful generation
-        if user_id:
-            print(f"Image generated successfully for user {user_id}")
+        print(f"Image generated successfully for user {user_id}")
         
         return jsonify({
             'message': 'Image generated successfully',
@@ -422,66 +433,13 @@ def generate_image():
         print(f"Error in generate_image: {e}")
         return jsonify({'message': 'Internal server error'}), 500
 
-@app.route('/api/admin/users', methods=['GET'])
+@app.route('/api/user/tokens', methods=['GET'])
 @token_required
-@admin_required
-def get_all_users():
-    """Get all users (admin only)"""
-    try:
-        users_list = []
-        for email, user_data in users_db.items():
-            users_list.append({
-                'id': user_data['id'],
-                'email': email,
-                'name': user_data['name'],
-                'role': user_data['role']
-            })
-        
-        return jsonify({
-            'users': users_list,
-            'total': len(users_list)
-        }), 200
-        
-    except Exception as e:
-        return jsonify({'message': 'Internal server error'}), 500
-
-
-@app.route('/api/admin/dashboard', methods=['GET'])
-@token_required
-@admin_required
-def admin_dashboard():
-    """Admin dashboard endpoint"""
-    try:
-        return jsonify({
-            'message': 'Welcome to admin dashboard',
-            'stats': {
-                'total_users': len(users_db),
-                'active_sessions': len(refresh_tokens)
-            }
-        }), 200
-        
-    except Exception as e:
-        return jsonify({'message': 'Internal server error'}), 500
-
-
-@app.route('/api/user/dashboard', methods=['GET'])
-@token_required
-def user_dashboard():
-    """User dashboard endpoint"""
-    try:
-        return jsonify({
-            'message': f'Welcome to user dashboard, {request.current_user["role"]}!',
-            'user_id': request.current_user['id']
-        }), 200
-        
-    except Exception as e:
-        return jsonify({'message': 'Internal server error'}), 500
-
-
-@app.route('/api/user/tokens/<user_id>', methods=['GET'])
-def get_user_tokens(user_id):
+def get_user_tokens():
     """Get user's token count"""
     try:
+        user_id = request.current_user['id']
+        
         # Try Firestore first, fallback to in-memory store
         try:
             user_profile = firestore_service.get_user_profile(user_id)
@@ -507,10 +465,13 @@ def get_user_tokens(user_id):
         return jsonify({'message': 'Internal server error'}), 500
 
 
-@app.route('/api/user/profile/<user_id>', methods=['GET'])
-def get_user_profile_endpoint(user_id):
+@app.route('/api/user/profile', methods=['GET'])
+@token_required
+def get_user_profile_endpoint():
     """Get user's full profile"""
     try:
+        user_id = request.current_user['id']
+        
         # Try Firestore first, fallback to in-memory store
         try:
             user_profile = firestore_service.get_user_profile(user_id)
@@ -536,12 +497,14 @@ def get_user_profile_endpoint(user_id):
         return jsonify({'message': 'Internal server error'}), 500
 
 
-@app.route('/api/user/tokens/<user_id>/add', methods=['POST'])
-def add_user_tokens(user_id):
+@app.route('/api/user/tokens/add', methods=['POST'])
+@token_required
+def add_user_tokens():
     """Add tokens to user's account (for watching ads, etc.)"""
     try:
         data = request.get_json()
         tokens_to_add = data.get('tokens', 2)  # Default 2 tokens
+        user_id = request.current_user['id']
         
         print(f"Adding {tokens_to_add} tokens to user {user_id}")
         
@@ -590,11 +553,72 @@ def add_user_tokens(user_id):
         return jsonify({'message': 'Internal server error'}), 500
 
 
+@app.route('/api/styles', methods=['GET'])
+def get_styles():
+    """Get available image generation styles"""
+    try:
+        return jsonify({
+            'styles': list(styles.keys()),
+            'count': len(styles)
+        }), 200
+    except Exception as e:
+        print(f"Error getting styles: {e}")
+        return jsonify({'message': 'Internal server error'}), 500
+
+
+@app.route('/api/health-generate', methods=['GET', 'POST'])
+def health_generate():
+    """Health check endpoint that submits image generation job to keep server active"""
+    try:
+        # Submit a simple job to keep the generation system warm
+        def dummy_callback(image_b64, error=None):
+            if error:
+                print(f"Worker {WORKER_ID}: Health check failed: {error}")
+                return
+                
+            # Log the successful generation
+            print(f"Worker {WORKER_ID}: Health check image generated successfully at {datetime.datetime.now(datetime.UTC)}")
+            
+            # Send image to Telegram bot
+            if image_b64:
+                send_image_to_telegram_bot(image_b64, 'lovely couple with painted anime style', 'anime')
+            else:
+                print("No image data received for health check")
+        
+        # Submit job to queue with health check prompt
+        job_queue.put({
+            'prompt': 'lovely couple with painted anime style',
+            'style': 'anime',  # Use a default style
+            'callback': dummy_callback
+        })
+        
+        return jsonify({
+            'status': 'healthy',
+            'message': 'Health check job submitted successfully - image will be sent to Telegram',
+            'worker_id': WORKER_ID,
+            'port': PORT,
+            'timestamp': datetime.datetime.now(datetime.UTC).isoformat(),
+            'queue_size': job_queue.qsize()
+        }), 200
+        
+    except Exception as e:
+        print(f"Health check error: {e}")
+        return jsonify({
+            'status': 'unhealthy',
+            'message': f'Health check failed: {str(e)}',
+            'timestamp': datetime.datetime.now(datetime.UTC).isoformat()
+        }), 500
+
+
 @app.route('/api/health', methods=['GET'])
 def health_check():
     """Health check endpoint"""
     return jsonify({
         'status': 'healthy',
+        'worker_id': WORKER_ID,
+        'port': PORT,
+        'active_jobs': job_queue.qsize(),
+        'gen_initialized': gen is not None,
         'timestamp': datetime.datetime.now(datetime.UTC).isoformat()
     }), 200
 
@@ -610,44 +634,51 @@ def internal_error(error):
 
 
 def gen_worker(worker_id):
+    """Worker function that processes jobs using the single Gen instance"""
     while True:
         job = job_queue.get()  # Wait for a job
         if job is None:
             break  # Shutdown signal
-        # Find an available Gen object
-        for i, lock in enumerate(pool_locks):
-            if lock.acquire(blocking=False):
+        
+        try:
+            # Use the single Gen instance with thread safety
+            with gen_lock:
+                prompt = job['prompt']
+                style = job.get('style', None)
+                # Generate image using play
+                image = gen.play(prompt, style)
+            # Call the callback with the result (outside the lock)
+            if 'callback' in job:
+                job['callback'](image)
+        except Exception as e:
+            print(f"Worker {worker_id}: Error processing job: {e}")
+            # Call the callback with error if available
+            if 'callback' in job:
                 try:
-                    gen = gen_pool[i]
-                    # Assume job is a dict with 'prompt' and 'callback' keys
-                    prompt = job['prompt']
-                    style = job.get('style', None)
-                    # Generate image using play
-                    image = gen.play(prompt, style)
-                    # Call the callback with the result
-                    if 'callback' in job:
-                        job['callback'](image)
-                finally:
-                    lock.release()
-                break
-        else:
-            # No Gen available, requeue the job
-            job_queue.put(job)
-        job_queue.task_done()
-
-# Start worker threads
-NUM_WORKERS = GEN_POOL_SIZE
-for worker_id in range(NUM_WORKERS):
-    threading.Thread(target=gen_worker, args=(worker_id,), daemon=True).start()
+                    # Try to call with error parameter
+                    job['callback'](None, error=str(e))
+                except TypeError:
+                    # Fallback if callback doesn't accept error parameter
+                    job['callback'](None)
+        finally:
+            job_queue.task_done()
 
 if __name__ == '__main__':
-    print("Starting Flask server...")
-    print("Dummy users available:")
-    print("Admin: admin@example.com / admin123")
-    print("User: user@example.com / user123")
+    print(f"Starting Flask server worker {WORKER_ID} on port {PORT}...")
+    print("Available API endpoints:")
+    print("- POST /api/register (User registration)")
+    print("- GET/POST /api/verify (Token verification)")
+    print("- POST /api/generate (Image generation)")
+    print("- GET /api/user/tokens (Get token count)")
+    print("- POST /api/user/tokens/add (Add tokens)")
+    print("- GET /api/styles (Get available styles)")
+    print("- GET /api/health (Basic health check)")
+    print("- GET /api/health-generate (Health check with image generation)")
     
-    # default generators count = 2
-    # for i in range(2):
-    #     app.config['generators'][i] = Gen()
-    #     print(f"Starting generator {i}...")
-    app.run(debug=False, host='0.0.0.0', port=5000, use_reloader=False)
+    # Start single worker thread for this worker process
+    worker_thread = threading.Thread(target=gen_worker, args=(0,))
+    worker_thread.daemon = True
+    worker_thread.start()
+    print(f"Worker {WORKER_ID}: Started single worker thread")
+
+    app.run(debug=False, host='0.0.0.0', port=PORT, use_reloader=False)

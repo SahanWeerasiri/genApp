@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/theme_provider.dart';
-import '../../providers/user_profile_provider.dart';
+import '../../services/api_service.dart';
 import '../../widgets/rewarded_ad_button.dart';
 import '../../utils/logger.dart';
 
@@ -17,33 +17,49 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _loadUserProfile();
-    });
+    // No need to load user profile separately as auth provider handles everything
   }
 
-  Future<void> _loadUserProfile() async {
-    final authProvider = context.read<AuthProvider>();
-    final userProfileProvider = context.read<UserProfileProvider>();
-
-    if (authProvider.isAuthenticated && authProvider.userId.isNotEmpty) {
-      await userProfileProvider.loadUserProfile(authProvider.userId);
-    }
-  }
-
-  void _onAdRewardEarned() {
+  void _onAdRewardEarned() async {
     print('DEBUG: _onAdRewardEarned called');
 
-    // Add 2 tokens to the user's profile
-    context.read<UserProfileProvider>().addTokens(2);
+    try {
+      // Add 2 tokens via API service
+      final success = await ApiService.addTokensToUser(context, 2);
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('You earned 2 tokens!'),
-        backgroundColor: Colors.green,
-        duration: Duration(seconds: 3),
-      ),
-    );
+      if (success) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('You earned 2 tokens!'),
+              backgroundColor: Colors.green,
+              duration: Duration(seconds: 3),
+            ),
+          );
+        }
+      } else {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Failed to add tokens. Please try again.'),
+              backgroundColor: Colors.red,
+              duration: Duration(seconds: 3),
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      AppLogger.error('Error adding tokens: $e');
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Error adding tokens. Please try again.'),
+            backgroundColor: Colors.red,
+            duration: Duration(seconds: 3),
+          ),
+        );
+      }
+    }
 
     print('DEBUG: _onAdRewardEarned completed');
   }
@@ -53,7 +69,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final theme = Theme.of(context);
     final authProvider = context.watch<AuthProvider>();
     final themeProvider = context.watch<ThemeProvider>();
-    final userProfileProvider = context.watch<UserProfileProvider>();
     final isDark = theme.brightness == Brightness.dark;
 
     return Scaffold(
@@ -134,7 +149,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       const SizedBox(width: 12),
                       Text(
-                        '${userProfileProvider.tokenCount}',
+                        '${authProvider.tokenCount}',
                         style: const TextStyle(
                           fontSize: 48,
                           fontWeight: FontWeight.bold,
@@ -189,49 +204,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       },
                       activeColor: theme.colorScheme.primary,
                     ),
-                  ),
-                  Divider(height: 1, color: theme.dividerColor),
-
-                  // Logout Button
-                  ListTile(
-                    leading: Icon(
-                      Icons.logout_rounded,
-                      color: theme.colorScheme.error,
-                    ),
-                    title: Text(
-                      'Logout',
-                      style: TextStyle(color: theme.colorScheme.error),
-                    ),
-                    onTap: () {
-                      AppLogger.info('Logout button pressed');
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          title: const Text('Logout'),
-                          content: const Text(
-                            'Are you sure you want to logout?',
-                          ),
-                          actions: [
-                            TextButton(
-                              onPressed: () => Navigator.pop(context),
-                              child: const Text('Cancel'),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                authProvider.logout();
-                                Navigator.pop(context);
-                              },
-                              child: Text(
-                                'Logout',
-                                style: TextStyle(
-                                  color: theme.colorScheme.error,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
                   ),
                 ],
               ),

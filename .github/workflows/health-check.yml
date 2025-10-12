@@ -1,0 +1,131 @@
+name: Server Health Check
+
+on:
+    schedule:
+        # Run twice daily at 6 AM and 6 PM UTC
+        - cron: "0 6,18 * * *"
+    workflow_dispatch: # Allow manual triggering
+
+jobs:
+    health-check:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Test Individual Server Instances
+              run: |
+                  echo "Testing individual PM2 server instances..."
+
+                  # Test each server instance directly
+                  SERVERS=("5001" "5002" "5003")
+                  BASE_URL="${{ secrets.SERVER_URL || 'http://68.233.117.166' }}"
+
+                  SUCCESS_COUNT=0
+
+                  for port in "${SERVERS[@]}"; do
+                    echo "Testing server on port $port..."
+                    
+                    response=$(curl -s -w "\n%{http_code}" -X GET "$BASE_URL:$port/api/health" || echo -e "\nERROR")
+                    body=$(echo "$response" | sed '$d')
+                    status_code=$(echo "$response" | tail -n1)
+                    
+                    echo "Server $port Response Status: $status_code"
+                    echo "Server $port Response Body: $body"
+                    
+                    if [ "$status_code" -eq 200 ]; then
+                      echo "✅ Server $port health check passed!"
+                      SUCCESS_COUNT=$((SUCCESS_COUNT + 1))
+                      
+                      # Extract worker info
+                      worker_id=$(echo "$body" | grep -o '"worker_id":"[^"]*"' | cut -d'"' -f4 || echo "unknown")
+                      gen_pool_size=$(echo "$body" | grep -o '"gen_pool_size":[0-9]*' | cut -d':' -f2 || echo "unknown")
+                      active_jobs=$(echo "$body" | grep -o '"active_jobs":[0-9]*' | cut -d':' -f2 || echo "unknown")
+                      
+                      echo "  Worker ID: $worker_id"
+                      echo "  Gen Pool Size: $gen_pool_size"
+                      echo "  Active Jobs: $active_jobs"
+                    else
+                      echo "⚠️ Server $port health check failed"
+                    fi
+                    echo "---"
+                  done
+
+                  echo "Health Check Summary: $SUCCESS_COUNT/3 servers healthy"
+
+                  if [ "$SUCCESS_COUNT" -lt 2 ]; then
+                    echo "❌ Too many servers are down! Only $SUCCESS_COUNT/3 are healthy"
+                    exit 1
+                  fi
+
+            - name: Test Health Generate on Available Servers
+              run: |
+                  echo "Testing health-generate endpoint on available servers..."
+
+                  SERVERS=("5001" "5002" "5003")
+                  BASE_URL="${{ secrets.SERVER_URL || 'http://68.233.117.166' }}"
+
+                  SUCCESS_COUNT=0
+
+                  for port in "${SERVERS[@]}"; do
+                    echo "Testing health-generate on server port $port..."
+                    
+                    response=$(curl -s -w "\n%{http_code}" -X GET "$BASE_URL:$port/api/health-generate" || echo -e "\nERROR")
+                    body=$(echo "$response" | sed '$d')
+                    status_code=$(echo "$response" | tail -n1)
+                    
+                    echo "Server $port Health-Generate Status: $status_code"
+                    
+                    if [ "$status_code" -eq 200 ]; then
+                      echo "✅ Server $port health-generate passed!"
+                      SUCCESS_COUNT=$((SUCCESS_COUNT + 1))
+                      
+                      # Extract queue info
+                      queue_size=$(echo "$body" | grep -o '"queue_size":[0-9]*' | cut -d':' -f2 || echo "unknown")
+                      echo "  Queue Size: $queue_size"
+                    else
+                      echo "⚠️ Server $port health-generate failed"
+                    fi
+                  done
+
+                  echo "Health-Generate Summary: $SUCCESS_COUNT/3 servers responded"
+
+            - name: Test Load Distribution (if available)
+              run: |
+                  echo "Testing load distribution through load balancer (if configured)..."
+
+                  LOAD_BALANCER_URL="${{ secrets.LOAD_BALANCER_URL }}"
+
+                  if [ -n "$LOAD_BALANCER_URL" ]; then
+                    echo "Load balancer URL configured: $LOAD_BALANCER_URL"
+                    
+                    # Make multiple requests to see load distribution
+                    echo "Making 6 requests to test distribution:"
+                    for i in {1..6}; do
+                      response=$(curl -s "$LOAD_BALANCER_URL/api/health" || echo '{"error":"failed"}')
+                      worker_id=$(echo "$response" | grep -o '"worker_id":"[^"]*"' | cut -d'"' -f4 || echo "unknown")
+                      port=$(echo "$response" | grep -o '"port":[0-9]*' | cut -d':' -f2 || echo "unknown")
+                      echo "Request $i: Worker $worker_id on port $port"
+                    done
+                  else
+                    echo "No load balancer URL configured (LOAD_BALANCER_URL secret not set)"
+                    echo "Testing direct access to primary server..."
+                    
+                    BASE_URL="${{ secrets.SERVER_URL || 'http://68.233.117.166' }}"
+                    response=$(curl -s "$BASE_URL:5001/api/health" || echo '{"error":"failed"}')
+                    worker_id=$(echo "$response" | grep -o '"worker_id":"[^"]*"' | cut -d'"' -f4 || echo "unknown")
+                    echo "Primary server worker: $worker_id"
+                  fi
+
+            - name: Log Success
+              if: success()
+              run: |
+                  echo "🎉 PM2 cluster health checks completed successfully at $(date)"
+                  echo "Multiple server instances are running and healthy"
+
+            - name: Log Failure
+              if: failure()
+              run: |
+                  echo "💥 PM2 cluster health check failed at $(date)"
+                  echo "One or more critical servers may be down"

@@ -1,0 +1,413 @@
+2025-10-12T19:31:37: INFO:firestore_service:Firestore service initialized for project: image-genie-ff577
+2025-10-12T19:31:37: INFO:in_memory_store:In-memory token store initialized
+2025-10-12T19:32:46: Traceback (most recent call last):
+2025-10-12T19:32:46:   File "C:\Users\Sahan\Dark\Promise\genApp\backend\gen.py", line 20, in __init__
+2025-10-12T19:32:46:     self.driver.execute_script("window.localStorage.setItem('sensitiveContentVisibility', 'warn');")
+2025-10-12T19:32:46:     ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-12T19:32:46:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 551, in execute_script
+2025-10-12T19:32:46:     return self.execute(command, {"script": script, "args": converted_args})["value"]
+2025-10-12T19:32:46:            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-12T19:32:46:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 454, in execute
+2025-10-12T19:32:46:     self.error_handler.check_response(response)
+2025-10-12T19:32:46:     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-10-12T19:32:46:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+2025-10-12T19:32:46:     raise exception_class(message, screen, stacktrace)
+2025-10-12T19:32:46: selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+2025-10-12T19:32:46: from unknown error: web view not found
+2025-10-12T19:32:46:   (Session info: chrome=141.0.7390.66)
+2025-10-12T19:32:46: Stacktrace:
+2025-10-12T19:32:46: 	GetHandleVerifier [0x0x7ff76e619f25+80677]
+2025-10-12T19:32:46: 	GetHandleVerifier [0x0x7ff76e619f80+80768]
+2025-10-12T19:32:46: 	(No symbol) [0x0x7ff76e3c02bf]
+2025-10-12T19:32:46: 	(No symbol) [0x0x7ff76e398041]
+2025-10-12T19:32:46: 	(No symbol) [0x0x7ff76e448b8e]
+2025-10-12T19:32:46: 	(No symbol) [0x0x7ff76e4692d2]
+2025-10-12T19:32:46: 	(No symbol) [0x0x7ff76e4412e3]
+2025-10-12T19:32:46: 	(No symbol) [0x0x7ff76e409770]
+2025-10-12T19:32:46: 	(No symbol) [0x0x7ff76e40a5a3]
+2025-10-12T19:32:46: 	GetHandleVerifier [0x0x7ff76e8f817d+3087741]
+2025-10-12T19:32:46: 	GetHandleVerifier [0x0x7ff76e8f223a+3063354]
+2025-10-12T19:32:46: 	GetHandleVerifier [0x0x7ff76e9132c5+3198661]
+2025-10-12T19:32:46: 	GetHandleVerifier [0x0x7ff76e63412e+187694]
+2025-10-12T19:32:46: 	GetHandleVerifier [0x0x7ff76e63b20f+216591]
+2025-10-12T19:32:46: 	GetHandleVerifier [0x0x7ff76e622ee4+117476]
+2025-10-12T19:32:46: 	GetHandleVerifier [0x0x7ff76e62309f+117919]
+2025-10-12T19:32:46: 	GetHandleVerifier [0x0x7ff76e6091a8+11688]
+2025-10-12T19:32:46: 	BaseThreadInitThunk [0x0x7ffa4d61e8d7+23]
+2025-10-12T19:32:46: 	RtlUserThreadStart [0x0x7ffa4e968d9c+44]
+2025-10-12T19:32:46: 
+2025-10-12T19:35:26: INFO:werkzeug:WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+2025-10-12T19:35:26:  * Running on all addresses (0.0.0.0)
+2025-10-12T19:35:26:  * Running on http://127.0.0.1:5001
+2025-10-12T19:35:26:  * Running on http://192.168.1.2:5001
+2025-10-12T19:35:26: INFO:werkzeug:Press CTRL+C to quit
+2025-10-12T19:53:08: INFO:firestore_service:Firestore service initialized for project: image-genie-ff577
+2025-10-12T19:53:08: INFO:in_memory_store:In-memory token store initialized
+2025-10-12T19:54:40: Traceback (most recent call last):
+2025-10-12T19:54:40:   File "C:\Users\Sahan\Dark\Promise\genApp\backend\gen.py", line 14, in __init__
+2025-10-12T19:54:40:     self.driver.uc_open_with_reconnect('https://perchance.org', 1)
+2025-10-12T19:54:40:     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-12T19:54:40:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\seleniumbase\core\browser_launcher.py", line 5602, in <lambda>
+2025-10-12T19:54:40:     lambda *args, **kwargs: uc_open_with_reconnect(
+2025-10-12T19:54:40:                             ~~~~~~~~~~~~~~~~~~~~~~^
+2025-10-12T19:54:40:         driver, *args, **kwargs
+2025-10-12T19:54:40:         ^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-12T19:54:40:     )
+2025-10-12T19:54:40:     ^
+2025-10-12T19:54:40:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\seleniumbase\core\browser_launcher.py", line 549, in uc_open_with_reconnect
+2025-10-12T19:54:40:     driver.close()
+2025-10-12T19:54:40:     ~~~~~~~~~~~~^^
+2025-10-12T19:54:40:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 602, in close
+2025-10-12T19:54:40:     self.execute(Command.CLOSE)
+2025-10-12T19:54:40:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+2025-10-12T19:54:40:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 454, in execute
+2025-10-12T19:54:40:     self.error_handler.check_response(response)
+2025-10-12T19:54:40:     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-10-12T19:54:40:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+2025-10-12T19:54:40:     raise exception_class(message, screen, stacktrace)
+2025-10-12T19:54:40: selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+2025-10-12T19:54:40: from unknown error: web view not found
+2025-10-12T19:54:40:   (Session info: chrome=141.0.7390.66)
+2025-10-12T19:54:40: Stacktrace:
+2025-10-12T19:54:40: 	GetHandleVerifier [0x0x7ff76e619f25+80677]
+2025-10-12T19:54:40: 	GetHandleVerifier [0x0x7ff76e619f80+80768]
+2025-10-12T19:54:40: 	(No symbol) [0x0x7ff76e3c02bf]
+2025-10-12T19:54:40: 	(No symbol) [0x0x7ff76e398041]
+2025-10-12T19:54:40: 	(No symbol) [0x0x7ff76e448b8e]
+2025-10-12T19:54:40: 	(No symbol) [0x0x7ff76e452550]
+2025-10-12T19:54:40: 	(No symbol) [0x0x7ff76e4414d0]
+2025-10-12T19:54:40: 	(No symbol) [0x0x7ff76e409770]
+2025-10-12T19:54:40: 	(No symbol) [0x0x7ff76e40a5a3]
+2025-10-12T19:54:40: 	GetHandleVerifier [0x0x7ff76e8f817d+3087741]
+2025-10-12T19:54:40: 	GetHandleVerifier [0x0x7ff76e8f223a+3063354]
+2025-10-12T19:54:40: 	GetHandleVerifier [0x0x7ff76e9132c5+3198661]
+2025-10-12T19:54:40: 	GetHandleVerifier [0x0x7ff76e63412e+187694]
+2025-10-12T19:54:40: 	GetHandleVerifier [0x0x7ff76e63b20f+216591]
+2025-10-12T19:54:40: 	GetHandleVerifier [0x0x7ff76e622ee4+117476]
+2025-10-12T19:54:40: 	GetHandleVerifier [0x0x7ff76e62309f+117919]
+2025-10-12T19:54:40: 	GetHandleVerifier [0x0x7ff76e6091a8+11688]
+2025-10-12T19:54:40: 	BaseThreadInitThunk [0x0x7ffa4d61e8d7+23]
+2025-10-12T19:54:40: 	RtlUserThreadStart [0x0x7ffa4e968d9c+44]
+2025-10-12T19:54:40: 
+2025-10-12T19:57:57: INFO:werkzeug:
+2025-10-12T19:57:57: WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+2025-10-12T19:57:57:  * Running on all addresses (0.0.0.0)
+2025-10-12T19:57:57:  * Running on http://127.0.0.1:5001
+2025-10-12T19:57:57:  * Running on http://192.168.1.2:5001
+2025-10-12T19:57:57: INFO:werkzeug:Press CTRL+C to quit
+2025-10-12T20:00:28: INFO:werkzeug:127.0.0.1 - - [12/Oct/2025 20:00:28] "GET /api/health HTTP/1.1" 200 -
+2025-10-12T20:03:48: INFO:werkzeug:127.0.0.1 - - [12/Oct/2025 20:03:48] "GET /api/health HTTP/1.1" 200 -
+2025-10-12T20:13:29: INFO:firestore_service:Firestore service initialized for project: image-genie-ff577
+2025-10-12T20:13:29: INFO:in_memory_store:In-memory token store initialized
+2025-10-12T20:14:56: INFO:werkzeug:WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+2025-10-12T20:14:56:  * Running on all addresses (0.0.0.0)
+2025-10-12T20:14:56:  * Running on http://127.0.0.1:5001
+2025-10-12T20:14:56:  * Running on http://192.168.1.2:5001
+2025-10-12T20:14:56: INFO:werkzeug:Press CTRL+C to quit
+2025-10-12T20:15:21: INFO:werkzeug:127.0.0.1 - - [12/Oct/2025 20:15:21] "GET /api/health HTTP/1.1" 200 -
+2025-10-12T20:16:06: INFO:werkzeug:127.0.0.1 - - [12/Oct/2025 20:16:06] "GET /api/health-generate HTTP/1.1" 200 -
+2025-10-12T20:20:32: INFO:firestore_service:Firestore service initialized for project: image-genie-ff577
+2025-10-12T20:20:32: INFO:in_memory_store:In-memory token store initialized
+2025-10-12T20:20:52: Traceback (most recent call last):
+2025-10-12T20:20:52:   File "C:\Users\Sahan\Dark\Promise\genApp\backend\gen.py", line 14, in __init__
+2025-10-12T20:20:52:     self.driver.uc_open_with_reconnect('https://perchance.org', 1)
+2025-10-12T20:20:52:     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-12T20:20:52:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\seleniumbase\core\browser_launcher.py", line 5602, in <lambda>
+2025-10-12T20:20:52:     lambda *args, **kwargs: uc_open_with_reconnect(
+2025-10-12T20:20:52:                             ~~~~~~~~~~~~~~~~~~~~~~^
+2025-10-12T20:20:52:         driver, *args, **kwargs
+2025-10-12T20:20:52:         ^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-12T20:20:52:     )
+2025-10-12T20:20:52:     ^
+2025-10-12T20:20:52:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\seleniumbase\core\browser_launcher.py", line 549, in uc_open_with_reconnect
+2025-10-12T20:20:52:     driver.close()
+2025-10-12T20:20:52:     ~~~~~~~~~~~~^^
+2025-10-12T20:20:52:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 602, in close
+2025-10-12T20:20:52:     self.execute(Command.CLOSE)
+2025-10-12T20:20:52:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+2025-10-12T20:20:52:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 454, in execute
+2025-10-12T20:20:52:     self.error_handler.check_response(response)
+2025-10-12T20:20:52:     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-10-12T20:20:52:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+2025-10-12T20:20:52:     raise exception_class(message, screen, stacktrace)
+2025-10-12T20:20:52: selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+2025-10-12T20:20:52: from unknown error: web view not found
+2025-10-12T20:20:52:   (Session info: chrome=141.0.7390.66)
+2025-10-12T20:20:52: Stacktrace:
+2025-10-12T20:20:52: 	GetHandleVerifier [0x0x7ff76e619f25+80677]
+2025-10-12T20:20:52: 	GetHandleVerifier [0x0x7ff76e619f80+80768]
+2025-10-12T20:20:52: 	(No symbol) [0x0x7ff76e3c02bf]
+2025-10-12T20:20:52: 	(No symbol) [0x0x7ff76e398041]
+2025-10-12T20:20:52: 	(No symbol) [0x0x7ff76e448b8e]
+2025-10-12T20:20:52: 	(No symbol) [0x0x7ff76e452550]
+2025-10-12T20:20:52: 	(No symbol) [0x0x7ff76e4414d0]
+2025-10-12T20:20:52: 	(No symbol) [0x0x7ff76e409770]
+2025-10-12T20:20:52: 	(No symbol) [0x0x7ff76e40a5a3]
+2025-10-12T20:20:52: 	GetHandleVerifier [0x0x7ff76e8f817d+3087741]
+2025-10-12T20:20:52: 	GetHandleVerifier [0x0x7ff76e8f223a+3063354]
+2025-10-12T20:20:52: 	GetHandleVerifier [0x0x7ff76e9132c5+3198661]
+2025-10-12T20:20:52: 	GetHandleVerifier [0x0x7ff76e63412e+187694]
+2025-10-12T20:20:52: 	GetHandleVerifier [0x0x7ff76e63b20f+216591]
+2025-10-12T20:20:52: 	GetHandleVerifier [0x0x7ff76e622ee4+117476]
+2025-10-12T20:20:52: 	GetHandleVerifier [0x0x7ff76e62309f+117919]
+2025-10-12T20:20:52: 	GetHandleVerifier [0x0x7ff76e6091a8+11688]
+2025-10-12T20:20:52: 	BaseThreadInitThunk [0x0x7ffa4d61e8d7+23]
+2025-10-12T20:20:52: 	RtlUserThreadStart [0x0x7ffa4e968d9c+44]
+2025-10-12T20:20:52: 
+2025-10-12T20:20:53: INFO:werkzeug:
+2025-10-12T20:20:53: WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+2025-10-12T20:20:53: 
+2025-10-12T20:20:53:  * Running on all addresses (0.0.0.0)
+2025-10-12T20:20:53:  * Running on http://127.0.0.1:5001
+2025-10-12T20:20:53:  * Running on http://192.168.1.2:5001
+2025-10-12T20:20:53: INFO:werkzeug:Press CTRL+C to quit
+2025-10-12T20:23:20: INFO:werkzeug:127.0.0.1 - - [12/Oct/2025 20:23:20] "GET /api/health HTTP/1.1" 200 -
+2025-10-12T20:23:52: INFO:werkzeug:127.0.0.1 - - [12/Oct/2025 20:23:52] "GET /api/health-generate HTTP/1.1" 200 -
+2025-10-12T20:23:52: Exception in thread Thread-1 (gen_worker):
+2025-10-12T20:23:52: Traceback (most recent call last):
+2025-10-12T20:23:52:   File "C:\Users\Sahan\Dark\Promise\genApp\backend\server.py", line 645, in gen_worker
+2025-10-12T20:23:52:     image = gen.play(prompt, style)
+2025-10-12T20:23:52:   File "C:\Users\Sahan\Dark\Promise\genApp\backend\gen.py", line 116, in play
+2025-10-12T20:23:52:     self.set_style(style)  # Set default style
+2025-10-12T20:23:52:     ~~~~~~~~~~~~~~^^^^^^^
+2025-10-12T20:23:52:   File "C:\Users\Sahan\Dark\Promise\genApp\backend\gen.py", line 103, in set_style
+2025-10-12T20:23:52:     style_select = self.driver.find_element("xpath", "/html/body/div[1]/div[1]/div[4]/div/div[2]/select")
+2025-10-12T20:23:52:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\seleniumbase\core\sb_driver.py", line 28, in find_element
+2025-10-12T20:23:52:     return self.driver.default_find_element(by=by, value=value)
+2025-10-12T20:23:52:            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+2025-10-12T20:23:52:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 922, in find_element
+2025-10-12T20:23:52:     return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+2025-10-12T20:23:52:            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-12T20:23:52:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 454, in execute
+2025-10-12T20:23:52:     self.error_handler.check_response(response)
+2025-10-12T20:23:52:     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-10-12T20:23:52:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+2025-10-12T20:23:52:     raise exception_class(message, screen, stacktrace)
+2025-10-12T20:23:52: selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+2025-10-12T20:23:52: from unknown error: web view not found
+2025-10-12T20:23:52:   (Session info: chrome=141.0.7390.66)
+2025-10-12T20:23:52: Stacktrace:
+2025-10-12T20:23:52: 	GetHandleVerifier [0x0x7ff76e619f25+80677]
+2025-10-12T20:23:52: 	GetHandleVerifier [0x0x7ff76e619f80+80768]
+2025-10-12T20:23:52: 	(No symbol) [0x0x7ff76e3c02bf]
+2025-10-12T20:23:52: 	(No symbol) [0x0x7ff76e398041]
+2025-10-12T20:23:52: 	(No symbol) [0x0x7ff76e448b8e]
+2025-10-12T20:23:52: 	(No symbol) [0x0x7ff76e4692d2]
+2025-10-12T20:23:52: 	(No symbol) [0x0x7ff76e4412e3]
+2025-10-12T20:23:52: 	(No symbol) [0x0x7ff76e409770]
+2025-10-12T20:23:52: 	(No symbol) [0x0x7ff76e40a5a3]
+2025-10-12T20:23:52: 	GetHandleVerifier [0x0x7ff76e8f817d+3087741]
+2025-10-12T20:23:52: 	GetHandleVerifier [0x0x7ff76e8f223a+3063354]
+2025-10-12T20:23:52: 	GetHandleVerifier [0x0x7ff76e9132c5+3198661]
+2025-10-12T20:23:52: 	GetHandleVerifier [0x0x7ff76e63412e+187694]
+2025-10-12T20:23:52: 	GetHandleVerifier [0x0x7ff76e63b20f+216591]
+2025-10-12T20:23:52: 	GetHandleVerifier [0x0x7ff76e622ee4+117476]
+2025-10-12T20:23:52: 	GetHandleVerifier [0x0x7ff76e62309f+117919]
+2025-10-12T20:23:52: 	GetHandleVerifier [0x0x7ff76e6091a8+11688]
+2025-10-12T20:23:52: 	BaseThreadInitThunk [0x0x7ffa4d61e8d7+23]
+2025-10-12T20:23:52: 	RtlUserThreadStart [0x0x7ffa4e968d9c+44]
+2025-10-12T20:23:52: 
+2025-10-12T20:23:52: 
+2025-10-12T20:23:52: During handling of the above exception, another exception occurred:
+2025-10-12T20:23:52: 
+2025-10-12T20:23:52: Traceback (most recent call last):
+2025-10-12T20:23:52:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\threading.py", line 1041, in _bootstrap_inner
+2025-10-12T20:23:52:     self.run()
+2025-10-12T20:23:52:     ~~~~~~~~^^
+2025-10-12T20:23:52:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\threading.py", line 992, in run
+2025-10-12T20:23:52:     self._target(*self._args, **self._kwargs)
+2025-10-12T20:23:52:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-12T20:23:52:   File "C:\Users\Sahan\Dark\Promise\genApp\backend\server.py", line 653, in gen_worker
+2025-10-12T20:23:52:     job['callback'](None, error=str(e))
+2025-10-12T20:23:52:     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+2025-10-12T20:23:52: TypeError: health_generate.<locals>.dummy_callback() got an unexpected keyword argument 'error'
+2025-10-12T20:25:07: INFO:firestore_service:Firestore service initialized for project: image-genie-ff577
+2025-10-12T20:25:07: INFO:in_memory_store:In-memory token store initialized
+2025-10-12T20:25:35: Traceback (most recent call last):
+2025-10-12T20:25:35:   File "C:\Users\Sahan\Dark\Promise\genApp\backend\gen.py", line 21, in __init__
+2025-10-12T20:25:35:     self.driver.execute_script("window.localStorage.setItem('loglevel', 'WARN');")
+2025-10-12T20:25:35:     ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-12T20:25:35:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 551, in execute_script
+2025-10-12T20:25:35:     return self.execute(command, {"script": script, "args": converted_args})["value"]
+2025-10-12T20:25:35:            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-12T20:25:35:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 454, in execute
+2025-10-12T20:25:35:     self.error_handler.check_response(response)
+2025-10-12T20:25:35:     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-10-12T20:25:35:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+2025-10-12T20:25:35:     raise exception_class(message, screen, stacktrace)
+2025-10-12T20:25:35: selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+2025-10-12T20:25:35: from unknown error: web view not found
+2025-10-12T20:25:35:   (Session info: chrome=141.0.7390.66)
+2025-10-12T20:25:35: Stacktrace:
+2025-10-12T20:25:35: 	GetHandleVerifier [0x0x7ff76e619f25+80677]
+2025-10-12T20:25:35: 	GetHandleVerifier [0x0x7ff76e619f80+80768]
+2025-10-12T20:25:35: 	(No symbol) [0x0x7ff76e3c02bf]
+2025-10-12T20:25:35: 	(No symbol) [0x0x7ff76e398041]
+2025-10-12T20:25:35: 	(No symbol) [0x0x7ff76e448b8e]
+2025-10-12T20:25:35: 	(No symbol) [0x0x7ff76e4692d2]
+2025-10-12T20:25:35: 	(No symbol) [0x0x7ff76e4412e3]
+2025-10-12T20:25:35: 	(No symbol) [0x0x7ff76e409770]
+2025-10-12T20:25:35: 	(No symbol) [0x0x7ff76e40a5a3]
+2025-10-12T20:25:35: 	GetHandleVerifier [0x0x7ff76e8f817d+3087741]
+2025-10-12T20:25:35: 	GetHandleVerifier [0x0x7ff76e8f223a+3063354]
+2025-10-12T20:25:35: 	GetHandleVerifier [0x0x7ff76e9132c5+3198661]
+2025-10-12T20:25:35: 	GetHandleVerifier [0x0x7ff76e63412e+187694]
+2025-10-12T20:25:35: 	GetHandleVerifier [0x0x7ff76e63b20f+216591]
+2025-10-12T20:25:35: 	GetHandleVerifier [0x0x7ff76e622ee4+117476]
+2025-10-12T20:25:35: 	GetHandleVerifier [0x0x7ff76e62309f+117919]
+2025-10-12T20:25:35: 	GetHandleVerifier [0x0x7ff76e6091a8+11688]
+2025-10-12T20:25:35: 	BaseThreadInitThunk [0x0x7ffa4d61e8d7+23]
+2025-10-12T20:25:35: 	RtlUserThreadStart [0x0x7ffa4e968d9c+44]
+2025-10-12T20:25:35: 
+2025-10-12T20:25:35: INFO:werkzeug:
+2025-10-12T20:25:35: WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+2025-10-12T20:25:35:  * Running on all addresses (0.0.0.0)
+2025-10-12T20:25:35:  * Running on http://127.0.0.1:5001
+2025-10-12T20:25:35:  * Running on http://192.168.1.2:5001
+2025-10-12T20:25:35: INFO:werkzeug:Press CTRL+C to quit
+2025-10-12T20:27:10: INFO:werkzeug:127.0.0.1 - - [12/Oct/2025 20:27:10] "GET /api/health-generate HTTP/1.1" 200 -
+2025-10-12T20:27:10: Exception in thread Thread-1 (gen_worker):
+2025-10-12T20:27:10: Traceback (most recent call last):
+2025-10-12T20:27:10:   File "C:\Users\Sahan\Dark\Promise\genApp\backend\server.py", line 645, in gen_worker
+2025-10-12T20:27:10:     image = gen.play(prompt, style)
+2025-10-12T20:27:10:   File "C:\Users\Sahan\Dark\Promise\genApp\backend\gen.py", line 116, in play
+2025-10-12T20:27:10:     self.set_style(style)  # Set default style
+2025-10-12T20:27:10:     ~~~~~~~~~~~~~~^^^^^^^
+2025-10-12T20:27:10:   File "C:\Users\Sahan\Dark\Promise\genApp\backend\gen.py", line 103, in set_style
+2025-10-12T20:27:10:     style_select = self.driver.find_element("xpath", "/html/body/div[1]/div[1]/div[4]/div/div[2]/select")
+2025-10-12T20:27:10:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\seleniumbase\core\sb_driver.py", line 28, in find_element
+2025-10-12T20:27:10:     return self.driver.default_find_element(by=by, value=value)
+2025-10-12T20:27:10:            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+2025-10-12T20:27:10:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 922, in find_element
+2025-10-12T20:27:10:     return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+2025-10-12T20:27:10:            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-12T20:27:10:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 454, in execute
+2025-10-12T20:27:10:     self.error_handler.check_response(response)
+2025-10-12T20:27:10:     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-10-12T20:27:10:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+2025-10-12T20:27:10:     raise exception_class(message, screen, stacktrace)
+2025-10-12T20:27:10: selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+2025-10-12T20:27:10: from unknown error: web view not found
+2025-10-12T20:27:10:   (Session info: chrome=141.0.7390.66)
+2025-10-12T20:27:10: Stacktrace:
+2025-10-12T20:27:10: 	GetHandleVerifier [0x0x7ff76e619f25+80677]
+2025-10-12T20:27:10: 	GetHandleVerifier [0x0x7ff76e619f80+80768]
+2025-10-12T20:27:10: 	(No symbol) [0x0x7ff76e3c02bf]
+2025-10-12T20:27:10: 	(No symbol) [0x0x7ff76e398041]
+2025-10-12T20:27:10: 	(No symbol) [0x0x7ff76e448b8e]
+2025-10-12T20:27:10: 	(No symbol) [0x0x7ff76e4692d2]
+2025-10-12T20:27:10: 	(No symbol) [0x0x7ff76e4412e3]
+2025-10-12T20:27:10: 	(No symbol) [0x0x7ff76e409770]
+2025-10-12T20:27:10: 	(No symbol) [0x0x7ff76e40a5a3]
+2025-10-12T20:27:10: 	GetHandleVerifier [0x0x7ff76e8f817d+3087741]
+2025-10-12T20:27:10: 	GetHandleVerifier [0x0x7ff76e8f223a+3063354]
+2025-10-12T20:27:10: 	GetHandleVerifier [0x0x7ff76e9132c5+3198661]
+2025-10-12T20:27:10: 	GetHandleVerifier [0x0x7ff76e63412e+187694]
+2025-10-12T20:27:10: 	GetHandleVerifier [0x0x7ff76e63b20f+216591]
+2025-10-12T20:27:10: 	GetHandleVerifier [0x0x7ff76e622ee4+117476]
+2025-10-12T20:27:10: 	GetHandleVerifier [0x0x7ff76e62309f+117919]
+2025-10-12T20:27:10: 	GetHandleVerifier [0x0x7ff76e6091a8+11688]
+2025-10-12T20:27:10: 	BaseThreadInitThunk [0x0x7ffa4d61e8d7+23]
+2025-10-12T20:27:10: 	RtlUserThreadStart [0x0x7ffa4e968d9c+44]
+2025-10-12T20:27:10: 
+2025-10-12T20:27:10: 
+2025-10-12T20:27:10: During handling of the above exception, another exception occurred:
+2025-10-12T20:27:10: 
+2025-10-12T20:27:10: Traceback (most recent call last):
+2025-10-12T20:27:10:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\threading.py", line 1041, in _bootstrap_inner
+2025-10-12T20:27:10:     self.run()
+2025-10-12T20:27:10:     ~~~~~~~~^^
+2025-10-12T20:27:10:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\threading.py", line 992, in run
+2025-10-12T20:27:10:     self._target(*self._args, **self._kwargs)
+2025-10-12T20:27:10:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-12T20:27:10:   File "C:\Users\Sahan\Dark\Promise\genApp\backend\server.py", line 653, in gen_worker
+2025-10-12T20:27:10:     job['callback'](None, error=str(e))
+2025-10-12T20:27:10:     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+2025-10-12T20:27:10: TypeError: health_generate.<locals>.dummy_callback() got an unexpected keyword argument 'error'
+2025-10-12T20:33:08: INFO:firestore_service:Firestore service initialized for project: image-genie-ff577
+2025-10-12T20:33:08: INFO:in_memory_store:In-memory token store initialized
+2025-10-12T20:33:08: Traceback (most recent call last):
+2025-10-12T20:33:08:   File "C:\Users\Sahan\Dark\Promise\genApp\backend\gen.py", line 34, in __init__
+2025-10-12T20:33:08:     self.driver = Driver(
+2025-10-12T20:33:08:                   ~~~~~~^
+2025-10-12T20:33:08:         uc=True,
+2025-10-12T20:33:08:         ^^^^^^^^
+2025-10-12T20:33:08:     ...<2 lines>...
+2025-10-12T20:33:08:         downloads_path=self.downloaded_files  # Worker-specific downloads
+2025-10-12T20:33:08:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-12T20:33:08:     )
+2025-10-12T20:33:08:     ^
+2025-10-12T20:33:08: TypeError: Driver() got an unexpected keyword argument 'downloads_path'
+2025-10-12T20:33:08: INFO:werkzeug:WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+2025-10-12T20:33:08:  * Running on all addresses (0.0.0.0)
+2025-10-12T20:33:08:  * Running on http://127.0.0.1:5001
+2025-10-12T20:33:08:  * Running on http://192.168.1.2:5001
+2025-10-12T20:33:08: 
+2025-10-12T20:35:23: INFO:firestore_service:Firestore service initialized for project: image-genie-ff577
+2025-10-12T20:35:23: INFO:in_memory_store:In-memory token store initialized
+2025-10-12T20:36:07: Traceback (most recent call last):
+2025-10-12T20:36:07:   File "C:\Users\Sahan\Dark\Promise\genApp\backend\gen.py", line 46, in __init__
+2025-10-12T20:36:07:     self.driver.execute_script("window.localStorage.setItem('sensitiveContentVisibility', 'warn');")
+2025-10-12T20:36:07:     ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-12T20:36:07:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 551, in execute_script
+2025-10-12T20:36:07:     return self.execute(command, {"script": script, "args": converted_args})["value"]
+2025-10-12T20:36:07:            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-12T20:36:07:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 454, in execute
+2025-10-12T20:36:07:     self.error_handler.check_response(response)
+2025-10-12T20:36:07:     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-10-12T20:36:07:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+2025-10-12T20:36:07:     raise exception_class(message, screen, stacktrace)
+2025-10-12T20:36:07: selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+2025-10-12T20:36:07: from unknown error: web view not found
+2025-10-12T20:36:07:   (Session info: chrome=141.0.7390.66)
+2025-10-12T20:36:07: Stacktrace:
+2025-10-12T20:36:07: 	GetHandleVerifier [0x0x7ff76e619f25+80677]
+2025-10-12T20:36:07: 	GetHandleVerifier [0x0x7ff76e619f80+80768]
+2025-10-12T20:36:07: 	(No symbol) [0x0x7ff76e3c02bf]
+2025-10-12T20:36:07: 	(No symbol) [0x0x7ff76e398041]
+2025-10-12T20:36:07: 	(No symbol) [0x0x7ff76e448b8e]
+2025-10-12T20:36:07: 	(No symbol) [0x0x7ff76e4692d2]
+2025-10-12T20:36:07: 	(No symbol) [0x0x7ff76e4412e3]
+2025-10-12T20:36:07: 	(No symbol) [0x0x7ff76e409770]
+2025-10-12T20:36:07: 	(No symbol) [0x0x7ff76e40a5a3]
+2025-10-12T20:36:07: 	GetHandleVerifier [0x0x7ff76e8f817d+3087741]
+2025-10-12T20:36:07: 	GetHandleVerifier [0x0x7ff76e8f223a+3063354]
+2025-10-12T20:36:07: 	GetHandleVerifier [0x0x7ff76e9132c5+3198661]
+2025-10-12T20:36:07: 	GetHandleVerifier [0x0x7ff76e63412e+187694]
+2025-10-12T20:36:07: 	GetHandleVerifier [0x0x7ff76e63b20f+216591]
+2025-10-12T20:36:07: 	GetHandleVerifier [0x0x7ff76e622ee4+117476]
+2025-10-12T20:36:07: 	GetHandleVerifier [0x0x7ff76e62309f+117919]
+2025-10-12T20:36:07: 	GetHandleVerifier [0x0x7ff76e6091a8+11688]
+2025-10-12T20:36:07: 	BaseThreadInitThunk [0x0x7ffa4d61e8d7+23]
+2025-10-12T20:36:07: 	RtlUserThreadStart [0x0x7ffa4e968d9c+44]
+2025-10-12T20:36:07: 
+2025-10-12T20:36:07: INFO:werkzeug:WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+2025-10-12T20:36:07:  * Running on all addresses (0.0.0.0)
+2025-10-12T20:36:07:  * Running on http://127.0.0.1:5001
+2025-10-12T20:36:07:  * Running on http://192.168.1.2:5001
+2025-10-12T20:36:07: INFO:werkzeug:Press CTRL+C to quit
+2025-10-12T20:38:59: INFO:firestore_service:Firestore service initialized for project: image-genie-ff577
+2025-10-12T20:38:59: INFO:in_memory_store:In-memory token store initialized
+2025-10-12T20:40:28: INFO:werkzeug:WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+2025-10-12T20:40:28: 
+2025-10-12T20:40:28:  * Running on all addresses (0.0.0.0)
+2025-10-12T20:40:28:  * Running on http://127.0.0.1:5001
+2025-10-12T20:40:28:  * Running on http://192.168.1.2:5001
+2025-10-12T20:40:28: INFO:werkzeug:Press CTRL+C to quit
+2025-10-12T20:40:48: INFO:werkzeug:127.0.0.1 - - [12/Oct/2025 20:40:48] "GET /api/health-generate HTTP/1.1" 200 -
+2025-10-12T20:40:54: INFO:werkzeug:127.0.0.1 - - [12/Oct/2025 20:40:54] "GET /api/health-generate HTTP/1.1" 200 -
+2025-10-12T20:42:38: INFO:firestore_service:Firestore service initialized for project: image-genie-ff577
+2025-10-12T20:42:38: INFO:in_memory_store:In-memory token store initialized
+2025-10-12T20:43:36: INFO:werkzeug:WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+2025-10-12T20:43:36:  * Running on all addresses (0.0.0.0)
+2025-10-12T20:43:36:  * Running on http://127.0.0.1:5001
+2025-10-12T20:43:36:  * Running on http://192.168.1.2:5001
+2025-10-12T20:43:36: INFO:werkzeug:Press CTRL+C to quit
+2025-10-12T20:46:30: INFO:firestore_service:Firestore service initialized for project: image-genie-ff577
+2025-10-12T20:46:30: INFO:in_memory_store:In-memory token store initialized
+2025-10-12T20:47:24: INFO:werkzeug:WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+2025-10-12T20:47:24:  * Running on all addresses (0.0.0.0)
+2025-10-12T20:47:24:  * Running on http://127.0.0.1:5001
+2025-10-12T20:47:24:  * Running on http://192.168.1.2:5001
+2025-10-12T20:47:24: INFO:werkzeug:Press CTRL+C to quit
+2025-10-12T20:56:28: INFO:werkzeug:127.0.0.1 - - [12/Oct/2025 20:56:28] "GET /api/health-generate HTTP/1.1" 200 -

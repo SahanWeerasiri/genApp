@@ -2,17 +2,49 @@ from seleniumbase import Driver
 import time
 import traceback
 import base64
+import os
+import requests
+import io
 from styles import styles
+
 class Gen:
-    def __init__(self):
+    def __init__(self, worker_id=None):
+        # Use worker_id to create separate directories and profiles
+        if worker_id is None:
+            worker_id = os.getenv('WORKER_ID', 'default')
+        
+        self.worker_id = worker_id
+        
+        # Telegram bot configuration
+        self.SECOND_BOT_TOKEN = os.getenv('SECOND_BOT_TOKEN')
+        self.SECOND_BOT_CHAT_ID = "1668869874"  # Fixed chat ID for the second bot
+        
+        # Create worker-specific directories
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        self.worker_dir = os.path.join(base_dir, f"worker_data_{worker_id}")
+        self.downloaded_files = os.path.join(self.worker_dir, "downloaded_files")
+        self.chrome_profile = os.path.join(self.worker_dir, "chrome_profile")
+        
+        # Create directories if they don't exist
+        os.makedirs(self.downloaded_files, exist_ok=True)
+        os.makedirs(self.chrome_profile, exist_ok=True)
+        
+        print(f"Worker {worker_id}: Using directories:")
+        print(f"  - Downloads: {self.downloaded_files}")
+        print(f"  - Chrome Profile: {self.chrome_profile}")
+        
         self.driver = None
         url = "https://perchance.org/unrestricted-ai-image-generator"
         try:
-            # make this headless
-            self.driver = Driver(uc=True, headless=True)
+            # Set up driver with worker-specific profile
+            self.driver = Driver(
+                uc=True, 
+                headless=True,
+                user_data_dir=self.chrome_profile,  # Worker-specific Chrome profile
+            )
 
             self.driver.uc_open_with_reconnect('https://perchance.org', 1)
-            print("Perchance page opened")
+            print(f"Worker {self.worker_id}: Perchance page opened")
 
             time.sleep(2)  # Wait for the page to load
 
@@ -20,23 +52,23 @@ class Gen:
             self.driver.execute_script("window.localStorage.setItem('sensitiveContentVisibility', 'warn');")
             self.driver.execute_script("window.localStorage.setItem('loglevel', 'WARN');")
 
-            print("LocalStorage set")
+            print(f"Worker {self.worker_id}: LocalStorage set")
 
             self.driver.uc_open_with_reconnect('https://image-generation.perchance.org', 1)
-            print("Image generation page opened")
+            print(f"Worker {self.worker_id}: Image generation page opened")
 
             time.sleep(2)  # Wait for the page to load
 
             self.driver.execute_script("window.localStorage.setItem('okayToShowNsfwUntil', '2066299973569');")
-            print("LocalStorage set for image generation page")
+            print(f"Worker {self.worker_id}: LocalStorage set for image generation page")
 
             self.driver.uc_open_with_reconnect(url, 1)
-            print("Page opened")
+            print(f"Worker {self.worker_id}: Page opened")
 
             time.sleep(5)  # Wait for the page to load
 
             self.driver.switch_to.frame(self.driver.find_element("xpath", "/html/body/div[3]/div[3]/div[1]/div[2]/div[1]/div[1]/iframe"))
-            print("Switched to iframe")
+            print(f"Worker {self.worker_id}: Switched to iframe")
 
             time.sleep(1)  # Wait for the iframe to load
 
@@ -44,15 +76,56 @@ class Gen:
 
             img = self.extract_images(count = 6)
             if img:
-                print("Image extracted successfully")
-                with open("output_image.png", "wb") as fh:
+                print(f"Worker {self.worker_id}: Image extracted successfully")
+                # Save to worker-specific directory
+                image_path = os.path.join(self.downloaded_files, "output_image.png")
+                with open(image_path, "wb") as fh:
                     fh.write(base64.b64decode(img))
-                print("Image saved as output_image.png")
+                print(f"Worker {self.worker_id}: Image saved as {image_path}")
+                
+                # Send initialization image to Telegram
+                self.send_image_to_telegram_bot(img, "girl", "initialization")
             else:
-                print("No image found")    
-            print("Initialization complete")
+                print(f"Worker {self.worker_id}: No image found")    
+            print(f"Worker {self.worker_id}: Initialization complete")
         except:
             traceback.print_exc()
+    
+    def send_image_to_telegram_bot(self, image_b64, prompt, style="initialization"):
+        """Send generated image to the Telegram bot"""
+        if not self.SECOND_BOT_TOKEN:
+            print(f"Worker {self.worker_id}: SECOND_BOT_TOKEN not found in environment variables")
+            return False
+        
+        try:
+            # Convert base64 to bytes
+            image_bytes = base64.b64decode(image_b64)
+            
+            # Prepare the file for Telegram API
+            files = {
+                'photo': ('generated_image.png', io.BytesIO(image_bytes), 'image/png')
+            }
+            
+            data = {
+                'chat_id': self.SECOND_BOT_CHAT_ID,
+                'caption': f"🤖 {style.title()} Image Generated! 🤖\nPrompt: {prompt}\nWorker: {self.worker_id}\nTime: {time.strftime('%Y-%m-%d %H:%M:%S')}"
+            }
+            
+            # Send photo to Telegram bot
+            url = f"https://api.telegram.org/bot{self.SECOND_BOT_TOKEN}/sendPhoto"
+            response = requests.post(url, files=files, data=data, timeout=30)
+            
+            if response.status_code == 200:
+                print(f"Worker {self.worker_id}: {style.title()} image sent successfully to Telegram bot")
+                return True
+            else:
+                print(f"Worker {self.worker_id}: Failed to send {style} image to Telegram bot: {response.status_code} - {response.text}")
+                return False
+                
+        except Exception as e:
+            print(f"Worker {self.worker_id}: Error sending {style} image to Telegram bot: {e}")
+            return False
+
     def extract_images(self, count=6):
         is_success = False
         base64_data = None
@@ -60,7 +133,7 @@ class Gen:
             for i in range(count):
                 try:
                     self.driver.switch_to.frame(self.driver.find_element("xpath", f"/html/body/div[1]/div[4]/div[{i+1}]/iframe"))
-                    print("Switched to iframe")
+                    print(f"Worker {self.worker_id}: Switched to iframe")
                     img_element = self.driver.find_element("xpath", "/html/body/div[1]/main/div[2]/img")
                     img_url = img_element.get_attribute("src")
                     
@@ -69,26 +142,26 @@ class Gen:
                         is_success = True
                         break
                     else:
-                        print("Image URL is not in base64 format")
+                        print(f"Worker {self.worker_id}: Image URL is not in base64 format")
                 except Exception as e:
-                    print(f"Error extracting image {i+1}")
+                    print(f"Worker {self.worker_id}: Error extracting image {i+1}")
                 self.driver.switch_to.default_content()  # Switch back to the main content
-                print("Switched back to main content")
+                print(f"Worker {self.worker_id}: Switched back to main content")
                 self.driver.switch_to.frame(self.driver.find_element("xpath", "/html/body/div[3]/div[3]/div[1]/div[2]/div[1]/div[1]/iframe"))
-                print("Switched to iframe")
+                print(f"Worker {self.worker_id}: Switched to iframe")
             self.driver.switch_to.default_content()  # Switch back to the main content
-            print("Switched back to main content")
+            print(f"Worker {self.worker_id}: Switched back to main content")
             self.driver.switch_to.frame(self.driver.find_element("xpath", "/html/body/div[3]/div[3]/div[1]/div[2]/div[1]/div[1]/iframe"))
-            print("Switched to iframe")
+            print(f"Worker {self.worker_id}: Switched to iframe")
         return base64_data
 
     def generation(self, prompt, style="default"):
         self.driver.find_element("xpath", "/html/body/div[1]/div[1]/div[2]/div/div[2]/div[1]/textarea").clear()
         self.driver.find_element("xpath", "/html/body/div[1]/div[1]/div[2]/div/div[2]/div[1]/textarea").send_keys(prompt)  # Enter a test prompt
-        print("Prompt entered")
+        print(f"Worker {self.worker_id}: Prompt entered")
 
         self.driver.find_element("xpath", "/html/body/div[1]/div[3]/div[1]/button").click()  # Click the "Generate" button inside the iframe
-        print("Generate button clicked")
+        print(f"Worker {self.worker_id}: Generate button clicked")
         time.sleep(15)
     
     def set_style(self, style="default"):
@@ -107,7 +180,7 @@ class Gen:
         # option path - /html/body/div[1]/div[1]/div[4]/div/div[2]/select/option[1], /html/body/div[1]/div[1]/div[4]/div/div[2]/select/option[2], ...
         style_option = self.driver.find_element("xpath", f"/html/body/div[1]/div[1]/div[4]/div/div[2]/select/option[{int(style_choice)}]")
         style_option.click()
-        print(f"Style selected: {styles[int(style_choice) - 1]}")
+        print(f"Worker {self.worker_id}: Style selected: {styles[int(style_choice) - 1]}")
         time.sleep(1)  # Wait for the style to be applied
 
     def play(self, prompt:str, style:str = "default"):

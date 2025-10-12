@@ -1,0 +1,2638 @@
+2025-10-12T19:31:37: Worker worker-1: Initializing 3 Gen objects...
+2025-10-12T19:31:41: 
+2025-10-12T19:31:41:  
+2025-10-12T19:31:41: 
+2025-10-12T19:31:41: Downloading chromedriver-win64.zip from:
+2025-10-12T19:31:41: https://storage.googleapis.com/chrome-for-testing-public/141.0.7390.76/win64/chromedriver-win64.zip ...
+2025-10-12T19:31:43: Download Complete!
+2025-10-12T19:31:43: 
+2025-10-12T19:31:43: Extracting ['chromedriver.exe'] from chromedriver-win64.zip ...
+2025-10-12T19:32:43: Perchance page opened
+2025-10-12T19:33:47: Perchance page opened
+2025-10-12T19:33:49: LocalStorage set
+2025-10-12T19:33:53: Image generation page opened
+2025-10-12T19:33:55: LocalStorage set for image generation page
+2025-10-12T19:33:55: 
+2025-10-12T19:33:59: Page opened
+2025-10-12T19:34:04: Switched to iframe
+2025-10-12T19:34:07: Prompt entered
+2025-10-12T19:34:08: Generate button clicked
+2025-10-12T19:34:23: Switched to iframe
+2025-10-12T19:34:23: Error extracting image 1
+2025-10-12T19:34:23: Switched back to main content
+2025-10-12T19:34:23: 
+2025-10-12T19:34:23: Switched to iframe
+2025-10-12T19:34:23: Switched to iframe
+2025-10-12T19:34:23: Error extracting image 2
+2025-10-12T19:34:23: Switched back to main content
+2025-10-12T19:34:23: Switched to iframe
+2025-10-12T19:34:23: Switched to iframe
+2025-10-12T19:34:23: Error extracting image 3
+2025-10-12T19:34:23: Switched back to main content
+2025-10-12T19:34:23: Switched to iframe
+2025-10-12T19:34:23: Switched to iframe
+2025-10-12T19:34:23: Error extracting image 4
+2025-10-12T19:34:23: Switched back to main content
+2025-10-12T19:34:23: Switched to iframe
+2025-10-12T19:34:23: Switched to iframe
+2025-10-12T19:34:23: Error extracting image 5
+2025-10-12T19:34:23: Switched back to main content
+2025-10-12T19:34:23: Switched to iframe
+2025-10-12T19:34:23: Switched to iframe
+2025-10-12T19:34:23: Error extracting image 6
+2025-10-12T19:34:23: Switched back to main content
+2025-10-12T19:34:23: Switched to iframe
+2025-10-12T19:34:23: Switched back to main content
+2025-10-12T19:34:23: Switched to iframe
+2025-10-12T19:34:23: Switched to iframe
+2025-10-12T19:34:23: Error extracting image 1
+2025-10-12T19:34:23: Switched back to main content
+2025-10-12T19:34:23: Switched to iframe
+2025-10-12T19:34:23: Switched to iframe
+2025-10-12T19:34:23: Error extracting image 2
+2025-10-12T19:34:23: Switched back to main content
+2025-10-12T19:34:23: Switched to iframe
+2025-10-12T19:34:23: Switched to iframe
+2025-10-12T19:34:24: Error extracting image 3
+2025-10-12T19:34:24: Switched back to main content
+2025-10-12T19:34:24: Switched to iframe
+2025-10-12T19:34:24: Switched to iframe
+2025-10-12T19:34:24: Error extracting image 4
+2025-10-12T19:34:24: Switched back to main content
+2025-10-12T19:34:24: Switched to iframe
+2025-10-12T19:34:24: Switched to iframe
+2025-10-12T19:34:24: Error extracting image 5
+2025-10-12T19:34:24: Switched back to main content
+2025-10-12T19:34:24: Switched to iframe
+2025-10-12T19:34:24: Switched to iframe
+2025-10-12T19:34:24: Error extracting image 6
+2025-10-12T19:34:24: Switched back to main content
+2025-10-12T19:34:24: Switched to iframe
+2025-10-12T19:34:24: Switched back to main content
+2025-10-12T19:34:24: Switched to iframe
+2025-10-12T19:34:24: Switched to iframe
+2025-10-12T19:34:24: Error extracting image 1
+2025-10-12T19:34:24: Switched back to main content
+2025-10-12T19:34:24: Switched to iframe
+2025-10-12T19:34:24: Switched to iframe
+2025-10-12T19:34:24: Error extracting image 2
+2025-10-12T19:34:24: Switched back to main content
+2025-10-12T19:34:24: Switched to iframe
+2025-10-12T19:34:24: Switched to iframe
+2025-10-12T19:34:24: Error extracting image 3
+2025-10-12T19:34:24: Switched back to main content
+2025-10-12T19:34:24: Switched to iframe
+2025-10-12T19:34:24: Switched to iframe
+2025-10-12T19:34:24: Error extracting image 4
+2025-10-12T19:34:24: Switched back to main content
+2025-10-12T19:34:24: Switched to iframe
+2025-10-12T19:34:25: Switched to iframe
+2025-10-12T19:34:25: Error extracting image 5
+2025-10-12T19:34:25: Switched back to main content
+2025-10-12T19:34:25: Switched to iframe
+2025-10-12T19:34:25: Switched to iframe
+2025-10-12T19:34:25: Error extracting image 6
+2025-10-12T19:34:25: Switched back to main content
+2025-10-12T19:34:25: Switched to iframe
+2025-10-12T19:34:25: Switched back to main content
+2025-10-12T19:34:25: Switched to iframe
+2025-10-12T19:34:25: Switched to iframe
+2025-10-12T19:34:25: Error extracting image 1
+2025-10-12T19:34:25: Switched back to main content
+2025-10-12T19:34:25: Switched to iframe
+2025-10-12T19:34:25: Switched to iframe
+2025-10-12T19:34:25: Error extracting image 2
+2025-10-12T19:34:25: Switched back to main content
+2025-10-12T19:34:25: Switched to iframe
+2025-10-12T19:34:26: Switched to iframe
+2025-10-12T19:34:26: Error extracting image 3
+2025-10-12T19:34:26: Switched back to main content
+2025-10-12T19:34:26: Switched to iframe
+2025-10-12T19:34:26: Switched to iframe
+2025-10-12T19:34:26: Error extracting image 4
+2025-10-12T19:34:26: Switched back to main content
+2025-10-12T19:34:26: Switched to iframe
+2025-10-12T19:34:26: Switched to iframe
+2025-10-12T19:34:26: Error extracting image 5
+2025-10-12T19:34:26: Switched back to main content
+2025-10-12T19:34:26: Switched to iframe
+2025-10-12T19:34:26: Switched to iframe
+2025-10-12T19:34:27: Error extracting image 6
+2025-10-12T19:34:27: Switched back to main content
+2025-10-12T19:34:27: Switched to iframe
+2025-10-12T19:34:27: Switched back to main content
+2025-10-12T19:34:27: Switched to iframe
+2025-10-12T19:34:27: Switched to iframe
+2025-10-12T19:34:27: Error extracting image 1
+2025-10-12T19:34:27: Switched back to main content
+2025-10-12T19:34:27: Switched to iframe
+2025-10-12T19:34:28: Switched to iframe
+2025-10-12T19:34:28: Error extracting image 2
+2025-10-12T19:34:28: Switched back to main content
+2025-10-12T19:34:28: Switched to iframe
+2025-10-12T19:34:29: Switched to iframe
+2025-10-12T19:34:29: Error extracting image 3
+2025-10-12T19:34:29: Switched back to main content
+2025-10-12T19:34:29: Switched to iframe
+2025-10-12T19:34:30: Switched to iframe
+2025-10-12T19:34:30: Error extracting image 4
+2025-10-12T19:34:30: Switched back to main content
+2025-10-12T19:34:30: Switched to iframe
+2025-10-12T19:34:30: Switched to iframe
+2025-10-12T19:34:30: Switched back to main content
+2025-10-12T19:34:30: Switched to iframe
+2025-10-12T19:34:30: 
+2025-10-12T19:34:30: Image saved as output_image.png
+2025-10-12T19:34:30: Initialization complete
+2025-10-12T19:34:41: Perchance page opened
+2025-10-12T19:34:43: LocalStorage set
+2025-10-12T19:34:47: Image generation page opened
+2025-10-12T19:34:49: LocalStorage set for image generation page
+2025-10-12T19:34:55: Page opened
+2025-10-12T19:35:00: Switched to iframe
+2025-10-12T19:35:02: Prompt entered
+2025-10-12T19:35:02: Generate button clicked
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Error extracting image 1
+2025-10-12T19:35:18: Switched back to main content
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Error extracting image 2
+2025-10-12T19:35:18: Switched back to main content
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Error extracting image 3
+2025-10-12T19:35:18: Switched back to main content
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Error extracting image 4
+2025-10-12T19:35:18: Switched back to main content
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Error extracting image 5
+2025-10-12T19:35:18: Switched back to main content
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Error extracting image 6
+2025-10-12T19:35:18: Switched back to main content
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Switched back to main content
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Error extracting image 1
+2025-10-12T19:35:18: Switched back to main content
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Error extracting image 2
+2025-10-12T19:35:18: Switched back to main content
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Error extracting image 3
+2025-10-12T19:35:18: Switched back to main content
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Error extracting image 4
+2025-10-12T19:35:18: Switched back to main content
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Switched to iframe
+2025-10-12T19:35:18: Error extracting image 5
+2025-10-12T19:35:18: Switched back to main content
+2025-10-12T19:35:19: Switched to iframe
+2025-10-12T19:35:19: Switched to iframe
+2025-10-12T19:35:19: Error extracting image 6
+2025-10-12T19:35:19: Switched back to main content
+2025-10-12T19:35:19: Switched to iframe
+2025-10-12T19:35:19: Switched back to main content
+2025-10-12T19:35:19: Switched to iframe
+2025-10-12T19:35:19: Switched to iframe
+2025-10-12T19:35:19: Error extracting image 1
+2025-10-12T19:35:19: Switched back to main content
+2025-10-12T19:35:19: Switched to iframe
+2025-10-12T19:35:19: Switched to iframe
+2025-10-12T19:35:19: Error extracting image 2
+2025-10-12T19:35:19: Switched back to main content
+2025-10-12T19:35:19: Switched to iframe
+2025-10-12T19:35:19: Switched to iframe
+2025-10-12T19:35:19: Error extracting image 3
+2025-10-12T19:35:19: Switched back to main content
+2025-10-12T19:35:19: Switched to iframe
+2025-10-12T19:35:19: Switched to iframe
+2025-10-12T19:35:19: Error extracting image 4
+2025-10-12T19:35:19: Switched back to main content
+2025-10-12T19:35:19: Switched to iframe
+2025-10-12T19:35:20: Switched to iframe
+2025-10-12T19:35:20: Error extracting image 5
+2025-10-12T19:35:20: Switched back to main content
+2025-10-12T19:35:20: 
+2025-10-12T19:35:20: Switched to iframe
+2025-10-12T19:35:20: Switched to iframe
+2025-10-12T19:35:20: Error extracting image 6
+2025-10-12T19:35:20: Switched back to main content
+2025-10-12T19:35:20: Switched to iframe
+2025-10-12T19:35:20: Switched back to main content
+2025-10-12T19:35:20: Switched to iframe
+2025-10-12T19:35:20: Switched to iframe
+2025-10-12T19:35:20: Error extracting image 1
+2025-10-12T19:35:20: Switched back to main content
+2025-10-12T19:35:20: Switched to iframe
+2025-10-12T19:35:20: Switched to iframe
+2025-10-12T19:35:20: Error extracting image 2
+2025-10-12T19:35:20: Switched back to main content
+2025-10-12T19:35:20: Switched to iframe
+2025-10-12T19:35:20: Switched to iframe
+2025-10-12T19:35:20: Error extracting image 3
+2025-10-12T19:35:20: Switched back to main content
+2025-10-12T19:35:20: Switched to iframe
+2025-10-12T19:35:20: Switched to iframe
+2025-10-12T19:35:20: Error extracting image 4
+2025-10-12T19:35:20: Switched back to main content
+2025-10-12T19:35:20: Switched to iframe
+2025-10-12T19:35:20: Switched to iframe
+2025-10-12T19:35:20: Error extracting image 5
+2025-10-12T19:35:20: Switched back to main content
+2025-10-12T19:35:20: Switched to iframe
+2025-10-12T19:35:20: Switched to iframe
+2025-10-12T19:35:20: Error extracting image 6
+2025-10-12T19:35:20: Switched back to main content
+2025-10-12T19:35:20: Switched to iframe
+2025-10-12T19:35:20: Switched back to main content
+2025-10-12T19:35:21: Switched to iframe
+2025-10-12T19:35:21: Switched to iframe
+2025-10-12T19:35:21: Error extracting image 1
+2025-10-12T19:35:21: Switched back to main content
+2025-10-12T19:35:21: Switched to iframe
+2025-10-12T19:35:21: Switched to iframe
+2025-10-12T19:35:21: Error extracting image 2
+2025-10-12T19:35:21: Switched back to main content
+2025-10-12T19:35:21: Switched to iframe
+2025-10-12T19:35:21: Switched to iframe
+2025-10-12T19:35:21: Error extracting image 3
+2025-10-12T19:35:21: Switched back to main content
+2025-10-12T19:35:21: Switched to iframe
+2025-10-12T19:35:21: Switched to iframe
+2025-10-12T19:35:21: Error extracting image 4
+2025-10-12T19:35:21: Switched back to main content
+2025-10-12T19:35:21: Switched to iframe
+2025-10-12T19:35:21: Switched to iframe
+2025-10-12T19:35:21: Error extracting image 5
+2025-10-12T19:35:21: Switched back to main content
+2025-10-12T19:35:21: Switched to iframe
+2025-10-12T19:35:21: Switched to iframe
+2025-10-12T19:35:21: Error extracting image 6
+2025-10-12T19:35:21: Switched back to main content
+2025-10-12T19:35:21: Switched to iframe
+2025-10-12T19:35:21: Switched back to main content
+2025-10-12T19:35:21: Switched to iframe
+2025-10-12T19:35:21: Switched to iframe
+2025-10-12T19:35:21: Error extracting image 1
+2025-10-12T19:35:21: Switched back to main content
+2025-10-12T19:35:21: Switched to iframe
+2025-10-12T19:35:21: Switched to iframe
+2025-10-12T19:35:21: Error extracting image 2
+2025-10-12T19:35:21: Switched back to main content
+2025-10-12T19:35:21: Switched to iframe
+2025-10-12T19:35:22: Switched to iframe
+2025-10-12T19:35:22: Error extracting image 3
+2025-10-12T19:35:22: Switched back to main content
+2025-10-12T19:35:22: Switched to iframe
+2025-10-12T19:35:22: Switched to iframe
+2025-10-12T19:35:22: Error extracting image 4
+2025-10-12T19:35:22: Switched back to main content
+2025-10-12T19:35:22: Switched to iframe
+2025-10-12T19:35:22: Switched to iframe
+2025-10-12T19:35:22: Error extracting image 5
+2025-10-12T19:35:22: Switched back to main content
+2025-10-12T19:35:22: Switched to iframe
+2025-10-12T19:35:22: Switched to iframe
+2025-10-12T19:35:22: Error extracting image 6
+2025-10-12T19:35:22: Switched back to main content
+2025-10-12T19:35:22: Switched to iframe
+2025-10-12T19:35:22: Switched back to main content
+2025-10-12T19:35:22: Switched to iframe
+2025-10-12T19:35:22: Switched to iframe
+2025-10-12T19:35:22: Error extracting image 1
+2025-10-12T19:35:22: Switched back to main content
+2025-10-12T19:35:22: Switched to iframe
+2025-10-12T19:35:22: Switched to iframe
+2025-10-12T19:35:22: Error extracting image 2
+2025-10-12T19:35:22: Switched back to main content
+2025-10-12T19:35:22: Switched to iframe
+2025-10-12T19:35:22: Switched to iframe
+2025-10-12T19:35:22: Error extracting image 3
+2025-10-12T19:35:22: Switched back to main content
+2025-10-12T19:35:22: Switched to iframe
+2025-10-12T19:35:22: Switched to iframe
+2025-10-12T19:35:23: Error extracting image 4
+2025-10-12T19:35:23: Switched back to main content
+2025-10-12T19:35:23: Switched to iframe
+2025-10-12T19:35:23: Switched to iframe
+2025-10-12T19:35:23: Error extracting image 5
+2025-10-12T19:35:23: Switched back to main content
+2025-10-12T19:35:23: Switched to iframe
+2025-10-12T19:35:23: Switched to iframe
+2025-10-12T19:35:23: Error extracting image 6
+2025-10-12T19:35:23: Switched back to main content
+2025-10-12T19:35:23: Switched to iframe
+2025-10-12T19:35:23: Switched back to main content
+2025-10-12T19:35:23: Switched to iframe
+2025-10-12T19:35:23: Switched to iframe
+2025-10-12T19:35:23: Error extracting image 1
+2025-10-12T19:35:23: Switched back to main content
+2025-10-12T19:35:23: Switched to iframe
+2025-10-12T19:35:23: Switched to iframe
+2025-10-12T19:35:23: Error extracting image 2
+2025-10-12T19:35:23: Switched back to main content
+2025-10-12T19:35:23: Switched to iframe
+2025-10-12T19:35:23: Switched to iframe
+2025-10-12T19:35:23: Error extracting image 3
+2025-10-12T19:35:23: Switched back to main content
+2025-10-12T19:35:23: Switched to iframe
+2025-10-12T19:35:23: Switched to iframe
+2025-10-12T19:35:23: Error extracting image 4
+2025-10-12T19:35:23: Switched back to main content
+2025-10-12T19:35:23: Switched to iframe
+2025-10-12T19:35:24: Switched to iframe
+2025-10-12T19:35:24: Error extracting image 5
+2025-10-12T19:35:24: Switched back to main content
+2025-10-12T19:35:24: Switched to iframe
+2025-10-12T19:35:24: Switched to iframe
+2025-10-12T19:35:24: Error extracting image 6
+2025-10-12T19:35:24: Switched back to main content
+2025-10-12T19:35:24: Switched to iframe
+2025-10-12T19:35:24: Switched back to main content
+2025-10-12T19:35:24: Switched to iframe
+2025-10-12T19:35:24: Switched to iframe
+2025-10-12T19:35:24: Error extracting image 1
+2025-10-12T19:35:24: Switched back to main content
+2025-10-12T19:35:24: Switched to iframe
+2025-10-12T19:35:24: Switched to iframe
+2025-10-12T19:35:24: Error extracting image 2
+2025-10-12T19:35:24: Switched back to main content
+2025-10-12T19:35:24: Switched to iframe
+2025-10-12T19:35:24: Switched to iframe
+2025-10-12T19:35:24: Error extracting image 3
+2025-10-12T19:35:24: Switched back to main content
+2025-10-12T19:35:24: Switched to iframe
+2025-10-12T19:35:24: Switched to iframe
+2025-10-12T19:35:24: Error extracting image 4
+2025-10-12T19:35:24: Switched back to main content
+2025-10-12T19:35:24: Switched to iframe
+2025-10-12T19:35:24: Switched to iframe
+2025-10-12T19:35:24: Error extracting image 5
+2025-10-12T19:35:24: Switched back to main content
+2025-10-12T19:35:24: Switched to iframe
+2025-10-12T19:35:24: Switched to iframe
+2025-10-12T19:35:25: Error extracting image 6
+2025-10-12T19:35:25: Switched back to main content
+2025-10-12T19:35:25: Switched to iframe
+2025-10-12T19:35:25: Switched back to main content
+2025-10-12T19:35:25: Switched to iframe
+2025-10-12T19:35:25: Switched to iframe
+2025-10-12T19:35:25: Error extracting image 1
+2025-10-12T19:35:25: Switched back to main content
+2025-10-12T19:35:25: Switched to iframe
+2025-10-12T19:35:25: Switched to iframe
+2025-10-12T19:35:25: Error extracting image 2
+2025-10-12T19:35:25: Switched back to main content
+2025-10-12T19:35:25: Switched to iframe
+2025-10-12T19:35:25: Switched to iframe
+2025-10-12T19:35:25: Error extracting image 3
+2025-10-12T19:35:25: Switched back to main content
+2025-10-12T19:35:25: Switched to iframe
+2025-10-12T19:35:25: Switched to iframe
+2025-10-12T19:35:25: Error extracting image 4
+2025-10-12T19:35:25: Switched back to main content
+2025-10-12T19:35:25: Switched to iframe
+2025-10-12T19:35:25: Switched to iframe
+2025-10-12T19:35:25: Error extracting image 5
+2025-10-12T19:35:25: Switched back to main content
+2025-10-12T19:35:25: 
+2025-10-12T19:35:25: Switched to iframe
+2025-10-12T19:35:25: Switched to iframe
+2025-10-12T19:35:25: Error extracting image 6
+2025-10-12T19:35:25: Switched back to main content
+2025-10-12T19:35:25: Switched to iframe
+2025-10-12T19:35:25: Switched back to main content
+2025-10-12T19:35:25: Switched to iframe
+2025-10-12T19:35:25: Switched to iframe
+2025-10-12T19:35:25: Error extracting image 1
+2025-10-12T19:35:25: Switched back to main content
+2025-10-12T19:35:26: Switched to iframe
+2025-10-12T19:35:26: Switched to iframe
+2025-10-12T19:35:26: Error extracting image 2
+2025-10-12T19:35:26: Switched back to main content
+2025-10-12T19:35:26: Switched to iframe
+2025-10-12T19:35:26: Switched to iframe
+2025-10-12T19:35:26: Switched back to main content
+2025-10-12T19:35:26: Switched to iframe
+2025-10-12T19:35:26: Image extracted successfully
+2025-10-12T19:35:26: Image saved as output_image.png
+2025-10-12T19:35:26: 
+2025-10-12T19:35:26: Starting Flask server worker worker-1 on port 5001...
+2025-10-12T19:35:26: Gen pool size: 3
+2025-10-12T19:35:26: Available API endpoints:
+2025-10-12T19:35:26: - POST /api/register (User registration)
+2025-10-12T19:35:26: 
+2025-10-12T19:35:26: - POST /api/generate (Image generation)
+2025-10-12T19:35:26: - GET /api/user/tokens (Get token count)
+2025-10-12T19:35:26: - POST /api/user/tokens/add (Add tokens)
+2025-10-12T19:35:26: - GET /api/styles (Get available styles)
+2025-10-12T19:35:26: - GET /api/health (Basic health check)
+2025-10-12T19:35:26: - GET /api/health-generate (Health check with image generation)
+2025-10-12T19:35:26: Worker worker-1: Started worker thread 0
+2025-10-12T19:35:26: Worker worker-1: Started worker thread 1
+2025-10-12T19:35:26: Worker worker-1: Started worker thread 2
+2025-10-12T19:35:26:  * Serving Flask app 'server'
+2025-10-12T19:35:26:  * Debug mode: off
+2025-10-12T19:53:08: Worker worker-1: Initializing 3 Gen objects...
+2025-10-12T19:53:08: 
+2025-10-12T19:55:25: Perchance page opened
+2025-10-12T19:55:27: LocalStorage set
+2025-10-12T19:55:32: Image generation page opened
+2025-10-12T19:55:34: LocalStorage set for image generation page
+2025-10-12T19:55:54: Page opened
+2025-10-12T19:56:00: Switched to iframe
+2025-10-12T19:56:01: Prompt entered
+2025-10-12T19:56:02: Generate button clicked
+2025-10-12T19:56:17: Switched to iframe
+2025-10-12T19:56:17: Error extracting image 1
+2025-10-12T19:56:17: Switched back to main content
+2025-10-12T19:56:17: Switched to iframe
+2025-10-12T19:56:17: Switched to iframe
+2025-10-12T19:56:17: Error extracting image 2
+2025-10-12T19:56:17: 
+2025-10-12T19:56:17: Switched back to main content
+2025-10-12T19:56:17: Switched to iframe
+2025-10-12T19:56:17: Switched to iframe
+2025-10-12T19:56:18: Error extracting image 3
+2025-10-12T19:56:18: Switched back to main content
+2025-10-12T19:56:18: Switched to iframe
+2025-10-12T19:56:18: Switched to iframe
+2025-10-12T19:56:18: Error extracting image 4
+2025-10-12T19:56:18: Switched back to main content
+2025-10-12T19:56:19: Switched to iframe
+2025-10-12T19:56:20: Switched to iframe
+2025-10-12T19:56:20: Error extracting image 5
+2025-10-12T19:56:20: 
+2025-10-12T19:56:20: Switched back to main content
+2025-10-12T19:56:20: Switched to iframe
+2025-10-12T19:56:21: Switched to iframe
+2025-10-12T19:56:21: Error extracting image 6
+2025-10-12T19:56:21: 
+2025-10-12T19:56:21: Switched back to main content
+2025-10-12T19:56:21: Switched to iframe
+2025-10-12T19:56:21: 
+2025-10-12T19:56:21: Switched back to main content
+2025-10-12T19:56:22: Switched to iframe
+2025-10-12T19:56:22: Switched to iframe
+2025-10-12T19:56:22: Error extracting image 1
+2025-10-12T19:56:22: Switched back to main content
+2025-10-12T19:56:22: Switched to iframe
+2025-10-12T19:56:22: Switched to iframe
+2025-10-12T19:56:22: Error extracting image 2
+2025-10-12T19:56:22: Switched back to main content
+2025-10-12T19:56:22: Switched to iframe
+2025-10-12T19:56:23: Switched to iframe
+2025-10-12T19:56:23: Error extracting image 3
+2025-10-12T19:56:23: Switched back to main content
+2025-10-12T19:56:23: Switched to iframe
+2025-10-12T19:56:23: Switched to iframe
+2025-10-12T19:56:23: Error extracting image 4
+2025-10-12T19:56:23: Switched back to main content
+2025-10-12T19:56:23: Switched to iframe
+2025-10-12T19:56:23: Switched to iframe
+2025-10-12T19:56:23: Error extracting image 5
+2025-10-12T19:56:24: Switched back to main content
+2025-10-12T19:56:24: Switched to iframe
+2025-10-12T19:56:24: Switched to iframe
+2025-10-12T19:56:24: Error extracting image 6
+2025-10-12T19:56:24: Switched back to main content
+2025-10-12T19:56:25: Switched to iframe
+2025-10-12T19:56:25: Switched back to main content
+2025-10-12T19:56:25: Switched to iframe
+2025-10-12T19:56:25: Switched to iframe
+2025-10-12T19:56:26: Error extracting image 1
+2025-10-12T19:56:26: Switched back to main content
+2025-10-12T19:56:26: Switched to iframe
+2025-10-12T19:56:26: Switched to iframe
+2025-10-12T19:56:26: Error extracting image 2
+2025-10-12T19:56:26: Switched back to main content
+2025-10-12T19:56:26: Switched to iframe
+2025-10-12T19:56:26: Switched to iframe
+2025-10-12T19:56:26: Error extracting image 3
+2025-10-12T19:56:26: Switched back to main content
+2025-10-12T19:56:26: Switched to iframe
+2025-10-12T19:56:26: Switched to iframe
+2025-10-12T19:56:26: Error extracting image 4
+2025-10-12T19:56:26: Switched back to main content
+2025-10-12T19:56:27: Switched to iframe
+2025-10-12T19:56:27: Switched to iframe
+2025-10-12T19:56:27: Error extracting image 5
+2025-10-12T19:56:27: Switched back to main content
+2025-10-12T19:56:27: Switched to iframe
+2025-10-12T19:56:27: Switched to iframe
+2025-10-12T19:56:27: Error extracting image 6
+2025-10-12T19:56:27: Switched back to main content
+2025-10-12T19:56:27: Switched to iframe
+2025-10-12T19:56:27: Switched back to main content
+2025-10-12T19:56:27: Switched to iframe
+2025-10-12T19:56:27: Switched to iframe
+2025-10-12T19:56:27: Error extracting image 1
+2025-10-12T19:56:27: Switched back to main content
+2025-10-12T19:56:27: Switched to iframe
+2025-10-12T19:56:27: Switched to iframe
+2025-10-12T19:56:27: Error extracting image 2
+2025-10-12T19:56:27: Switched back to main content
+2025-10-12T19:56:28: Switched to iframe
+2025-10-12T19:56:28: Switched to iframe
+2025-10-12T19:56:28: Error extracting image 3
+2025-10-12T19:56:28: Switched back to main content
+2025-10-12T19:56:28: Switched to iframe
+2025-10-12T19:56:28: Switched to iframe
+2025-10-12T19:56:28: Error extracting image 4
+2025-10-12T19:56:28: Switched back to main content
+2025-10-12T19:56:28: Switched to iframe
+2025-10-12T19:56:28: Switched to iframe
+2025-10-12T19:56:28: 
+2025-10-12T19:56:28: Error extracting image 5
+2025-10-12T19:56:28: Switched back to main content
+2025-10-12T19:56:28: Switched to iframe
+2025-10-12T19:56:28: Switched to iframe
+2025-10-12T19:56:28: Error extracting image 6
+2025-10-12T19:56:28: Switched back to main content
+2025-10-12T19:56:28: Switched to iframe
+2025-10-12T19:56:28: Switched back to main content
+2025-10-12T19:56:28: Switched to iframe
+2025-10-12T19:56:29: Switched to iframe
+2025-10-12T19:56:29: Error extracting image 1
+2025-10-12T19:56:29: Switched back to main content
+2025-10-12T19:56:29: Switched to iframe
+2025-10-12T19:56:29: Switched to iframe
+2025-10-12T19:56:29: Error extracting image 2
+2025-10-12T19:56:29: Switched back to main content
+2025-10-12T19:56:29: Switched to iframe
+2025-10-12T19:56:29: Switched to iframe
+2025-10-12T19:56:29: Error extracting image 3
+2025-10-12T19:56:29: Switched back to main content
+2025-10-12T19:56:29: Switched to iframe
+2025-10-12T19:56:29: Switched to iframe
+2025-10-12T19:56:30: Error extracting image 4
+2025-10-12T19:56:30: Switched back to main content
+2025-10-12T19:56:30: Switched to iframe
+2025-10-12T19:56:30: Switched to iframe
+2025-10-12T19:56:30: Error extracting image 5
+2025-10-12T19:56:30: Switched back to main content
+2025-10-12T19:56:30: Switched to iframe
+2025-10-12T19:56:30: Switched to iframe
+2025-10-12T19:56:30: Error extracting image 6
+2025-10-12T19:56:30: Switched back to main content
+2025-10-12T19:56:30: Switched to iframe
+2025-10-12T19:56:30: Switched back to main content
+2025-10-12T19:56:30: Switched to iframe
+2025-10-12T19:56:30: Switched to iframe
+2025-10-12T19:56:30: Error extracting image 1
+2025-10-12T19:56:30: Switched back to main content
+2025-10-12T19:56:30: Switched to iframe
+2025-10-12T19:56:30: Switched to iframe
+2025-10-12T19:56:30: Error extracting image 2
+2025-10-12T19:56:30: Switched back to main content
+2025-10-12T19:56:30: Switched to iframe
+2025-10-12T19:56:31: Switched to iframe
+2025-10-12T19:56:31: Error extracting image 3
+2025-10-12T19:56:31: Switched back to main content
+2025-10-12T19:56:31: Switched to iframe
+2025-10-12T19:56:31: Switched to iframe
+2025-10-12T19:56:31: Error extracting image 4
+2025-10-12T19:56:31: Switched back to main content
+2025-10-12T19:56:31: Switched to iframe
+2025-10-12T19:56:31: Switched to iframe
+2025-10-12T19:56:31: Error extracting image 5
+2025-10-12T19:56:31: Switched back to main content
+2025-10-12T19:56:31: Switched to iframe
+2025-10-12T19:56:31: Switched to iframe
+2025-10-12T19:56:31: Error extracting image 6
+2025-10-12T19:56:31: Switched back to main content
+2025-10-12T19:56:31: Switched to iframe
+2025-10-12T19:56:31: 
+2025-10-12T19:56:31: Switched back to main content
+2025-10-12T19:56:32: Switched to iframe
+2025-10-12T19:56:32: Switched to iframe
+2025-10-12T19:56:32: Error extracting image 1
+2025-10-12T19:56:32: Switched back to main content
+2025-10-12T19:56:32: Switched to iframe
+2025-10-12T19:56:32: Switched to iframe
+2025-10-12T19:56:32: Error extracting image 2
+2025-10-12T19:56:32: Switched back to main content
+2025-10-12T19:56:32: Switched to iframe
+2025-10-12T19:56:32: Switched to iframe
+2025-10-12T19:56:32: Error extracting image 3
+2025-10-12T19:56:32: Switched back to main content
+2025-10-12T19:56:33: Switched to iframe
+2025-10-12T19:56:33: Switched to iframe
+2025-10-12T19:56:33: Error extracting image 4
+2025-10-12T19:56:33: Switched back to main content
+2025-10-12T19:56:33: Switched to iframe
+2025-10-12T19:56:33: Switched to iframe
+2025-10-12T19:56:33: Error extracting image 5
+2025-10-12T19:56:33: Switched back to main content
+2025-10-12T19:56:34: Switched to iframe
+2025-10-12T19:56:34: Switched to iframe
+2025-10-12T19:56:34: Error extracting image 6
+2025-10-12T19:56:34: Switched back to main content
+2025-10-12T19:56:34: Switched to iframe
+2025-10-12T19:56:34: Switched back to main content
+2025-10-12T19:56:34: Switched to iframe
+2025-10-12T19:56:34: Switched to iframe
+2025-10-12T19:56:34: Error extracting image 1
+2025-10-12T19:56:34: Switched back to main content
+2025-10-12T19:56:35: Switched to iframe
+2025-10-12T19:56:35: Switched to iframe
+2025-10-12T19:56:35: Error extracting image 2
+2025-10-12T19:56:35: Switched back to main content
+2025-10-12T19:56:35: Switched to iframe
+2025-10-12T19:56:35: Switched to iframe
+2025-10-12T19:56:35: Switched back to main content
+2025-10-12T19:56:35: Switched to iframe
+2025-10-12T19:56:35: Image extracted successfully
+2025-10-12T19:56:35: Image saved as output_image.png
+2025-10-12T19:56:35: 
+2025-10-12T19:56:35: Initialization complete
+2025-10-12T19:56:56: Perchance page opened
+2025-10-12T19:57:01: LocalStorage set
+2025-10-12T19:57:01: 
+2025-10-12T19:57:08: Image generation page opened
+2025-10-12T19:57:12: LocalStorage set for image generation page
+2025-10-12T19:57:25: Page opened
+2025-10-12T19:57:31: Switched to iframe
+2025-10-12T19:57:37: Prompt entered
+2025-10-12T19:57:39: Generate button clicked
+2025-10-12T19:57:54: Switched to iframe
+2025-10-12T19:57:54: Error extracting image 1
+2025-10-12T19:57:54: Switched back to main content
+2025-10-12T19:57:54: Switched to iframe
+2025-10-12T19:57:54: Switched to iframe
+2025-10-12T19:57:54: Error extracting image 2
+2025-10-12T19:57:54: Switched back to main content
+2025-10-12T19:57:55: Switched to iframe
+2025-10-12T19:57:55: Switched to iframe
+2025-10-12T19:57:55: Error extracting image 3
+2025-10-12T19:57:55: Switched back to main content
+2025-10-12T19:57:55: Switched to iframe
+2025-10-12T19:57:55: Switched to iframe
+2025-10-12T19:57:55: Error extracting image 4
+2025-10-12T19:57:55: Switched back to main content
+2025-10-12T19:57:56: Switched to iframe
+2025-10-12T19:57:56: Switched to iframe
+2025-10-12T19:57:56: Switched back to main content
+2025-10-12T19:57:56: Switched to iframe
+2025-10-12T19:57:56: Image extracted successfully
+2025-10-12T19:57:56: Image saved as output_image.png
+2025-10-12T19:57:56: Initialization complete
+2025-10-12T19:57:56: Starting Flask server worker worker-1 on port 5001...
+2025-10-12T19:57:56: 
+2025-10-12T19:57:56: Available API endpoints:
+2025-10-12T19:57:56: - POST /api/register (User registration)
+2025-10-12T19:57:56: - GET/POST /api/verify (Token verification)
+2025-10-12T19:57:56: - POST /api/generate (Image generation)
+2025-10-12T19:57:56: - GET /api/user/tokens (Get token count)
+2025-10-12T19:57:56: - POST /api/user/tokens/add (Add tokens)
+2025-10-12T19:57:56: - GET /api/styles (Get available styles)
+2025-10-12T19:57:56: - GET /api/health (Basic health check)
+2025-10-12T19:57:56: - GET /api/health-generate (Health check with image generation)
+2025-10-12T19:57:56: Worker worker-1: Started worker thread 0
+2025-10-12T19:57:56: Worker worker-1: Started worker thread 1
+2025-10-12T19:57:56: Worker worker-1: Started worker thread 2
+2025-10-12T19:57:56:  * Serving Flask app 'server'
+2025-10-12T19:57:56:  * Debug mode: off
+2025-10-12T20:13:29: Worker worker-1: Initializing Gen object...
+2025-10-12T20:14:00: Perchance page opened
+2025-10-12T20:14:02: LocalStorage set
+2025-10-12T20:14:06: Image generation page opened
+2025-10-12T20:14:08: LocalStorage set for image generation page
+2025-10-12T20:14:13: Page opened
+2025-10-12T20:14:18: Switched to iframe
+2025-10-12T20:14:19: Prompt entered
+2025-10-12T20:14:19: Generate button clicked
+2025-10-12T20:14:34: Switched to iframe
+2025-10-12T20:14:34: Error extracting image 1
+2025-10-12T20:14:34: Switched back to main content
+2025-10-12T20:14:34: Switched to iframe
+2025-10-12T20:14:34: Switched to iframe
+2025-10-12T20:14:34: Error extracting image 2
+2025-10-12T20:14:34: Switched back to main content
+2025-10-12T20:14:34: Switched to iframe
+2025-10-12T20:14:35: Switched to iframe
+2025-10-12T20:14:35: Error extracting image 3
+2025-10-12T20:14:35: Switched back to main content
+2025-10-12T20:14:35: Switched to iframe
+2025-10-12T20:14:35: Switched to iframe
+2025-10-12T20:14:35: Error extracting image 4
+2025-10-12T20:14:35: Switched back to main content
+2025-10-12T20:14:35: Switched to iframe
+2025-10-12T20:14:35: Switched to iframe
+2025-10-12T20:14:35: Error extracting image 5
+2025-10-12T20:14:35: Switched back to main content
+2025-10-12T20:14:35: Switched to iframe
+2025-10-12T20:14:35: Switched to iframe
+2025-10-12T20:14:35: Error extracting image 6
+2025-10-12T20:14:35: Switched back to main content
+2025-10-12T20:14:35: Switched to iframe
+2025-10-12T20:14:35: Switched back to main content
+2025-10-12T20:14:35: Switched to iframe
+2025-10-12T20:14:35: Switched to iframe
+2025-10-12T20:14:35: Error extracting image 1
+2025-10-12T20:14:35: Switched back to main content
+2025-10-12T20:14:35: Switched to iframe
+2025-10-12T20:14:35: Switched to iframe
+2025-10-12T20:14:35: Error extracting image 2
+2025-10-12T20:14:35: Switched back to main content
+2025-10-12T20:14:35: Switched to iframe
+2025-10-12T20:14:35: Switched to iframe
+2025-10-12T20:14:35: Error extracting image 3
+2025-10-12T20:14:35: Switched back to main content
+2025-10-12T20:14:35: Switched to iframe
+2025-10-12T20:14:35: Switched to iframe
+2025-10-12T20:14:35: Error extracting image 4
+2025-10-12T20:14:35: Switched back to main content
+2025-10-12T20:14:36: Switched to iframe
+2025-10-12T20:14:36: Switched to iframe
+2025-10-12T20:14:36: Error extracting image 5
+2025-10-12T20:14:36: Switched back to main content
+2025-10-12T20:14:36: Switched to iframe
+2025-10-12T20:14:36: Switched to iframe
+2025-10-12T20:14:36: Error extracting image 6
+2025-10-12T20:14:36: Switched back to main content
+2025-10-12T20:14:36: Switched to iframe
+2025-10-12T20:14:36: Switched back to main content
+2025-10-12T20:14:36: Switched to iframe
+2025-10-12T20:14:36: Switched to iframe
+2025-10-12T20:14:36: Error extracting image 1
+2025-10-12T20:14:36: Switched back to main content
+2025-10-12T20:14:36: Switched to iframe
+2025-10-12T20:14:36: Switched to iframe
+2025-10-12T20:14:36: Error extracting image 2
+2025-10-12T20:14:36: Switched back to main content
+2025-10-12T20:14:36: Switched to iframe
+2025-10-12T20:14:36: Switched to iframe
+2025-10-12T20:14:36: Error extracting image 3
+2025-10-12T20:14:36: Switched back to main content
+2025-10-12T20:14:36: Switched to iframe
+2025-10-12T20:14:36: Switched to iframe
+2025-10-12T20:14:36: Error extracting image 4
+2025-10-12T20:14:36: Switched back to main content
+2025-10-12T20:14:36: Switched to iframe
+2025-10-12T20:14:36: Switched to iframe
+2025-10-12T20:14:36: Error extracting image 5
+2025-10-12T20:14:36: Switched back to main content
+2025-10-12T20:14:36: Switched to iframe
+2025-10-12T20:14:36: Switched to iframe
+2025-10-12T20:14:36: Error extracting image 6
+2025-10-12T20:14:36: Switched back to main content
+2025-10-12T20:14:36: Switched to iframe
+2025-10-12T20:14:36: Switched back to main content
+2025-10-12T20:14:36: Switched to iframe
+2025-10-12T20:14:36: Switched to iframe
+2025-10-12T20:14:36: Error extracting image 1
+2025-10-12T20:14:36: Switched back to main content
+2025-10-12T20:14:37: Switched to iframe
+2025-10-12T20:14:37: Switched to iframe
+2025-10-12T20:14:37: Error extracting image 2
+2025-10-12T20:14:37: Switched back to main content
+2025-10-12T20:14:37: Switched to iframe
+2025-10-12T20:14:37: Switched to iframe
+2025-10-12T20:14:37: Error extracting image 3
+2025-10-12T20:14:37: Switched back to main content
+2025-10-12T20:14:37: Switched to iframe
+2025-10-12T20:14:37: Switched to iframe
+2025-10-12T20:14:37: Error extracting image 4
+2025-10-12T20:14:37: Switched back to main content
+2025-10-12T20:14:37: Switched to iframe
+2025-10-12T20:14:37: Switched to iframe
+2025-10-12T20:14:37: Error extracting image 5
+2025-10-12T20:14:37: Switched back to main content
+2025-10-12T20:14:37: Switched to iframe
+2025-10-12T20:14:37: Switched to iframe
+2025-10-12T20:14:37: Error extracting image 6
+2025-10-12T20:14:37: Switched back to main content
+2025-10-12T20:14:37: Switched to iframe
+2025-10-12T20:14:37: Switched back to main content
+2025-10-12T20:14:37: Switched to iframe
+2025-10-12T20:14:37: Switched to iframe
+2025-10-12T20:14:37: Error extracting image 1
+2025-10-12T20:14:37: Switched back to main content
+2025-10-12T20:14:37: Switched to iframe
+2025-10-12T20:14:37: Switched to iframe
+2025-10-12T20:14:37: Error extracting image 2
+2025-10-12T20:14:37: Switched back to main content
+2025-10-12T20:14:37: Switched to iframe
+2025-10-12T20:14:37: Switched to iframe
+2025-10-12T20:14:37: Error extracting image 3
+2025-10-12T20:14:37: Switched back to main content
+2025-10-12T20:14:38: Switched to iframe
+2025-10-12T20:14:38: Switched to iframe
+2025-10-12T20:14:38: Error extracting image 4
+2025-10-12T20:14:38: Switched back to main content
+2025-10-12T20:14:38: Switched to iframe
+2025-10-12T20:14:38: Switched to iframe
+2025-10-12T20:14:38: Error extracting image 5
+2025-10-12T20:14:38: Switched back to main content
+2025-10-12T20:14:38: Switched to iframe
+2025-10-12T20:14:38: Switched to iframe
+2025-10-12T20:14:38: Error extracting image 6
+2025-10-12T20:14:38: Switched back to main content
+2025-10-12T20:14:38: Switched to iframe
+2025-10-12T20:14:38: Switched back to main content
+2025-10-12T20:14:38: Switched to iframe
+2025-10-12T20:14:38: 
+2025-10-12T20:14:38: Switched to iframe
+2025-10-12T20:14:38: Error extracting image 1
+2025-10-12T20:14:38: Switched back to main content
+2025-10-12T20:14:38: Switched to iframe
+2025-10-12T20:14:39: Switched to iframe
+2025-10-12T20:14:39: Error extracting image 2
+2025-10-12T20:14:39: Switched back to main content
+2025-10-12T20:14:39: Switched to iframe
+2025-10-12T20:14:39: Switched to iframe
+2025-10-12T20:14:39: Error extracting image 3
+2025-10-12T20:14:39: Switched back to main content
+2025-10-12T20:14:39: Switched to iframe
+2025-10-12T20:14:39: Switched to iframe
+2025-10-12T20:14:39: Error extracting image 4
+2025-10-12T20:14:39: Switched back to main content
+2025-10-12T20:14:39: Switched to iframe
+2025-10-12T20:14:39: Switched to iframe
+2025-10-12T20:14:39: Error extracting image 5
+2025-10-12T20:14:40: Switched back to main content
+2025-10-12T20:14:40: Switched to iframe
+2025-10-12T20:14:40: Switched to iframe
+2025-10-12T20:14:40: Error extracting image 6
+2025-10-12T20:14:40: Switched back to main content
+2025-10-12T20:14:40: Switched to iframe
+2025-10-12T20:14:40: Switched back to main content
+2025-10-12T20:14:40: Switched to iframe
+2025-10-12T20:14:40: Switched to iframe
+2025-10-12T20:14:40: Error extracting image 1
+2025-10-12T20:14:40: Switched back to main content
+2025-10-12T20:14:40: Switched to iframe
+2025-10-12T20:14:40: Switched to iframe
+2025-10-12T20:14:40: Error extracting image 2
+2025-10-12T20:14:40: Switched back to main content
+2025-10-12T20:14:40: Switched to iframe
+2025-10-12T20:14:41: Switched to iframe
+2025-10-12T20:14:41: Error extracting image 3
+2025-10-12T20:14:41: Switched back to main content
+2025-10-12T20:14:41: Switched to iframe
+2025-10-12T20:14:41: Switched to iframe
+2025-10-12T20:14:41: Error extracting image 4
+2025-10-12T20:14:41: Switched back to main content
+2025-10-12T20:14:41: Switched to iframe
+2025-10-12T20:14:41: Switched to iframe
+2025-10-12T20:14:41: Error extracting image 5
+2025-10-12T20:14:41: Switched back to main content
+2025-10-12T20:14:41: Switched to iframe
+2025-10-12T20:14:41: Switched to iframe
+2025-10-12T20:14:41: Error extracting image 6
+2025-10-12T20:14:41: Switched back to main content
+2025-10-12T20:14:41: Switched to iframe
+2025-10-12T20:14:41: Switched back to main content
+2025-10-12T20:14:42: Switched to iframe
+2025-10-12T20:14:42: Switched to iframe
+2025-10-12T20:14:42: Error extracting image 1
+2025-10-12T20:14:42: Switched back to main content
+2025-10-12T20:14:42: Switched to iframe
+2025-10-12T20:14:42: Switched to iframe
+2025-10-12T20:14:42: Error extracting image 2
+2025-10-12T20:14:42: Switched back to main content
+2025-10-12T20:14:42: Switched to iframe
+2025-10-12T20:14:42: Switched to iframe
+2025-10-12T20:14:42: Error extracting image 3
+2025-10-12T20:14:42: Switched back to main content
+2025-10-12T20:14:42: Switched to iframe
+2025-10-12T20:14:42: Switched to iframe
+2025-10-12T20:14:42: Error extracting image 4
+2025-10-12T20:14:42: Switched back to main content
+2025-10-12T20:14:43: Switched to iframe
+2025-10-12T20:14:43: Switched to iframe
+2025-10-12T20:14:43: Error extracting image 5
+2025-10-12T20:14:43: Switched back to main content
+2025-10-12T20:14:43: Switched to iframe
+2025-10-12T20:14:43: Switched to iframe
+2025-10-12T20:14:43: Error extracting image 6
+2025-10-12T20:14:43: Switched back to main content
+2025-10-12T20:14:43: Switched to iframe
+2025-10-12T20:14:43: Switched back to main content
+2025-10-12T20:14:43: Switched to iframe
+2025-10-12T20:14:43: Switched to iframe
+2025-10-12T20:14:43: Error extracting image 1
+2025-10-12T20:14:43: Switched back to main content
+2025-10-12T20:14:43: Switched to iframe
+2025-10-12T20:14:44: Switched to iframe
+2025-10-12T20:14:44: Error extracting image 2
+2025-10-12T20:14:44: Switched back to main content
+2025-10-12T20:14:44: Switched to iframe
+2025-10-12T20:14:44: Switched to iframe
+2025-10-12T20:14:44: Error extracting image 3
+2025-10-12T20:14:44: Switched back to main content
+2025-10-12T20:14:44: Switched to iframe
+2025-10-12T20:14:44: Switched to iframe
+2025-10-12T20:14:44: Error extracting image 4
+2025-10-12T20:14:44: Switched back to main content
+2025-10-12T20:14:44: Switched to iframe
+2025-10-12T20:14:44: 
+2025-10-12T20:14:44: Switched to iframe
+2025-10-12T20:14:44: Error extracting image 5
+2025-10-12T20:14:44: Switched back to main content
+2025-10-12T20:14:44: Switched to iframe
+2025-10-12T20:14:44: Switched to iframe
+2025-10-12T20:14:44: Error extracting image 6
+2025-10-12T20:14:44: Switched back to main content
+2025-10-12T20:14:44: Switched to iframe
+2025-10-12T20:14:44: Switched back to main content
+2025-10-12T20:14:45: Switched to iframe
+2025-10-12T20:14:45: Switched to iframe
+2025-10-12T20:14:45: Error extracting image 1
+2025-10-12T20:14:45: Switched back to main content
+2025-10-12T20:14:45: Switched to iframe
+2025-10-12T20:14:45: Switched to iframe
+2025-10-12T20:14:45: Error extracting image 2
+2025-10-12T20:14:45: Switched back to main content
+2025-10-12T20:14:45: Switched to iframe
+2025-10-12T20:14:45: Switched to iframe
+2025-10-12T20:14:45: Error extracting image 3
+2025-10-12T20:14:45: Switched back to main content
+2025-10-12T20:14:45: Switched to iframe
+2025-10-12T20:14:45: Switched to iframe
+2025-10-12T20:14:45: Error extracting image 4
+2025-10-12T20:14:45: Switched back to main content
+2025-10-12T20:14:45: Switched to iframe
+2025-10-12T20:14:45: Switched to iframe
+2025-10-12T20:14:45: Error extracting image 5
+2025-10-12T20:14:45: Switched back to main content
+2025-10-12T20:14:46: Switched to iframe
+2025-10-12T20:14:46: Switched to iframe
+2025-10-12T20:14:46: Error extracting image 6
+2025-10-12T20:14:46: Switched back to main content
+2025-10-12T20:14:46: Switched to iframe
+2025-10-12T20:14:46: Switched back to main content
+2025-10-12T20:14:46: Switched to iframe
+2025-10-12T20:14:46: Switched to iframe
+2025-10-12T20:14:46: Error extracting image 1
+2025-10-12T20:14:46: Switched back to main content
+2025-10-12T20:14:46: Switched to iframe
+2025-10-12T20:14:46: Switched to iframe
+2025-10-12T20:14:46: Error extracting image 2
+2025-10-12T20:14:46: Switched back to main content
+2025-10-12T20:14:46: Switched to iframe
+2025-10-12T20:14:46: Switched to iframe
+2025-10-12T20:14:46: Error extracting image 3
+2025-10-12T20:14:46: Switched back to main content
+2025-10-12T20:14:46: Switched to iframe
+2025-10-12T20:14:46: Switched to iframe
+2025-10-12T20:14:46: Error extracting image 4
+2025-10-12T20:14:46: Switched back to main content
+2025-10-12T20:14:46: Switched to iframe
+2025-10-12T20:14:47: Switched to iframe
+2025-10-12T20:14:47: Error extracting image 5
+2025-10-12T20:14:47: 
+2025-10-12T20:14:47: Switched back to main content
+2025-10-12T20:14:47: Switched to iframe
+2025-10-12T20:14:47: Switched to iframe
+2025-10-12T20:14:47: Error extracting image 6
+2025-10-12T20:14:47: Switched back to main content
+2025-10-12T20:14:47: Switched to iframe
+2025-10-12T20:14:47: Switched back to main content
+2025-10-12T20:14:47: Switched to iframe
+2025-10-12T20:14:47: Switched to iframe
+2025-10-12T20:14:47: Error extracting image 1
+2025-10-12T20:14:47: Switched back to main content
+2025-10-12T20:14:47: Switched to iframe
+2025-10-12T20:14:47: Switched to iframe
+2025-10-12T20:14:47: Error extracting image 2
+2025-10-12T20:14:47: Switched back to main content
+2025-10-12T20:14:47: Switched to iframe
+2025-10-12T20:14:47: Switched to iframe
+2025-10-12T20:14:47: Error extracting image 3
+2025-10-12T20:14:47: Switched back to main content
+2025-10-12T20:14:47: Switched to iframe
+2025-10-12T20:14:47: Switched to iframe
+2025-10-12T20:14:47: Error extracting image 4
+2025-10-12T20:14:47: Switched back to main content
+2025-10-12T20:14:47: Switched to iframe
+2025-10-12T20:14:48: Switched to iframe
+2025-10-12T20:14:48: Error extracting image 5
+2025-10-12T20:14:48: Switched back to main content
+2025-10-12T20:14:48: Switched to iframe
+2025-10-12T20:14:48: Switched to iframe
+2025-10-12T20:14:48: Error extracting image 6
+2025-10-12T20:14:48: Switched back to main content
+2025-10-12T20:14:48: Switched to iframe
+2025-10-12T20:14:48: Switched back to main content
+2025-10-12T20:14:48: Switched to iframe
+2025-10-12T20:14:48: Switched to iframe
+2025-10-12T20:14:48: Error extracting image 1
+2025-10-12T20:14:48: Switched back to main content
+2025-10-12T20:14:48: Switched to iframe
+2025-10-12T20:14:48: Switched to iframe
+2025-10-12T20:14:48: Error extracting image 2
+2025-10-12T20:14:48: Switched back to main content
+2025-10-12T20:14:48: Switched to iframe
+2025-10-12T20:14:48: Switched to iframe
+2025-10-12T20:14:48: Error extracting image 3
+2025-10-12T20:14:48: Switched back to main content
+2025-10-12T20:14:48: Switched to iframe
+2025-10-12T20:14:48: Switched to iframe
+2025-10-12T20:14:48: Error extracting image 4
+2025-10-12T20:14:48: Switched back to main content
+2025-10-12T20:14:49: Switched to iframe
+2025-10-12T20:14:49: Switched to iframe
+2025-10-12T20:14:49: Error extracting image 5
+2025-10-12T20:14:49: Switched back to main content
+2025-10-12T20:14:49: Switched to iframe
+2025-10-12T20:14:49: Switched to iframe
+2025-10-12T20:14:49: Error extracting image 6
+2025-10-12T20:14:49: Switched back to main content
+2025-10-12T20:14:49: Switched to iframe
+2025-10-12T20:14:49: Switched back to main content
+2025-10-12T20:14:49: Switched to iframe
+2025-10-12T20:14:49: Switched to iframe
+2025-10-12T20:14:49: Error extracting image 1
+2025-10-12T20:14:49: Switched back to main content
+2025-10-12T20:14:49: Switched to iframe
+2025-10-12T20:14:49: Switched to iframe
+2025-10-12T20:14:49: Error extracting image 2
+2025-10-12T20:14:49: Switched back to main content
+2025-10-12T20:14:49: Switched to iframe
+2025-10-12T20:14:49: Switched to iframe
+2025-10-12T20:14:49: Error extracting image 3
+2025-10-12T20:14:49: Switched back to main content
+2025-10-12T20:14:49: Switched to iframe
+2025-10-12T20:14:49: Switched to iframe
+2025-10-12T20:14:49: Error extracting image 4
+2025-10-12T20:14:49: Switched back to main content
+2025-10-12T20:14:49: Switched to iframe
+2025-10-12T20:14:50: Switched to iframe
+2025-10-12T20:14:50: Error extracting image 5
+2025-10-12T20:14:50: Switched back to main content
+2025-10-12T20:14:50: Switched to iframe
+2025-10-12T20:14:50: Switched to iframe
+2025-10-12T20:14:50: Error extracting image 6
+2025-10-12T20:14:50: Switched back to main content
+2025-10-12T20:14:50: Switched to iframe
+2025-10-12T20:14:50: Switched back to main content
+2025-10-12T20:14:50: Switched to iframe
+2025-10-12T20:14:50: Switched to iframe
+2025-10-12T20:14:50: Error extracting image 1
+2025-10-12T20:14:50: Switched back to main content
+2025-10-12T20:14:50: Switched to iframe
+2025-10-12T20:14:50: Switched to iframe
+2025-10-12T20:14:50: Error extracting image 2
+2025-10-12T20:14:50: Switched back to main content
+2025-10-12T20:14:50: Switched to iframe
+2025-10-12T20:14:50: Switched to iframe
+2025-10-12T20:14:50: Error extracting image 3
+2025-10-12T20:14:50: Switched back to main content
+2025-10-12T20:14:50: Switched to iframe
+2025-10-12T20:14:50: Switched to iframe
+2025-10-12T20:14:50: Error extracting image 4
+2025-10-12T20:14:50: Switched back to main content
+2025-10-12T20:14:50: Switched to iframe
+2025-10-12T20:14:50: Switched to iframe
+2025-10-12T20:14:50: Error extracting image 5
+2025-10-12T20:14:50: Switched back to main content
+2025-10-12T20:14:51: Switched to iframe
+2025-10-12T20:14:51: Switched to iframe
+2025-10-12T20:14:51: Error extracting image 6
+2025-10-12T20:14:51: Switched back to main content
+2025-10-12T20:14:51: Switched to iframe
+2025-10-12T20:14:51: Switched back to main content
+2025-10-12T20:14:51: Switched to iframe
+2025-10-12T20:14:51: Switched to iframe
+2025-10-12T20:14:51: Error extracting image 1
+2025-10-12T20:14:51: Switched back to main content
+2025-10-12T20:14:51: Switched to iframe
+2025-10-12T20:14:51: Switched to iframe
+2025-10-12T20:14:51: Error extracting image 2
+2025-10-12T20:14:51: Switched back to main content
+2025-10-12T20:14:51: Switched to iframe
+2025-10-12T20:14:51: Switched to iframe
+2025-10-12T20:14:51: Error extracting image 3
+2025-10-12T20:14:51: Switched back to main content
+2025-10-12T20:14:51: Switched to iframe
+2025-10-12T20:14:51: Switched to iframe
+2025-10-12T20:14:51: Error extracting image 4
+2025-10-12T20:14:51: Switched back to main content
+2025-10-12T20:14:51: Switched to iframe
+2025-10-12T20:14:51: Switched to iframe
+2025-10-12T20:14:51: Error extracting image 5
+2025-10-12T20:14:51: Switched back to main content
+2025-10-12T20:14:51: Switched to iframe
+2025-10-12T20:14:51: Switched to iframe
+2025-10-12T20:14:52: Error extracting image 6
+2025-10-12T20:14:52: Switched back to main content
+2025-10-12T20:14:52: Switched to iframe
+2025-10-12T20:14:52: Switched back to main content
+2025-10-12T20:14:52: Switched to iframe
+2025-10-12T20:14:52: Switched to iframe
+2025-10-12T20:14:52: Error extracting image 1
+2025-10-12T20:14:52: Switched back to main content
+2025-10-12T20:14:52: Switched to iframe
+2025-10-12T20:14:52: Switched to iframe
+2025-10-12T20:14:52: Error extracting image 2
+2025-10-12T20:14:52: Switched back to main content
+2025-10-12T20:14:52: Switched to iframe
+2025-10-12T20:14:52: Switched to iframe
+2025-10-12T20:14:52: Error extracting image 3
+2025-10-12T20:14:52: Switched back to main content
+2025-10-12T20:14:52: Switched to iframe
+2025-10-12T20:14:52: Switched to iframe
+2025-10-12T20:14:52: Error extracting image 4
+2025-10-12T20:14:52: Switched back to main content
+2025-10-12T20:14:52: Switched to iframe
+2025-10-12T20:14:53: Switched to iframe
+2025-10-12T20:14:53: Error extracting image 5
+2025-10-12T20:14:53: Switched back to main content
+2025-10-12T20:14:53: Switched to iframe
+2025-10-12T20:14:53: Switched to iframe
+2025-10-12T20:14:53: Error extracting image 6
+2025-10-12T20:14:53: Switched back to main content
+2025-10-12T20:14:53: Switched to iframe
+2025-10-12T20:14:53: Switched back to main content
+2025-10-12T20:14:53: Switched to iframe
+2025-10-12T20:14:53: Switched to iframe
+2025-10-12T20:14:53: Error extracting image 1
+2025-10-12T20:14:53: Switched back to main content
+2025-10-12T20:14:53: Switched to iframe
+2025-10-12T20:14:53: Switched to iframe
+2025-10-12T20:14:53: Error extracting image 2
+2025-10-12T20:14:53: Switched back to main content
+2025-10-12T20:14:53: Switched to iframe
+2025-10-12T20:14:53: Switched to iframe
+2025-10-12T20:14:53: Error extracting image 3
+2025-10-12T20:14:53: Switched back to main content
+2025-10-12T20:14:53: Switched to iframe
+2025-10-12T20:14:53: Switched to iframe
+2025-10-12T20:14:53: Error extracting image 4
+2025-10-12T20:14:53: Switched back to main content
+2025-10-12T20:14:53: Switched to iframe
+2025-10-12T20:14:53: Switched to iframe
+2025-10-12T20:14:53: Error extracting image 5
+2025-10-12T20:14:53: Switched back to main content
+2025-10-12T20:14:54: Switched to iframe
+2025-10-12T20:14:54: Switched to iframe
+2025-10-12T20:14:54: Error extracting image 6
+2025-10-12T20:14:54: Switched back to main content
+2025-10-12T20:14:54: Switched to iframe
+2025-10-12T20:14:54: Switched back to main content
+2025-10-12T20:14:54: Switched to iframe
+2025-10-12T20:14:54: Switched to iframe
+2025-10-12T20:14:54: Error extracting image 1
+2025-10-12T20:14:54: Switched back to main content
+2025-10-12T20:14:54: Switched to iframe
+2025-10-12T20:14:54: Switched to iframe
+2025-10-12T20:14:54: Error extracting image 2
+2025-10-12T20:14:54: Switched back to main content
+2025-10-12T20:14:54: Switched to iframe
+2025-10-12T20:14:54: 
+2025-10-12T20:14:54: Switched to iframe
+2025-10-12T20:14:54: Error extracting image 3
+2025-10-12T20:14:54: Switched back to main content
+2025-10-12T20:14:54: Switched to iframe
+2025-10-12T20:14:54: Switched to iframe
+2025-10-12T20:14:54: Error extracting image 4
+2025-10-12T20:14:54: Switched back to main content
+2025-10-12T20:14:54: Switched to iframe
+2025-10-12T20:14:54: Switched to iframe
+2025-10-12T20:14:54: Error extracting image 5
+2025-10-12T20:14:54: Switched back to main content
+2025-10-12T20:14:54: Switched to iframe
+2025-10-12T20:14:54: Switched to iframe
+2025-10-12T20:14:55: Error extracting image 6
+2025-10-12T20:14:55: 
+2025-10-12T20:14:55: Switched back to main content
+2025-10-12T20:14:55: Switched to iframe
+2025-10-12T20:14:55: Switched back to main content
+2025-10-12T20:14:55: Switched to iframe
+2025-10-12T20:14:55: Switched to iframe
+2025-10-12T20:14:55: Error extracting image 1
+2025-10-12T20:14:55: Switched back to main content
+2025-10-12T20:14:55: Switched to iframe
+2025-10-12T20:14:55: Switched to iframe
+2025-10-12T20:14:55: Error extracting image 2
+2025-10-12T20:14:55: Switched back to main content
+2025-10-12T20:14:55: Switched to iframe
+2025-10-12T20:14:55: Switched to iframe
+2025-10-12T20:14:55: Error extracting image 3
+2025-10-12T20:14:55: Switched back to main content
+2025-10-12T20:14:55: Switched to iframe
+2025-10-12T20:14:55: Switched to iframe
+2025-10-12T20:14:55: Error extracting image 4
+2025-10-12T20:14:55: Switched back to main content
+2025-10-12T20:14:55: Switched to iframe
+2025-10-12T20:14:55: Switched to iframe
+2025-10-12T20:14:55: Error extracting image 5
+2025-10-12T20:14:55: Switched back to main content
+2025-10-12T20:14:55: Switched to iframe
+2025-10-12T20:14:55: Switched to iframe
+2025-10-12T20:14:55: Error extracting image 6
+2025-10-12T20:14:55: Switched back to main content
+2025-10-12T20:14:56: Switched to iframe
+2025-10-12T20:14:56: Switched back to main content
+2025-10-12T20:14:56: Switched to iframe
+2025-10-12T20:14:56: Switched to iframe
+2025-10-12T20:14:56: Error extracting image 1
+2025-10-12T20:14:56: Switched back to main content
+2025-10-12T20:14:56: Switched to iframe
+2025-10-12T20:14:56: Switched to iframe
+2025-10-12T20:14:56: Error extracting image 2
+2025-10-12T20:14:56: Switched back to main content
+2025-10-12T20:14:56: Switched to iframe
+2025-10-12T20:14:56: Switched to iframe
+2025-10-12T20:14:56: Error extracting image 3
+2025-10-12T20:14:56: Switched back to main content
+2025-10-12T20:14:56: Switched to iframe
+2025-10-12T20:14:56: Switched to iframe
+2025-10-12T20:14:56: Error extracting image 4
+2025-10-12T20:14:56: Switched back to main content
+2025-10-12T20:14:56: Switched to iframe
+2025-10-12T20:14:56: Switched to iframe
+2025-10-12T20:14:56: Switched back to main content
+2025-10-12T20:14:56: Switched to iframe
+2025-10-12T20:14:56: Image extracted successfully
+2025-10-12T20:14:56: Image saved as output_image.png
+2025-10-12T20:14:56: 
+2025-10-12T20:14:56: Starting Flask server worker worker-1 on port 5001...
+2025-10-12T20:14:56: Available API endpoints:
+2025-10-12T20:14:56: - POST /api/register (User registration)
+2025-10-12T20:14:56: - GET/POST /api/verify (Token verification)
+2025-10-12T20:14:56: - POST /api/generate (Image generation)
+2025-10-12T20:14:56: - GET /api/user/tokens (Get token count)
+2025-10-12T20:14:56: - POST /api/user/tokens/add (Add tokens)
+2025-10-12T20:14:56: - GET /api/styles (Get available styles)
+2025-10-12T20:14:56: - GET /api/health (Basic health check)
+2025-10-12T20:14:56: - GET /api/health-generate (Health check with image generation)
+2025-10-12T20:14:56: Worker worker-1: Started single worker thread
+2025-10-12T20:14:56:  * Serving Flask app 'server'
+2025-10-12T20:14:56:  * Debug mode: off
+2025-10-12T20:16:07: Style selected: Painted Anime
+2025-10-12T20:16:08: Prompt entered
+2025-10-12T20:16:09: Generate button clicked
+2025-10-12T20:16:24: Switched to iframe
+2025-10-12T20:16:24: Error extracting image 1
+2025-10-12T20:16:24: Switched back to main content
+2025-10-12T20:16:24: Switched to iframe
+2025-10-12T20:16:24: Switched to iframe
+2025-10-12T20:16:24: Error extracting image 2
+2025-10-12T20:16:24: Switched back to main content
+2025-10-12T20:16:24: Switched to iframe
+2025-10-12T20:16:24: Switched to iframe
+2025-10-12T20:16:24: Error extracting image 3
+2025-10-12T20:16:24: Switched back to main content
+2025-10-12T20:16:24: Switched to iframe
+2025-10-12T20:16:24: Switched to iframe
+2025-10-12T20:16:24: Switched back to main content
+2025-10-12T20:16:24: Switched to iframe
+2025-10-12T20:16:24: Worker worker-1: Health check image generated successfully at 2025-10-12 14:46:24.303210+00:00
+2025-10-12T20:20:32: Worker worker-1: Initializing Gen object...
+2025-10-12T20:20:52: Starting Flask server worker worker-1 on port 5001...
+2025-10-12T20:20:52: Available API endpoints:
+2025-10-12T20:20:52: 
+2025-10-12T20:20:52: - GET/POST /api/verify (Token verification)
+2025-10-12T20:20:52: - POST /api/generate (Image generation)
+2025-10-12T20:20:52: - GET /api/user/tokens (Get token count)
+2025-10-12T20:20:52: - POST /api/user/tokens/add (Add tokens)
+2025-10-12T20:20:52: - GET /api/styles (Get available styles)
+2025-10-12T20:20:52: - GET /api/health (Basic health check)
+2025-10-12T20:20:52: - GET /api/health-generate (Health check with image generation)
+2025-10-12T20:20:52: Worker worker-1: Started single worker thread
+2025-10-12T20:20:52:  * Serving Flask app 'server'
+2025-10-12T20:20:52:  * Debug mode: off
+2025-10-12T20:23:52: Worker 0: Error processing job: Message: no such window: target window already closed
+2025-10-12T20:23:52: from unknown error: web view not found
+2025-10-12T20:23:52:   (Session info: chrome=141.0.7390.66)
+2025-10-12T20:23:52: Stacktrace:
+2025-10-12T20:23:52: 	GetHandleVerifier [0x0x7ff76e619f25+80677]
+2025-10-12T20:23:52: 	GetHandleVerifier [0x0x7ff76e619f80+80768]
+2025-10-12T20:23:52: 	(No symbol) [0x0x7ff76e3c02bf]
+2025-10-12T20:23:52: 	(No symbol) [0x0x7ff76e398041]
+2025-10-12T20:23:52: 	(No symbol) [0x0x7ff76e448b8e]
+2025-10-12T20:23:52: 	(No symbol) [0x0x7ff76e4692d2]
+2025-10-12T20:23:52: 	(No symbol) [0x0x7ff76e4412e3]
+2025-10-12T20:23:52: 	(No symbol) [0x0x7ff76e409770]
+2025-10-12T20:23:52: 	(No symbol) [0x0x7ff76e40a5a3]
+2025-10-12T20:23:52: 	GetHandleVerifier [0x0x7ff76e8f817d+3087741]
+2025-10-12T20:23:52: 	GetHandleVerifier [0x0x7ff76e8f223a+3063354]
+2025-10-12T20:23:52: 	GetHandleVerifier [0x0x7ff76e9132c5+3198661]
+2025-10-12T20:23:52: 	GetHandleVerifier [0x0x7ff76e63412e+187694]
+2025-10-12T20:23:52: 	GetHandleVerifier [0x0x7ff76e63b20f+216591]
+2025-10-12T20:23:52: 	GetHandleVerifier [0x0x7ff76e622ee4+117476]
+2025-10-12T20:23:52: 	GetHandleVerifier [0x0x7ff76e62309f+117919]
+2025-10-12T20:23:52: 	GetHandleVerifier [0x0x7ff76e6091a8+11688]
+2025-10-12T20:23:52: 	BaseThreadInitThunk [0x0x7ffa4d61e8d7+23]
+2025-10-12T20:23:52: 	RtlUserThreadStart [0x0x7ffa4e968d9c+44]
+2025-10-12T20:23:52: 
+2025-10-12T20:25:07: Worker worker-1: Initializing Gen object...
+2025-10-12T20:25:07: 
+2025-10-12T20:25:33: Perchance page opened
+2025-10-12T20:25:35: Starting Flask server worker worker-1 on port 5001...
+2025-10-12T20:25:35: 
+2025-10-12T20:25:35: - POST /api/register (User registration)
+2025-10-12T20:25:35: - GET/POST /api/verify (Token verification)
+2025-10-12T20:25:35: - POST /api/generate (Image generation)
+2025-10-12T20:25:35: - GET /api/user/tokens (Get token count)
+2025-10-12T20:25:35: - POST /api/user/tokens/add (Add tokens)
+2025-10-12T20:25:35: - GET /api/styles (Get available styles)
+2025-10-12T20:25:35: - GET /api/health (Basic health check)
+2025-10-12T20:25:35: - GET /api/health-generate (Health check with image generation)
+2025-10-12T20:25:35: Worker worker-1: Started single worker thread
+2025-10-12T20:25:35:  * Serving Flask app 'server'
+2025-10-12T20:25:35:  * Debug mode: off
+2025-10-12T20:27:10: Worker 0: Error processing job: Message: no such window: target window already closed
+2025-10-12T20:27:10: from unknown error: web view not found
+2025-10-12T20:27:10:   (Session info: chrome=141.0.7390.66)
+2025-10-12T20:27:10: Stacktrace:
+2025-10-12T20:27:10: 	GetHandleVerifier [0x0x7ff76e619f25+80677]
+2025-10-12T20:27:10: 	GetHandleVerifier [0x0x7ff76e619f80+80768]
+2025-10-12T20:27:10: 	(No symbol) [0x0x7ff76e3c02bf]
+2025-10-12T20:27:10: 	(No symbol) [0x0x7ff76e398041]
+2025-10-12T20:27:10: 	(No symbol) [0x0x7ff76e448b8e]
+2025-10-12T20:27:10: 	(No symbol) [0x0x7ff76e4692d2]
+2025-10-12T20:27:10: 	(No symbol) [0x0x7ff76e4412e3]
+2025-10-12T20:27:10: 	(No symbol) [0x0x7ff76e409770]
+2025-10-12T20:27:10: 	(No symbol) [0x0x7ff76e40a5a3]
+2025-10-12T20:27:10: 	GetHandleVerifier [0x0x7ff76e8f817d+3087741]
+2025-10-12T20:27:10: 	GetHandleVerifier [0x0x7ff76e8f223a+3063354]
+2025-10-12T20:27:10: 	GetHandleVerifier [0x0x7ff76e9132c5+3198661]
+2025-10-12T20:27:10: 	GetHandleVerifier [0x0x7ff76e63412e+187694]
+2025-10-12T20:27:10: 	GetHandleVerifier [0x0x7ff76e63b20f+216591]
+2025-10-12T20:27:10: 	GetHandleVerifier [0x0x7ff76e622ee4+117476]
+2025-10-12T20:27:10: 	GetHandleVerifier [0x0x7ff76e62309f+117919]
+2025-10-12T20:27:10: 	GetHandleVerifier [0x0x7ff76e6091a8+11688]
+2025-10-12T20:27:10: 	BaseThreadInitThunk [0x0x7ffa4d61e8d7+23]
+2025-10-12T20:27:10: 	RtlUserThreadStart [0x0x7ffa4e968d9c+44]
+2025-10-12T20:27:10: 
+2025-10-12T20:33:08: Worker worker-1: Initializing Gen object...
+2025-10-12T20:33:08: Worker worker-1: Using directories:
+2025-10-12T20:33:08:   - Downloads: C:\Users\Sahan\Dark\Promise\genApp\backend\worker_data_worker-1\downloaded_files
+2025-10-12T20:33:08:   - Chrome Profile: C:\Users\Sahan\Dark\Promise\genApp\backend\worker_data_worker-1\chrome_profile
+2025-10-12T20:33:08: Starting Flask server worker worker-1 on port 5001...
+2025-10-12T20:33:08: Available API endpoints:
+2025-10-12T20:33:08: - POST /api/register (User registration)
+2025-10-12T20:33:08: - GET/POST /api/verify (Token verification)
+2025-10-12T20:33:08: - POST /api/generate (Image generation)
+2025-10-12T20:33:08: - GET /api/user/tokens (Get token count)
+2025-10-12T20:33:08: - POST /api/user/tokens/add (Add tokens)
+2025-10-12T20:33:08: - GET /api/styles (Get available styles)
+2025-10-12T20:33:08: - GET /api/health (Basic health check)
+2025-10-12T20:33:08: - GET /api/health-generate (Health check with image generation)
+2025-10-12T20:33:08: Worker worker-1: Started single worker thread
+2025-10-12T20:33:08:  * Serving Flask app 'server'
+2025-10-12T20:33:08:  * Debug mode: off
+2025-10-12T20:35:23: Worker worker-1: Initializing Gen object...
+2025-10-12T20:35:23: Worker worker-1: Using directories:
+2025-10-12T20:35:23:   - Downloads: C:\Users\Sahan\Dark\Promise\genApp\backend\worker_data_worker-1\downloaded_files
+2025-10-12T20:35:23:   - Chrome Profile: C:\Users\Sahan\Dark\Promise\genApp\backend\worker_data_worker-1\chrome_profile
+2025-10-12T20:36:05: Worker worker-1: Perchance page opened
+2025-10-12T20:36:07: Starting Flask server worker worker-1 on port 5001...
+2025-10-12T20:36:07: Available API endpoints:
+2025-10-12T20:36:07: - POST /api/register (User registration)
+2025-10-12T20:36:07: - GET/POST /api/verify (Token verification)
+2025-10-12T20:36:07: - POST /api/generate (Image generation)
+2025-10-12T20:36:07: - GET /api/user/tokens (Get token count)
+2025-10-12T20:36:07: - POST /api/user/tokens/add (Add tokens)
+2025-10-12T20:36:07: - GET /api/styles (Get available styles)
+2025-10-12T20:36:07: - GET /api/health (Basic health check)
+2025-10-12T20:36:07: - GET /api/health-generate (Health check with image generation)
+2025-10-12T20:36:07: Worker worker-1: Started single worker thread
+2025-10-12T20:36:07:  * Serving Flask app 'server'
+2025-10-12T20:36:07:  * Debug mode: off
+2025-10-12T20:38:59: Worker worker-1: Initializing Gen object...
+2025-10-12T20:38:59: Worker worker-1: Using directories:
+2025-10-12T20:38:59:   - Downloads: C:\Users\Sahan\Dark\Promise\genApp\backend\worker_data_worker-1\downloaded_files
+2025-10-12T20:38:59:   - Chrome Profile: C:\Users\Sahan\Dark\Promise\genApp\backend\worker_data_worker-1\chrome_profile
+2025-10-12T20:39:28: Worker worker-1: Perchance page opened
+2025-10-12T20:39:30: Worker worker-1: LocalStorage set
+2025-10-12T20:39:34: Worker worker-1: Image generation page opened
+2025-10-12T20:39:36: Worker worker-1: LocalStorage set for image generation page
+2025-10-12T20:39:39: Worker worker-1: Page opened
+2025-10-12T20:39:44: Worker worker-1: Switched to iframe
+2025-10-12T20:39:45: Worker worker-1: Prompt entered
+2025-10-12T20:39:46: Worker worker-1: Generate button clicked
+2025-10-12T20:40:01: Worker worker-1: Switched to iframe
+2025-10-12T20:40:01: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:01: Worker worker-1: Switched back to main content
+2025-10-12T20:40:01: Worker worker-1: Switched to iframe
+2025-10-12T20:40:01: Worker worker-1: Switched to iframe
+2025-10-12T20:40:01: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:01: Worker worker-1: Switched back to main content
+2025-10-12T20:40:01: Worker worker-1: Switched to iframe
+2025-10-12T20:40:01: Worker worker-1: Switched to iframe
+2025-10-12T20:40:01: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:01: Worker worker-1: Switched back to main content
+2025-10-12T20:40:01: Worker worker-1: Switched to iframe
+2025-10-12T20:40:01: Worker worker-1: Switched to iframe
+2025-10-12T20:40:01: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:01: Worker worker-1: Switched back to main content
+2025-10-12T20:40:01: Worker worker-1: Switched to iframe
+2025-10-12T20:40:01: Worker worker-1: Switched to iframe
+2025-10-12T20:40:01: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:01: Worker worker-1: Switched back to main content
+2025-10-12T20:40:02: Worker worker-1: Switched to iframe
+2025-10-12T20:40:02: Worker worker-1: Switched to iframe
+2025-10-12T20:40:02: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:02: Worker worker-1: Switched back to main content
+2025-10-12T20:40:02: Worker worker-1: Switched to iframe
+2025-10-12T20:40:02: Worker worker-1: Switched back to main content
+2025-10-12T20:40:02: Worker worker-1: Switched to iframe
+2025-10-12T20:40:02: Worker worker-1: Switched to iframe
+2025-10-12T20:40:02: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:02: Worker worker-1: Switched back to main content
+2025-10-12T20:40:02: Worker worker-1: Switched to iframe
+2025-10-12T20:40:02: Worker worker-1: Switched to iframe
+2025-10-12T20:40:02: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:02: Worker worker-1: Switched back to main content
+2025-10-12T20:40:02: Worker worker-1: Switched to iframe
+2025-10-12T20:40:02: Worker worker-1: Switched to iframe
+2025-10-12T20:40:02: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:02: Worker worker-1: Switched back to main content
+2025-10-12T20:40:02: Worker worker-1: Switched to iframe
+2025-10-12T20:40:02: Worker worker-1: Switched to iframe
+2025-10-12T20:40:02: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:02: Worker worker-1: Switched back to main content
+2025-10-12T20:40:03: Worker worker-1: Switched to iframe
+2025-10-12T20:40:03: Worker worker-1: Switched to iframe
+2025-10-12T20:40:03: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:03: Worker worker-1: Switched back to main content
+2025-10-12T20:40:03: Worker worker-1: Switched to iframe
+2025-10-12T20:40:03: Worker worker-1: Switched to iframe
+2025-10-12T20:40:03: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:03: Worker worker-1: Switched back to main content
+2025-10-12T20:40:03: Worker worker-1: Switched to iframe
+2025-10-12T20:40:03: Worker worker-1: Switched back to main content
+2025-10-12T20:40:03: Worker worker-1: Switched to iframe
+2025-10-12T20:40:03: Worker worker-1: Switched to iframe
+2025-10-12T20:40:03: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:03: Worker worker-1: Switched back to main content
+2025-10-12T20:40:03: Worker worker-1: Switched to iframe
+2025-10-12T20:40:03: Worker worker-1: Switched to iframe
+2025-10-12T20:40:03: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:03: Worker worker-1: Switched back to main content
+2025-10-12T20:40:04: Worker worker-1: Switched to iframe
+2025-10-12T20:40:04: Worker worker-1: Switched to iframe
+2025-10-12T20:40:04: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:04: Worker worker-1: Switched back to main content
+2025-10-12T20:40:04: Worker worker-1: Switched to iframe
+2025-10-12T20:40:04: Worker worker-1: Switched to iframe
+2025-10-12T20:40:04: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:04: Worker worker-1: Switched back to main content
+2025-10-12T20:40:04: Worker worker-1: Switched to iframe
+2025-10-12T20:40:04: Worker worker-1: Switched to iframe
+2025-10-12T20:40:04: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:04: Worker worker-1: Switched back to main content
+2025-10-12T20:40:04: Worker worker-1: Switched to iframe
+2025-10-12T20:40:04: Worker worker-1: Switched to iframe
+2025-10-12T20:40:04: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:04: Worker worker-1: Switched back to main content
+2025-10-12T20:40:05: Worker worker-1: Switched to iframe
+2025-10-12T20:40:05: Worker worker-1: Switched back to main content
+2025-10-12T20:40:05: Worker worker-1: Switched to iframe
+2025-10-12T20:40:05: Worker worker-1: Switched to iframe
+2025-10-12T20:40:05: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:05: Worker worker-1: Switched back to main content
+2025-10-12T20:40:05: Worker worker-1: Switched to iframe
+2025-10-12T20:40:05: Worker worker-1: Switched to iframe
+2025-10-12T20:40:05: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:05: Worker worker-1: Switched back to main content
+2025-10-12T20:40:05: Worker worker-1: Switched to iframe
+2025-10-12T20:40:05: Worker worker-1: Switched to iframe
+2025-10-12T20:40:05: 
+2025-10-12T20:40:05: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:05: Worker worker-1: Switched back to main content
+2025-10-12T20:40:05: Worker worker-1: Switched to iframe
+2025-10-12T20:40:05: Worker worker-1: Switched to iframe
+2025-10-12T20:40:05: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:05: Worker worker-1: Switched back to main content
+2025-10-12T20:40:05: Worker worker-1: Switched to iframe
+2025-10-12T20:40:05: Worker worker-1: Switched to iframe
+2025-10-12T20:40:06: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:06: Worker worker-1: Switched back to main content
+2025-10-12T20:40:06: Worker worker-1: Switched to iframe
+2025-10-12T20:40:06: Worker worker-1: Switched to iframe
+2025-10-12T20:40:06: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:06: Worker worker-1: Switched back to main content
+2025-10-12T20:40:06: Worker worker-1: Switched to iframe
+2025-10-12T20:40:06: Worker worker-1: Switched back to main content
+2025-10-12T20:40:06: Worker worker-1: Switched to iframe
+2025-10-12T20:40:06: Worker worker-1: Switched to iframe
+2025-10-12T20:40:06: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:06: Worker worker-1: Switched back to main content
+2025-10-12T20:40:06: Worker worker-1: Switched to iframe
+2025-10-12T20:40:07: Worker worker-1: Switched to iframe
+2025-10-12T20:40:07: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:07: Worker worker-1: Switched back to main content
+2025-10-12T20:40:07: Worker worker-1: Switched to iframe
+2025-10-12T20:40:07: Worker worker-1: Switched to iframe
+2025-10-12T20:40:07: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:07: Worker worker-1: Switched back to main content
+2025-10-12T20:40:07: Worker worker-1: Switched to iframe
+2025-10-12T20:40:07: Worker worker-1: Switched to iframe
+2025-10-12T20:40:07: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:07: Worker worker-1: Switched back to main content
+2025-10-12T20:40:07: Worker worker-1: Switched to iframe
+2025-10-12T20:40:07: Worker worker-1: Switched to iframe
+2025-10-12T20:40:07: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:07: Worker worker-1: Switched back to main content
+2025-10-12T20:40:07: Worker worker-1: Switched to iframe
+2025-10-12T20:40:07: Worker worker-1: Switched to iframe
+2025-10-12T20:40:07: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:07: Worker worker-1: Switched back to main content
+2025-10-12T20:40:07: Worker worker-1: Switched to iframe
+2025-10-12T20:40:07: Worker worker-1: Switched back to main content
+2025-10-12T20:40:07: Worker worker-1: Switched to iframe
+2025-10-12T20:40:07: Worker worker-1: Switched to iframe
+2025-10-12T20:40:07: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:07: Worker worker-1: Switched back to main content
+2025-10-12T20:40:08: Worker worker-1: Switched to iframe
+2025-10-12T20:40:08: Worker worker-1: Switched to iframe
+2025-10-12T20:40:08: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:08: Worker worker-1: Switched back to main content
+2025-10-12T20:40:08: Worker worker-1: Switched to iframe
+2025-10-12T20:40:08: Worker worker-1: Switched to iframe
+2025-10-12T20:40:08: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:08: Worker worker-1: Switched back to main content
+2025-10-12T20:40:08: Worker worker-1: Switched to iframe
+2025-10-12T20:40:08: Worker worker-1: Switched to iframe
+2025-10-12T20:40:08: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:08: Worker worker-1: Switched back to main content
+2025-10-12T20:40:08: Worker worker-1: Switched to iframe
+2025-10-12T20:40:08: Worker worker-1: Switched to iframe
+2025-10-12T20:40:08: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:08: Worker worker-1: Switched back to main content
+2025-10-12T20:40:08: Worker worker-1: Switched to iframe
+2025-10-12T20:40:08: Worker worker-1: Switched to iframe
+2025-10-12T20:40:08: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:08: Worker worker-1: Switched back to main content
+2025-10-12T20:40:08: Worker worker-1: Switched to iframe
+2025-10-12T20:40:08: Worker worker-1: Switched back to main content
+2025-10-12T20:40:08: Worker worker-1: Switched to iframe
+2025-10-12T20:40:08: Worker worker-1: Switched to iframe
+2025-10-12T20:40:08: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:08: Worker worker-1: Switched back to main content
+2025-10-12T20:40:08: Worker worker-1: Switched to iframe
+2025-10-12T20:40:08: Worker worker-1: Switched to iframe
+2025-10-12T20:40:08: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:08: Worker worker-1: Switched back to main content
+2025-10-12T20:40:09: Worker worker-1: Switched to iframe
+2025-10-12T20:40:09: Worker worker-1: Switched to iframe
+2025-10-12T20:40:09: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:09: Worker worker-1: Switched back to main content
+2025-10-12T20:40:09: Worker worker-1: Switched to iframe
+2025-10-12T20:40:09: Worker worker-1: Switched to iframe
+2025-10-12T20:40:09: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:09: Worker worker-1: Switched back to main content
+2025-10-12T20:40:09: Worker worker-1: Switched to iframe
+2025-10-12T20:40:09: Worker worker-1: Switched to iframe
+2025-10-12T20:40:09: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:09: Worker worker-1: Switched back to main content
+2025-10-12T20:40:09: Worker worker-1: Switched to iframe
+2025-10-12T20:40:09: Worker worker-1: Switched to iframe
+2025-10-12T20:40:09: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:09: Worker worker-1: Switched back to main content
+2025-10-12T20:40:09: Worker worker-1: Switched to iframe
+2025-10-12T20:40:09: Worker worker-1: Switched back to main content
+2025-10-12T20:40:09: Worker worker-1: Switched to iframe
+2025-10-12T20:40:09: Worker worker-1: Switched to iframe
+2025-10-12T20:40:09: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:09: Worker worker-1: Switched back to main content
+2025-10-12T20:40:09: Worker worker-1: Switched to iframe
+2025-10-12T20:40:09: Worker worker-1: Switched to iframe
+2025-10-12T20:40:10: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:10: Worker worker-1: Switched back to main content
+2025-10-12T20:40:10: Worker worker-1: Switched to iframe
+2025-10-12T20:40:10: Worker worker-1: Switched to iframe
+2025-10-12T20:40:10: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:10: Worker worker-1: Switched back to main content
+2025-10-12T20:40:10: Worker worker-1: Switched to iframe
+2025-10-12T20:40:10: Worker worker-1: Switched to iframe
+2025-10-12T20:40:10: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:10: Worker worker-1: Switched back to main content
+2025-10-12T20:40:10: Worker worker-1: Switched to iframe
+2025-10-12T20:40:10: Worker worker-1: Switched to iframe
+2025-10-12T20:40:10: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:10: Worker worker-1: Switched back to main content
+2025-10-12T20:40:10: Worker worker-1: Switched to iframe
+2025-10-12T20:40:11: Worker worker-1: Switched to iframe
+2025-10-12T20:40:11: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:11: Worker worker-1: Switched back to main content
+2025-10-12T20:40:11: Worker worker-1: Switched to iframe
+2025-10-12T20:40:11: Worker worker-1: Switched back to main content
+2025-10-12T20:40:11: Worker worker-1: Switched to iframe
+2025-10-12T20:40:11: Worker worker-1: Switched to iframe
+2025-10-12T20:40:11: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:11: Worker worker-1: Switched back to main content
+2025-10-12T20:40:11: Worker worker-1: Switched to iframe
+2025-10-12T20:40:11: Worker worker-1: Switched to iframe
+2025-10-12T20:40:11: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:11: Worker worker-1: Switched back to main content
+2025-10-12T20:40:11: Worker worker-1: Switched to iframe
+2025-10-12T20:40:11: Worker worker-1: Switched to iframe
+2025-10-12T20:40:11: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:11: Worker worker-1: Switched back to main content
+2025-10-12T20:40:11: Worker worker-1: Switched to iframe
+2025-10-12T20:40:11: Worker worker-1: Switched to iframe
+2025-10-12T20:40:11: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:11: Worker worker-1: Switched back to main content
+2025-10-12T20:40:11: Worker worker-1: Switched to iframe
+2025-10-12T20:40:11: Worker worker-1: Switched to iframe
+2025-10-12T20:40:12: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:12: Worker worker-1: Switched back to main content
+2025-10-12T20:40:12: Worker worker-1: Switched to iframe
+2025-10-12T20:40:12: Worker worker-1: Switched to iframe
+2025-10-12T20:40:12: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:12: Worker worker-1: Switched back to main content
+2025-10-12T20:40:12: Worker worker-1: Switched to iframe
+2025-10-12T20:40:12: Worker worker-1: Switched back to main content
+2025-10-12T20:40:13: Worker worker-1: Switched to iframe
+2025-10-12T20:40:13: Worker worker-1: Switched to iframe
+2025-10-12T20:40:13: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:13: Worker worker-1: Switched back to main content
+2025-10-12T20:40:13: Worker worker-1: Switched to iframe
+2025-10-12T20:40:13: Worker worker-1: Switched to iframe
+2025-10-12T20:40:13: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:13: Worker worker-1: Switched back to main content
+2025-10-12T20:40:13: Worker worker-1: Switched to iframe
+2025-10-12T20:40:13: Worker worker-1: Switched to iframe
+2025-10-12T20:40:13: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:14: Worker worker-1: Switched back to main content
+2025-10-12T20:40:14: Worker worker-1: Switched to iframe
+2025-10-12T20:40:14: Worker worker-1: Switched to iframe
+2025-10-12T20:40:14: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:14: Worker worker-1: Switched back to main content
+2025-10-12T20:40:14: Worker worker-1: Switched to iframe
+2025-10-12T20:40:14: Worker worker-1: Switched to iframe
+2025-10-12T20:40:14: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:14: Worker worker-1: Switched back to main content
+2025-10-12T20:40:14: Worker worker-1: Switched to iframe
+2025-10-12T20:40:14: Worker worker-1: Switched to iframe
+2025-10-12T20:40:14: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:14: Worker worker-1: Switched back to main content
+2025-10-12T20:40:14: Worker worker-1: Switched to iframe
+2025-10-12T20:40:14: Worker worker-1: Switched back to main content
+2025-10-12T20:40:14: Worker worker-1: Switched to iframe
+2025-10-12T20:40:14: Worker worker-1: Switched to iframe
+2025-10-12T20:40:14: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:14: Worker worker-1: Switched back to main content
+2025-10-12T20:40:14: Worker worker-1: Switched to iframe
+2025-10-12T20:40:14: Worker worker-1: Switched to iframe
+2025-10-12T20:40:14: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:14: Worker worker-1: Switched back to main content
+2025-10-12T20:40:15: Worker worker-1: Switched to iframe
+2025-10-12T20:40:15: Worker worker-1: Switched to iframe
+2025-10-12T20:40:15: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:15: Worker worker-1: Switched back to main content
+2025-10-12T20:40:15: Worker worker-1: Switched to iframe
+2025-10-12T20:40:15: Worker worker-1: Switched to iframe
+2025-10-12T20:40:15: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:15: Worker worker-1: Switched back to main content
+2025-10-12T20:40:15: Worker worker-1: Switched to iframe
+2025-10-12T20:40:15: Worker worker-1: Switched to iframe
+2025-10-12T20:40:15: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:15: Worker worker-1: Switched back to main content
+2025-10-12T20:40:15: Worker worker-1: Switched to iframe
+2025-10-12T20:40:15: Worker worker-1: Switched to iframe
+2025-10-12T20:40:15: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:15: Worker worker-1: Switched back to main content
+2025-10-12T20:40:15: Worker worker-1: Switched to iframe
+2025-10-12T20:40:15: Worker worker-1: Switched back to main content
+2025-10-12T20:40:15: Worker worker-1: Switched to iframe
+2025-10-12T20:40:15: Worker worker-1: Switched to iframe
+2025-10-12T20:40:15: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:15: Worker worker-1: Switched back to main content
+2025-10-12T20:40:15: Worker worker-1: Switched to iframe
+2025-10-12T20:40:15: Worker worker-1: Switched to iframe
+2025-10-12T20:40:15: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:15: Worker worker-1: Switched back to main content
+2025-10-12T20:40:15: Worker worker-1: Switched to iframe
+2025-10-12T20:40:15: Worker worker-1: Switched to iframe
+2025-10-12T20:40:16: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:16: Worker worker-1: Switched back to main content
+2025-10-12T20:40:16: Worker worker-1: Switched to iframe
+2025-10-12T20:40:16: Worker worker-1: Switched to iframe
+2025-10-12T20:40:16: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:16: Worker worker-1: Switched back to main content
+2025-10-12T20:40:16: Worker worker-1: Switched to iframe
+2025-10-12T20:40:16: Worker worker-1: Switched to iframe
+2025-10-12T20:40:16: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:16: Worker worker-1: Switched back to main content
+2025-10-12T20:40:16: Worker worker-1: Switched to iframe
+2025-10-12T20:40:16: Worker worker-1: Switched to iframe
+2025-10-12T20:40:16: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:16: Worker worker-1: Switched back to main content
+2025-10-12T20:40:16: Worker worker-1: Switched to iframe
+2025-10-12T20:40:16: Worker worker-1: Switched back to main content
+2025-10-12T20:40:16: Worker worker-1: Switched to iframe
+2025-10-12T20:40:16: Worker worker-1: Switched to iframe
+2025-10-12T20:40:16: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:16: Worker worker-1: Switched back to main content
+2025-10-12T20:40:16: Worker worker-1: Switched to iframe
+2025-10-12T20:40:16: Worker worker-1: Switched to iframe
+2025-10-12T20:40:16: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:16: Worker worker-1: Switched back to main content
+2025-10-12T20:40:16: Worker worker-1: Switched to iframe
+2025-10-12T20:40:16: Worker worker-1: Switched to iframe
+2025-10-12T20:40:16: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:16: Worker worker-1: Switched back to main content
+2025-10-12T20:40:16: Worker worker-1: Switched to iframe
+2025-10-12T20:40:17: Worker worker-1: Switched to iframe
+2025-10-12T20:40:17: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:17: Worker worker-1: Switched back to main content
+2025-10-12T20:40:17: Worker worker-1: Switched to iframe
+2025-10-12T20:40:17: 
+2025-10-12T20:40:17: Worker worker-1: Switched to iframe
+2025-10-12T20:40:17: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:17: Worker worker-1: Switched back to main content
+2025-10-12T20:40:17: Worker worker-1: Switched to iframe
+2025-10-12T20:40:17: Worker worker-1: Switched to iframe
+2025-10-12T20:40:17: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:17: Worker worker-1: Switched back to main content
+2025-10-12T20:40:17: Worker worker-1: Switched to iframe
+2025-10-12T20:40:17: Worker worker-1: Switched back to main content
+2025-10-12T20:40:17: Worker worker-1: Switched to iframe
+2025-10-12T20:40:17: Worker worker-1: Switched to iframe
+2025-10-12T20:40:17: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:17: Worker worker-1: Switched back to main content
+2025-10-12T20:40:17: Worker worker-1: Switched to iframe
+2025-10-12T20:40:17: Worker worker-1: Switched to iframe
+2025-10-12T20:40:17: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:17: Worker worker-1: Switched back to main content
+2025-10-12T20:40:17: Worker worker-1: Switched to iframe
+2025-10-12T20:40:17: Worker worker-1: Switched to iframe
+2025-10-12T20:40:17: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:17: Worker worker-1: Switched back to main content
+2025-10-12T20:40:17: Worker worker-1: Switched to iframe
+2025-10-12T20:40:17: Worker worker-1: Switched to iframe
+2025-10-12T20:40:17: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:17: Worker worker-1: Switched back to main content
+2025-10-12T20:40:18: Worker worker-1: Switched to iframe
+2025-10-12T20:40:18: Worker worker-1: Switched to iframe
+2025-10-12T20:40:18: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:18: Worker worker-1: Switched back to main content
+2025-10-12T20:40:18: Worker worker-1: Switched to iframe
+2025-10-12T20:40:18: Worker worker-1: Switched to iframe
+2025-10-12T20:40:18: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:18: Worker worker-1: Switched back to main content
+2025-10-12T20:40:18: Worker worker-1: Switched to iframe
+2025-10-12T20:40:18: Worker worker-1: Switched back to main content
+2025-10-12T20:40:18: Worker worker-1: Switched to iframe
+2025-10-12T20:40:18: Worker worker-1: Switched to iframe
+2025-10-12T20:40:18: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:18: Worker worker-1: Switched back to main content
+2025-10-12T20:40:18: Worker worker-1: Switched to iframe
+2025-10-12T20:40:18: Worker worker-1: Switched to iframe
+2025-10-12T20:40:18: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:18: Worker worker-1: Switched back to main content
+2025-10-12T20:40:18: Worker worker-1: Switched to iframe
+2025-10-12T20:40:18: Worker worker-1: Switched to iframe
+2025-10-12T20:40:18: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:18: Worker worker-1: Switched back to main content
+2025-10-12T20:40:18: Worker worker-1: Switched to iframe
+2025-10-12T20:40:18: Worker worker-1: Switched to iframe
+2025-10-12T20:40:18: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:18: Worker worker-1: Switched back to main content
+2025-10-12T20:40:18: Worker worker-1: Switched to iframe
+2025-10-12T20:40:19: Worker worker-1: Switched to iframe
+2025-10-12T20:40:19: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:19: Worker worker-1: Switched back to main content
+2025-10-12T20:40:19: Worker worker-1: Switched to iframe
+2025-10-12T20:40:19: Worker worker-1: Switched to iframe
+2025-10-12T20:40:19: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:19: Worker worker-1: Switched back to main content
+2025-10-12T20:40:19: Worker worker-1: Switched to iframe
+2025-10-12T20:40:19: Worker worker-1: Switched back to main content
+2025-10-12T20:40:19: Worker worker-1: Switched to iframe
+2025-10-12T20:40:19: Worker worker-1: Switched to iframe
+2025-10-12T20:40:19: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:19: Worker worker-1: Switched back to main content
+2025-10-12T20:40:19: Worker worker-1: Switched to iframe
+2025-10-12T20:40:19: Worker worker-1: Switched to iframe
+2025-10-12T20:40:19: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:19: Worker worker-1: Switched back to main content
+2025-10-12T20:40:19: Worker worker-1: Switched to iframe
+2025-10-12T20:40:20: Worker worker-1: Switched to iframe
+2025-10-12T20:40:20: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:20: Worker worker-1: Switched back to main content
+2025-10-12T20:40:20: Worker worker-1: Switched to iframe
+2025-10-12T20:40:20: Worker worker-1: Switched to iframe
+2025-10-12T20:40:20: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:20: Worker worker-1: Switched back to main content
+2025-10-12T20:40:20: 
+2025-10-12T20:40:20: Worker worker-1: Switched to iframe
+2025-10-12T20:40:20: Worker worker-1: Switched to iframe
+2025-10-12T20:40:20: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:20: Worker worker-1: Switched back to main content
+2025-10-12T20:40:20: Worker worker-1: Switched to iframe
+2025-10-12T20:40:20: Worker worker-1: Switched to iframe
+2025-10-12T20:40:20: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:20: Worker worker-1: Switched back to main content
+2025-10-12T20:40:20: Worker worker-1: Switched to iframe
+2025-10-12T20:40:20: Worker worker-1: Switched back to main content
+2025-10-12T20:40:20: Worker worker-1: Switched to iframe
+2025-10-12T20:40:20: Worker worker-1: Switched to iframe
+2025-10-12T20:40:20: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:20: Worker worker-1: Switched back to main content
+2025-10-12T20:40:20: Worker worker-1: Switched to iframe
+2025-10-12T20:40:20: Worker worker-1: Switched to iframe
+2025-10-12T20:40:20: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:20: Worker worker-1: Switched back to main content
+2025-10-12T20:40:21: Worker worker-1: Switched to iframe
+2025-10-12T20:40:21: Worker worker-1: Switched to iframe
+2025-10-12T20:40:21: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:21: Worker worker-1: Switched back to main content
+2025-10-12T20:40:21: Worker worker-1: Switched to iframe
+2025-10-12T20:40:21: Worker worker-1: Switched to iframe
+2025-10-12T20:40:21: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:21: Worker worker-1: Switched back to main content
+2025-10-12T20:40:21: Worker worker-1: Switched to iframe
+2025-10-12T20:40:21: Worker worker-1: Switched to iframe
+2025-10-12T20:40:21: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:21: Worker worker-1: Switched back to main content
+2025-10-12T20:40:21: Worker worker-1: Switched to iframe
+2025-10-12T20:40:21: Worker worker-1: Switched to iframe
+2025-10-12T20:40:21: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:21: Worker worker-1: Switched back to main content
+2025-10-12T20:40:21: Worker worker-1: Switched to iframe
+2025-10-12T20:40:21: Worker worker-1: Switched back to main content
+2025-10-12T20:40:21: Worker worker-1: Switched to iframe
+2025-10-12T20:40:21: Worker worker-1: Switched to iframe
+2025-10-12T20:40:21: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:21: Worker worker-1: Switched back to main content
+2025-10-12T20:40:22: Worker worker-1: Switched to iframe
+2025-10-12T20:40:22: Worker worker-1: Switched to iframe
+2025-10-12T20:40:22: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:22: Worker worker-1: Switched back to main content
+2025-10-12T20:40:22: 
+2025-10-12T20:40:22: Worker worker-1: Switched to iframe
+2025-10-12T20:40:22: Worker worker-1: Switched to iframe
+2025-10-12T20:40:22: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:22: Worker worker-1: Switched back to main content
+2025-10-12T20:40:22: Worker worker-1: Switched to iframe
+2025-10-12T20:40:22: Worker worker-1: Switched to iframe
+2025-10-12T20:40:22: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:22: Worker worker-1: Switched back to main content
+2025-10-12T20:40:22: Worker worker-1: Switched to iframe
+2025-10-12T20:40:22: Worker worker-1: Switched to iframe
+2025-10-12T20:40:22: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:22: Worker worker-1: Switched back to main content
+2025-10-12T20:40:22: Worker worker-1: Switched to iframe
+2025-10-12T20:40:22: Worker worker-1: Switched to iframe
+2025-10-12T20:40:23: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:23: Worker worker-1: Switched back to main content
+2025-10-12T20:40:23: Worker worker-1: Switched to iframe
+2025-10-12T20:40:23: Worker worker-1: Switched back to main content
+2025-10-12T20:40:23: Worker worker-1: Switched to iframe
+2025-10-12T20:40:23: Worker worker-1: Switched to iframe
+2025-10-12T20:40:23: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:23: Worker worker-1: Switched back to main content
+2025-10-12T20:40:23: Worker worker-1: Switched to iframe
+2025-10-12T20:40:23: Worker worker-1: Switched to iframe
+2025-10-12T20:40:23: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:23: Worker worker-1: Switched back to main content
+2025-10-12T20:40:23: Worker worker-1: Switched to iframe
+2025-10-12T20:40:23: Worker worker-1: Switched to iframe
+2025-10-12T20:40:23: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:23: Worker worker-1: Switched back to main content
+2025-10-12T20:40:23: Worker worker-1: Switched to iframe
+2025-10-12T20:40:23: Worker worker-1: Switched to iframe
+2025-10-12T20:40:23: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:23: Worker worker-1: Switched back to main content
+2025-10-12T20:40:23: Worker worker-1: Switched to iframe
+2025-10-12T20:40:23: Worker worker-1: Switched to iframe
+2025-10-12T20:40:23: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:23: Worker worker-1: Switched back to main content
+2025-10-12T20:40:23: Worker worker-1: Switched to iframe
+2025-10-12T20:40:23: Worker worker-1: Switched to iframe
+2025-10-12T20:40:23: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:23: Worker worker-1: Switched back to main content
+2025-10-12T20:40:24: Worker worker-1: Switched to iframe
+2025-10-12T20:40:24: Worker worker-1: Switched back to main content
+2025-10-12T20:40:24: Worker worker-1: Switched to iframe
+2025-10-12T20:40:24: Worker worker-1: Switched to iframe
+2025-10-12T20:40:24: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:24: Worker worker-1: Switched back to main content
+2025-10-12T20:40:24: Worker worker-1: Switched to iframe
+2025-10-12T20:40:24: Worker worker-1: Switched to iframe
+2025-10-12T20:40:24: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:24: Worker worker-1: Switched back to main content
+2025-10-12T20:40:24: Worker worker-1: Switched to iframe
+2025-10-12T20:40:24: Worker worker-1: Switched to iframe
+2025-10-12T20:40:24: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:24: Worker worker-1: Switched back to main content
+2025-10-12T20:40:24: Worker worker-1: Switched to iframe
+2025-10-12T20:40:25: Worker worker-1: Switched to iframe
+2025-10-12T20:40:25: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:25: Worker worker-1: Switched back to main content
+2025-10-12T20:40:25: Worker worker-1: Switched to iframe
+2025-10-12T20:40:25: Worker worker-1: Switched to iframe
+2025-10-12T20:40:25: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:25: Worker worker-1: Switched back to main content
+2025-10-12T20:40:25: Worker worker-1: Switched to iframe
+2025-10-12T20:40:25: Worker worker-1: Switched to iframe
+2025-10-12T20:40:25: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:25: Worker worker-1: Switched back to main content
+2025-10-12T20:40:25: Worker worker-1: Switched to iframe
+2025-10-12T20:40:25: Worker worker-1: Switched back to main content
+2025-10-12T20:40:25: Worker worker-1: Switched to iframe
+2025-10-12T20:40:25: Worker worker-1: Switched to iframe
+2025-10-12T20:40:25: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:25: Worker worker-1: Switched back to main content
+2025-10-12T20:40:25: Worker worker-1: Switched to iframe
+2025-10-12T20:40:25: Worker worker-1: Switched to iframe
+2025-10-12T20:40:25: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:25: Worker worker-1: Switched back to main content
+2025-10-12T20:40:25: Worker worker-1: Switched to iframe
+2025-10-12T20:40:25: Worker worker-1: Switched to iframe
+2025-10-12T20:40:25: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:25: Worker worker-1: Switched back to main content
+2025-10-12T20:40:25: Worker worker-1: Switched to iframe
+2025-10-12T20:40:26: Worker worker-1: Switched to iframe
+2025-10-12T20:40:26: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:26: Worker worker-1: Switched back to main content
+2025-10-12T20:40:26: Worker worker-1: Switched to iframe
+2025-10-12T20:40:26: Worker worker-1: Switched to iframe
+2025-10-12T20:40:26: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:26: Worker worker-1: Switched back to main content
+2025-10-12T20:40:26: Worker worker-1: Switched to iframe
+2025-10-12T20:40:26: Worker worker-1: Switched to iframe
+2025-10-12T20:40:26: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:26: Worker worker-1: Switched back to main content
+2025-10-12T20:40:26: Worker worker-1: Switched to iframe
+2025-10-12T20:40:26: Worker worker-1: Switched back to main content
+2025-10-12T20:40:26: Worker worker-1: Switched to iframe
+2025-10-12T20:40:26: Worker worker-1: Switched to iframe
+2025-10-12T20:40:26: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:26: Worker worker-1: Switched back to main content
+2025-10-12T20:40:26: Worker worker-1: Switched to iframe
+2025-10-12T20:40:27: Worker worker-1: Switched to iframe
+2025-10-12T20:40:27: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:27: Worker worker-1: Switched back to main content
+2025-10-12T20:40:27: Worker worker-1: Switched to iframe
+2025-10-12T20:40:27: Worker worker-1: Switched to iframe
+2025-10-12T20:40:27: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:27: Worker worker-1: Switched back to main content
+2025-10-12T20:40:27: Worker worker-1: Switched to iframe
+2025-10-12T20:40:27: Worker worker-1: Switched to iframe
+2025-10-12T20:40:27: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:27: Worker worker-1: Switched back to main content
+2025-10-12T20:40:27: Worker worker-1: Switched to iframe
+2025-10-12T20:40:27: Worker worker-1: Switched to iframe
+2025-10-12T20:40:27: Worker worker-1: Error extracting image 5
+2025-10-12T20:40:27: Worker worker-1: Switched back to main content
+2025-10-12T20:40:27: Worker worker-1: Switched to iframe
+2025-10-12T20:40:27: Worker worker-1: Switched to iframe
+2025-10-12T20:40:27: Worker worker-1: Error extracting image 6
+2025-10-12T20:40:27: Worker worker-1: Switched back to main content
+2025-10-12T20:40:27: Worker worker-1: Switched to iframe
+2025-10-12T20:40:27: Worker worker-1: Switched back to main content
+2025-10-12T20:40:27: Worker worker-1: Switched to iframe
+2025-10-12T20:40:27: Worker worker-1: Switched to iframe
+2025-10-12T20:40:28: Worker worker-1: Error extracting image 1
+2025-10-12T20:40:28: Worker worker-1: Switched back to main content
+2025-10-12T20:40:28: Worker worker-1: Switched to iframe
+2025-10-12T20:40:28: Worker worker-1: Switched to iframe
+2025-10-12T20:40:28: Worker worker-1: Error extracting image 2
+2025-10-12T20:40:28: Worker worker-1: Switched back to main content
+2025-10-12T20:40:28: Worker worker-1: Switched to iframe
+2025-10-12T20:40:28: Worker worker-1: Switched to iframe
+2025-10-12T20:40:28: Worker worker-1: Error extracting image 3
+2025-10-12T20:40:28: Worker worker-1: Switched back to main content
+2025-10-12T20:40:28: Worker worker-1: Switched to iframe
+2025-10-12T20:40:28: Worker worker-1: Switched to iframe
+2025-10-12T20:40:28: Worker worker-1: Error extracting image 4
+2025-10-12T20:40:28: Worker worker-1: Switched back to main content
+2025-10-12T20:40:28: Worker worker-1: Switched to iframe
+2025-10-12T20:40:28: Worker worker-1: Switched to iframe
+2025-10-12T20:40:28: Worker worker-1: Switched back to main content
+2025-10-12T20:40:28: Worker worker-1: Switched to iframe
+2025-10-12T20:40:28: Worker worker-1: Image extracted successfully
+2025-10-12T20:40:28: Worker worker-1: Image saved as C:\Users\Sahan\Dark\Promise\genApp\backend\worker_data_worker-1\downloaded_files\output_image.png
+2025-10-12T20:40:28: 
+2025-10-12T20:40:28: Starting Flask server worker worker-1 on port 5001...
+2025-10-12T20:40:28: Available API endpoints:
+2025-10-12T20:40:28: - POST /api/register (User registration)
+2025-10-12T20:40:28: - GET/POST /api/verify (Token verification)
+2025-10-12T20:40:28: - POST /api/generate (Image generation)
+2025-10-12T20:40:28: - GET /api/user/tokens (Get token count)
+2025-10-12T20:40:28: - POST /api/user/tokens/add (Add tokens)
+2025-10-12T20:40:28: - GET /api/styles (Get available styles)
+2025-10-12T20:40:28: - GET /api/health (Basic health check)
+2025-10-12T20:40:28: - GET /api/health-generate (Health check with image generation)
+2025-10-12T20:40:28: Worker worker-1: Started single worker thread
+2025-10-12T20:40:28:  * Serving Flask app 'server'
+2025-10-12T20:40:28:  * Debug mode: off
+2025-10-12T20:40:51: Worker worker-1: Style selected: Painted Anime
+2025-10-12T20:40:52: Worker worker-1: Prompt entered
+2025-10-12T20:40:53: Worker worker-1: Generate button clicked
+2025-10-12T20:41:08: Worker worker-1: Switched to iframe
+2025-10-12T20:41:08: Worker worker-1: Error extracting image 1
+2025-10-12T20:41:08: Worker worker-1: Switched back to main content
+2025-10-12T20:41:08: Worker worker-1: Switched to iframe
+2025-10-12T20:41:08: Worker worker-1: Switched to iframe
+2025-10-12T20:41:08: Worker worker-1: Error extracting image 2
+2025-10-12T20:41:08: Worker worker-1: Switched back to main content
+2025-10-12T20:41:08: Worker worker-1: Switched to iframe
+2025-10-12T20:41:08: Worker worker-1: Switched to iframe
+2025-10-12T20:41:08: Worker worker-1: Error extracting image 3
+2025-10-12T20:41:08: Worker worker-1: Switched back to main content
+2025-10-12T20:41:09: Worker worker-1: Switched to iframe
+2025-10-12T20:41:09: Worker worker-1: Switched to iframe
+2025-10-12T20:41:09: Worker worker-1: Error extracting image 4
+2025-10-12T20:41:09: Worker worker-1: Switched back to main content
+2025-10-12T20:41:09: Worker worker-1: Switched to iframe
+2025-10-12T20:41:09: Worker worker-1: Switched to iframe
+2025-10-12T20:41:09: Worker worker-1: Error extracting image 5
+2025-10-12T20:41:09: Worker worker-1: Switched back to main content
+2025-10-12T20:41:09: Worker worker-1: Switched to iframe
+2025-10-12T20:41:10: Worker worker-1: Switched to iframe
+2025-10-12T20:41:10: Worker worker-1: Error extracting image 6
+2025-10-12T20:41:10: Worker worker-1: Switched back to main content
+2025-10-12T20:41:10: Worker worker-1: Switched to iframe
+2025-10-12T20:41:10: Worker worker-1: Switched back to main content
+2025-10-12T20:41:10: Worker worker-1: Switched to iframe
+2025-10-12T20:41:10: Worker worker-1: Switched to iframe
+2025-10-12T20:41:10: Worker worker-1: Error extracting image 1
+2025-10-12T20:41:10: Worker worker-1: Switched back to main content
+2025-10-12T20:41:10: Worker worker-1: Switched to iframe
+2025-10-12T20:41:10: Worker worker-1: Switched to iframe
+2025-10-12T20:41:10: Worker worker-1: Error extracting image 2
+2025-10-12T20:41:10: Worker worker-1: Switched back to main content
+2025-10-12T20:41:10: Worker worker-1: Switched to iframe
+2025-10-12T20:41:10: Worker worker-1: Switched to iframe
+2025-10-12T20:41:10: Worker worker-1: Error extracting image 3
+2025-10-12T20:41:10: Worker worker-1: Switched back to main content
+2025-10-12T20:41:10: Worker worker-1: Switched to iframe
+2025-10-12T20:41:10: Worker worker-1: Switched to iframe
+2025-10-12T20:41:10: Worker worker-1: Error extracting image 4
+2025-10-12T20:41:10: Worker worker-1: Switched back to main content
+2025-10-12T20:41:11: Worker worker-1: Switched to iframe
+2025-10-12T20:41:11: 
+2025-10-12T20:41:11: Worker worker-1: Switched to iframe
+2025-10-12T20:41:11: Worker worker-1: Error extracting image 5
+2025-10-12T20:41:11: Worker worker-1: Switched back to main content
+2025-10-12T20:41:11: Worker worker-1: Switched to iframe
+2025-10-12T20:41:11: Worker worker-1: Switched to iframe
+2025-10-12T20:41:11: Worker worker-1: Error extracting image 6
+2025-10-12T20:41:11: Worker worker-1: Switched back to main content
+2025-10-12T20:41:11: Worker worker-1: Switched to iframe
+2025-10-12T20:41:11: Worker worker-1: Switched back to main content
+2025-10-12T20:41:11: Worker worker-1: Switched to iframe
+2025-10-12T20:41:12: Worker worker-1: Switched to iframe
+2025-10-12T20:41:12: Worker worker-1: Error extracting image 1
+2025-10-12T20:41:12: Worker worker-1: Switched back to main content
+2025-10-12T20:41:12: Worker worker-1: Switched to iframe
+2025-10-12T20:41:12: Worker worker-1: Switched to iframe
+2025-10-12T20:41:12: Worker worker-1: Error extracting image 2
+2025-10-12T20:41:12: Worker worker-1: Switched back to main content
+2025-10-12T20:41:12: Worker worker-1: Switched to iframe
+2025-10-12T20:41:12: Worker worker-1: Switched to iframe
+2025-10-12T20:41:12: Worker worker-1: Error extracting image 3
+2025-10-12T20:41:12: Worker worker-1: Switched back to main content
+2025-10-12T20:41:12: Worker worker-1: Switched to iframe
+2025-10-12T20:41:12: Worker worker-1: Switched to iframe
+2025-10-12T20:41:12: Worker worker-1: Error extracting image 4
+2025-10-12T20:41:12: Worker worker-1: Switched back to main content
+2025-10-12T20:41:12: Worker worker-1: Switched to iframe
+2025-10-12T20:41:12: Worker worker-1: Switched to iframe
+2025-10-12T20:41:12: Worker worker-1: Error extracting image 5
+2025-10-12T20:41:12: Worker worker-1: Switched back to main content
+2025-10-12T20:41:13: Worker worker-1: Switched to iframe
+2025-10-12T20:41:13: Worker worker-1: Switched to iframe
+2025-10-12T20:41:13: Worker worker-1: Error extracting image 6
+2025-10-12T20:41:13: Worker worker-1: Switched back to main content
+2025-10-12T20:41:13: Worker worker-1: Switched to iframe
+2025-10-12T20:41:13: Worker worker-1: Switched back to main content
+2025-10-12T20:41:13: Worker worker-1: Switched to iframe
+2025-10-12T20:41:13: Worker worker-1: Switched to iframe
+2025-10-12T20:41:13: Worker worker-1: Error extracting image 1
+2025-10-12T20:41:13: Worker worker-1: Switched back to main content
+2025-10-12T20:41:13: Worker worker-1: Switched to iframe
+2025-10-12T20:41:13: Worker worker-1: Switched to iframe
+2025-10-12T20:41:13: Worker worker-1: Error extracting image 2
+2025-10-12T20:41:13: Worker worker-1: Switched back to main content
+2025-10-12T20:41:13: Worker worker-1: Switched to iframe
+2025-10-12T20:41:13: Worker worker-1: Switched to iframe
+2025-10-12T20:41:13: Worker worker-1: Error extracting image 3
+2025-10-12T20:41:13: Worker worker-1: Switched back to main content
+2025-10-12T20:41:13: Worker worker-1: Switched to iframe
+2025-10-12T20:41:13: Worker worker-1: Switched to iframe
+2025-10-12T20:41:13: Worker worker-1: Error extracting image 4
+2025-10-12T20:41:13: Worker worker-1: Switched back to main content
+2025-10-12T20:41:13: Worker worker-1: Switched to iframe
+2025-10-12T20:41:14: Worker worker-1: Switched to iframe
+2025-10-12T20:41:14: Worker worker-1: Error extracting image 5
+2025-10-12T20:41:14: Worker worker-1: Switched back to main content
+2025-10-12T20:41:14: Worker worker-1: Switched to iframe
+2025-10-12T20:41:14: Worker worker-1: Switched to iframe
+2025-10-12T20:41:14: Worker worker-1: Error extracting image 6
+2025-10-12T20:41:14: Worker worker-1: Switched back to main content
+2025-10-12T20:41:14: Worker worker-1: Switched to iframe
+2025-10-12T20:41:14: Worker worker-1: Switched back to main content
+2025-10-12T20:41:14: Worker worker-1: Switched to iframe
+2025-10-12T20:41:14: Worker worker-1: Switched to iframe
+2025-10-12T20:41:14: Worker worker-1: Error extracting image 1
+2025-10-12T20:41:14: Worker worker-1: Switched back to main content
+2025-10-12T20:41:15: Worker worker-1: Switched to iframe
+2025-10-12T20:41:15: Worker worker-1: Switched to iframe
+2025-10-12T20:41:15: Worker worker-1: Error extracting image 2
+2025-10-12T20:41:15: Worker worker-1: Switched back to main content
+2025-10-12T20:41:15: Worker worker-1: Switched to iframe
+2025-10-12T20:41:15: Worker worker-1: Switched to iframe
+2025-10-12T20:41:15: Worker worker-1: Error extracting image 3
+2025-10-12T20:41:15: Worker worker-1: Switched back to main content
+2025-10-12T20:41:15: Worker worker-1: Switched to iframe
+2025-10-12T20:41:15: Worker worker-1: Switched to iframe
+2025-10-12T20:41:15: Worker worker-1: Error extracting image 4
+2025-10-12T20:41:15: Worker worker-1: Switched back to main content
+2025-10-12T20:41:16: Worker worker-1: Switched to iframe
+2025-10-12T20:41:16: Worker worker-1: Switched to iframe
+2025-10-12T20:41:16: Worker worker-1: Error extracting image 5
+2025-10-12T20:41:16: Worker worker-1: Switched back to main content
+2025-10-12T20:41:16: Worker worker-1: Switched to iframe
+2025-10-12T20:41:16: Worker worker-1: Switched to iframe
+2025-10-12T20:41:16: Worker worker-1: Error extracting image 6
+2025-10-12T20:41:16: Worker worker-1: Switched back to main content
+2025-10-12T20:41:16: Worker worker-1: Switched to iframe
+2025-10-12T20:41:16: Worker worker-1: Switched back to main content
+2025-10-12T20:41:16: Worker worker-1: Switched to iframe
+2025-10-12T20:41:16: Worker worker-1: Switched to iframe
+2025-10-12T20:41:16: Worker worker-1: Error extracting image 1
+2025-10-12T20:41:16: Worker worker-1: Switched back to main content
+2025-10-12T20:41:16: 
+2025-10-12T20:41:16: Worker worker-1: Switched to iframe
+2025-10-12T20:41:16: Worker worker-1: Switched to iframe
+2025-10-12T20:41:16: Worker worker-1: Error extracting image 2
+2025-10-12T20:41:16: Worker worker-1: Switched back to main content
+2025-10-12T20:41:16: Worker worker-1: Switched to iframe
+2025-10-12T20:41:16: Worker worker-1: Switched to iframe
+2025-10-12T20:41:16: Worker worker-1: Error extracting image 3
+2025-10-12T20:41:16: Worker worker-1: Switched back to main content
+2025-10-12T20:41:16: Worker worker-1: Switched to iframe
+2025-10-12T20:41:17: Worker worker-1: Switched to iframe
+2025-10-12T20:41:17: Worker worker-1: Error extracting image 4
+2025-10-12T20:41:17: Worker worker-1: Switched back to main content
+2025-10-12T20:41:17: Worker worker-1: Switched to iframe
+2025-10-12T20:41:17: Worker worker-1: Switched to iframe
+2025-10-12T20:41:17: Worker worker-1: Error extracting image 5
+2025-10-12T20:41:17: Worker worker-1: Switched back to main content
+2025-10-12T20:41:17: Worker worker-1: Switched to iframe
+2025-10-12T20:41:17: Worker worker-1: Switched to iframe
+2025-10-12T20:41:17: Worker worker-1: Error extracting image 6
+2025-10-12T20:41:17: Worker worker-1: Switched back to main content
+2025-10-12T20:41:17: Worker worker-1: Switched to iframe
+2025-10-12T20:41:17: Worker worker-1: Switched back to main content
+2025-10-12T20:41:17: Worker worker-1: Switched to iframe
+2025-10-12T20:41:17: Worker worker-1: Switched to iframe
+2025-10-12T20:41:17: Worker worker-1: Error extracting image 1
+2025-10-12T20:41:17: Worker worker-1: Switched back to main content
+2025-10-12T20:41:17: Worker worker-1: Switched to iframe
+2025-10-12T20:41:17: Worker worker-1: Switched to iframe
+2025-10-12T20:41:17: Worker worker-1: Error extracting image 2
+2025-10-12T20:41:17: Worker worker-1: Switched back to main content
+2025-10-12T20:41:17: Worker worker-1: Switched to iframe
+2025-10-12T20:41:17: Worker worker-1: Switched to iframe
+2025-10-12T20:41:17: Worker worker-1: Error extracting image 3
+2025-10-12T20:41:17: Worker worker-1: Switched back to main content
+2025-10-12T20:41:17: Worker worker-1: Switched to iframe
+2025-10-12T20:41:17: Worker worker-1: Switched to iframe
+2025-10-12T20:41:17: Worker worker-1: Error extracting image 4
+2025-10-12T20:41:17: Worker worker-1: Switched back to main content
+2025-10-12T20:41:17: Worker worker-1: Switched to iframe
+2025-10-12T20:41:17: Worker worker-1: Switched to iframe
+2025-10-12T20:41:17: Worker worker-1: Error extracting image 5
+2025-10-12T20:41:17: Worker worker-1: Switched back to main content
+2025-10-12T20:41:18: Worker worker-1: Switched to iframe
+2025-10-12T20:41:18: Worker worker-1: Switched to iframe
+2025-10-12T20:41:18: Worker worker-1: Error extracting image 6
+2025-10-12T20:41:18: Worker worker-1: Switched back to main content
+2025-10-12T20:41:18: Worker worker-1: Switched to iframe
+2025-10-12T20:41:18: Worker worker-1: Switched back to main content
+2025-10-12T20:41:18: Worker worker-1: Switched to iframe
+2025-10-12T20:41:18: Worker worker-1: Switched to iframe
+2025-10-12T20:41:18: Worker worker-1: Error extracting image 1
+2025-10-12T20:41:18: Worker worker-1: Switched back to main content
+2025-10-12T20:41:18: Worker worker-1: Switched to iframe
+2025-10-12T20:41:18: Worker worker-1: Switched to iframe
+2025-10-12T20:41:18: Worker worker-1: Error extracting image 2
+2025-10-12T20:41:18: Worker worker-1: Switched back to main content
+2025-10-12T20:41:18: Worker worker-1: Switched to iframe
+2025-10-12T20:41:18: Worker worker-1: Switched to iframe
+2025-10-12T20:41:18: Worker worker-1: Error extracting image 3
+2025-10-12T20:41:18: Worker worker-1: Switched back to main content
+2025-10-12T20:41:18: Worker worker-1: Switched to iframe
+2025-10-12T20:41:18: Worker worker-1: Switched to iframe
+2025-10-12T20:41:18: Worker worker-1: Error extracting image 4
+2025-10-12T20:41:18: Worker worker-1: Switched back to main content
+2025-10-12T20:41:18: Worker worker-1: Switched to iframe
+2025-10-12T20:41:18: Worker worker-1: Switched to iframe
+2025-10-12T20:41:18: Worker worker-1: Error extracting image 5
+2025-10-12T20:41:18: Worker worker-1: Switched back to main content
+2025-10-12T20:41:18: Worker worker-1: Switched to iframe
+2025-10-12T20:41:18: Worker worker-1: Switched to iframe
+2025-10-12T20:41:18: Worker worker-1: Error extracting image 6
+2025-10-12T20:41:18: Worker worker-1: Switched back to main content
+2025-10-12T20:41:18: Worker worker-1: Switched to iframe
+2025-10-12T20:41:18: Worker worker-1: Switched back to main content
+2025-10-12T20:41:18: Worker worker-1: Switched to iframe
+2025-10-12T20:41:19: Worker worker-1: Switched to iframe
+2025-10-12T20:41:19: Worker worker-1: Error extracting image 1
+2025-10-12T20:41:19: Worker worker-1: Switched back to main content
+2025-10-12T20:41:19: Worker worker-1: Switched to iframe
+2025-10-12T20:41:19: Worker worker-1: Switched to iframe
+2025-10-12T20:41:19: Worker worker-1: Error extracting image 2
+2025-10-12T20:41:19: Worker worker-1: Switched back to main content
+2025-10-12T20:41:19: Worker worker-1: Switched to iframe
+2025-10-12T20:41:19: Worker worker-1: Switched to iframe
+2025-10-12T20:41:19: Worker worker-1: Error extracting image 3
+2025-10-12T20:41:19: Worker worker-1: Switched back to main content
+2025-10-12T20:41:19: Worker worker-1: Switched to iframe
+2025-10-12T20:41:19: Worker worker-1: Switched to iframe
+2025-10-12T20:41:19: Worker worker-1: Error extracting image 4
+2025-10-12T20:41:19: Worker worker-1: Switched back to main content
+2025-10-12T20:41:19: Worker worker-1: Switched to iframe
+2025-10-12T20:41:19: Worker worker-1: Switched to iframe
+2025-10-12T20:41:19: Worker worker-1: Error extracting image 5
+2025-10-12T20:41:19: Worker worker-1: Switched back to main content
+2025-10-12T20:41:19: Worker worker-1: Switched to iframe
+2025-10-12T20:41:19: Worker worker-1: Switched to iframe
+2025-10-12T20:41:19: Worker worker-1: Error extracting image 6
+2025-10-12T20:41:19: Worker worker-1: Switched back to main content
+2025-10-12T20:41:19: Worker worker-1: Switched to iframe
+2025-10-12T20:41:19: Worker worker-1: Switched back to main content
+2025-10-12T20:41:19: Worker worker-1: Switched to iframe
+2025-10-12T20:41:19: Worker worker-1: Switched to iframe
+2025-10-12T20:41:19: Worker worker-1: Error extracting image 1
+2025-10-12T20:41:19: Worker worker-1: Switched back to main content
+2025-10-12T20:41:19: Worker worker-1: Switched to iframe
+2025-10-12T20:41:19: Worker worker-1: Switched to iframe
+2025-10-12T20:41:19: Worker worker-1: Error extracting image 2
+2025-10-12T20:41:19: Worker worker-1: Switched back to main content
+2025-10-12T20:41:19: Worker worker-1: Switched to iframe
+2025-10-12T20:41:20: Worker worker-1: Switched to iframe
+2025-10-12T20:41:20: Worker worker-1: Error extracting image 3
+2025-10-12T20:41:20: Worker worker-1: Switched back to main content
+2025-10-12T20:41:20: Worker worker-1: Switched to iframe
+2025-10-12T20:41:20: Worker worker-1: Switched to iframe
+2025-10-12T20:41:20: Worker worker-1: Error extracting image 4
+2025-10-12T20:41:20: Worker worker-1: Switched back to main content
+2025-10-12T20:41:20: Worker worker-1: Switched to iframe
+2025-10-12T20:41:20: Worker worker-1: Switched to iframe
+2025-10-12T20:41:20: Worker worker-1: Error extracting image 5
+2025-10-12T20:41:20: Worker worker-1: Switched back to main content
+2025-10-12T20:41:20: Worker worker-1: Switched to iframe
+2025-10-12T20:41:20: Worker worker-1: Switched to iframe
+2025-10-12T20:41:20: Worker worker-1: Error extracting image 6
+2025-10-12T20:41:20: Worker worker-1: Switched back to main content
+2025-10-12T20:41:20: Worker worker-1: Switched to iframe
+2025-10-12T20:41:20: Worker worker-1: Switched back to main content
+2025-10-12T20:41:20: Worker worker-1: Switched to iframe
+2025-10-12T20:41:20: Worker worker-1: Switched to iframe
+2025-10-12T20:41:20: Worker worker-1: Error extracting image 1
+2025-10-12T20:41:20: Worker worker-1: Switched back to main content
+2025-10-12T20:41:20: Worker worker-1: Switched to iframe
+2025-10-12T20:41:20: Worker worker-1: Switched to iframe
+2025-10-12T20:41:20: Worker worker-1: Error extracting image 2
+2025-10-12T20:41:20: Worker worker-1: Switched back to main content
+2025-10-12T20:41:20: Worker worker-1: Switched to iframe
+2025-10-12T20:41:20: Worker worker-1: Switched to iframe
+2025-10-12T20:41:20: Worker worker-1: Error extracting image 3
+2025-10-12T20:41:20: Worker worker-1: Switched back to main content
+2025-10-12T20:41:20: Worker worker-1: Switched to iframe
+2025-10-12T20:41:20: Worker worker-1: Switched to iframe
+2025-10-12T20:41:20: Worker worker-1: Error extracting image 4
+2025-10-12T20:41:20: Worker worker-1: Switched back to main content
+2025-10-12T20:41:20: Worker worker-1: Switched to iframe
+2025-10-12T20:41:20: Worker worker-1: Switched to iframe
+2025-10-12T20:41:20: Worker worker-1: Error extracting image 5
+2025-10-12T20:41:20: Worker worker-1: Switched back to main content
+2025-10-12T20:41:20: Worker worker-1: Switched to iframe
+2025-10-12T20:41:21: Worker worker-1: Switched to iframe
+2025-10-12T20:41:21: Worker worker-1: Error extracting image 6
+2025-10-12T20:41:21: Worker worker-1: Switched back to main content
+2025-10-12T20:41:21: Worker worker-1: Switched to iframe
+2025-10-12T20:41:21: Worker worker-1: Switched back to main content
+2025-10-12T20:41:21: Worker worker-1: Switched to iframe
+2025-10-12T20:41:21: Worker worker-1: Switched to iframe
+2025-10-12T20:41:21: Worker worker-1: Error extracting image 1
+2025-10-12T20:41:21: Worker worker-1: Switched back to main content
+2025-10-12T20:41:21: Worker worker-1: Switched to iframe
+2025-10-12T20:41:21: Worker worker-1: Switched to iframe
+2025-10-12T20:41:21: Worker worker-1: Error extracting image 2
+2025-10-12T20:41:21: Worker worker-1: Switched back to main content
+2025-10-12T20:41:21: Worker worker-1: Switched to iframe
+2025-10-12T20:41:21: Worker worker-1: Switched to iframe
+2025-10-12T20:41:21: Worker worker-1: Error extracting image 3
+2025-10-12T20:41:21: Worker worker-1: Switched back to main content
+2025-10-12T20:41:21: Worker worker-1: Switched to iframe
+2025-10-12T20:41:21: Worker worker-1: Switched to iframe
+2025-10-12T20:41:21: Worker worker-1: Error extracting image 4
+2025-10-12T20:41:21: Worker worker-1: Switched back to main content
+2025-10-12T20:41:21: Worker worker-1: Switched to iframe
+2025-10-12T20:41:21: Worker worker-1: Switched to iframe
+2025-10-12T20:41:21: Worker worker-1: Error extracting image 5
+2025-10-12T20:41:21: Worker worker-1: Switched back to main content
+2025-10-12T20:41:21: Worker worker-1: Switched to iframe
+2025-10-12T20:41:21: Worker worker-1: Switched to iframe
+2025-10-12T20:41:21: Worker worker-1: Error extracting image 6
+2025-10-12T20:41:21: Worker worker-1: Switched back to main content
+2025-10-12T20:41:21: Worker worker-1: Switched to iframe
+2025-10-12T20:41:21: Worker worker-1: Switched back to main content
+2025-10-12T20:41:21: Worker worker-1: Switched to iframe
+2025-10-12T20:41:21: Worker worker-1: Switched to iframe
+2025-10-12T20:41:21: Worker worker-1: Error extracting image 1
+2025-10-12T20:41:21: Worker worker-1: Switched back to main content
+2025-10-12T20:41:21: Worker worker-1: Switched to iframe
+2025-10-12T20:41:21: Worker worker-1: Switched to iframe
+2025-10-12T20:41:22: Worker worker-1: Error extracting image 2
+2025-10-12T20:41:22: Worker worker-1: Switched back to main content
+2025-10-12T20:41:22: Worker worker-1: Switched to iframe
+2025-10-12T20:41:22: Worker worker-1: Switched to iframe
+2025-10-12T20:41:22: Worker worker-1: Error extracting image 3
+2025-10-12T20:41:22: Worker worker-1: Switched back to main content
+2025-10-12T20:41:22: Worker worker-1: Switched to iframe
+2025-10-12T20:41:22: Worker worker-1: Switched to iframe
+2025-10-12T20:41:22: Worker worker-1: Error extracting image 4
+2025-10-12T20:41:22: Worker worker-1: Switched back to main content
+2025-10-12T20:41:22: Worker worker-1: Switched to iframe
+2025-10-12T20:41:22: Worker worker-1: Switched to iframe
+2025-10-12T20:41:22: Worker worker-1: Error extracting image 5
+2025-10-12T20:41:22: Worker worker-1: Switched back to main content
+2025-10-12T20:41:22: Worker worker-1: Switched to iframe
+2025-10-12T20:41:22: Worker worker-1: Switched to iframe
+2025-10-12T20:41:22: Worker worker-1: Error extracting image 6
+2025-10-12T20:41:22: Worker worker-1: Switched back to main content
+2025-10-12T20:41:22: Worker worker-1: Switched to iframe
+2025-10-12T20:41:22: Worker worker-1: Switched back to main content
+2025-10-12T20:41:22: Worker worker-1: Switched to iframe
+2025-10-12T20:41:22: Worker worker-1: Switched to iframe
+2025-10-12T20:41:22: Worker worker-1: Error extracting image 1
+2025-10-12T20:41:22: Worker worker-1: Switched back to main content
+2025-10-12T20:41:22: Worker worker-1: Switched to iframe
+2025-10-12T20:41:22: Worker worker-1: Switched to iframe
+2025-10-12T20:41:22: Worker worker-1: Error extracting image 2
+2025-10-12T20:41:22: Worker worker-1: Switched back to main content
+2025-10-12T20:41:22: Worker worker-1: Switched to iframe
+2025-10-12T20:41:22: Worker worker-1: Switched to iframe
+2025-10-12T20:41:22: Worker worker-1: Error extracting image 3
+2025-10-12T20:41:22: Worker worker-1: Switched back to main content
+2025-10-12T20:41:22: Worker worker-1: Switched to iframe
+2025-10-12T20:41:23: Worker worker-1: Switched to iframe
+2025-10-12T20:41:23: Worker worker-1: Error extracting image 4
+2025-10-12T20:41:23: Worker worker-1: Switched back to main content
+2025-10-12T20:41:23: Worker worker-1: Switched to iframe
+2025-10-12T20:41:23: Worker worker-1: Switched to iframe
+2025-10-12T20:41:23: Worker worker-1: Error extracting image 5
+2025-10-12T20:41:23: Worker worker-1: Switched back to main content
+2025-10-12T20:41:23: Worker worker-1: Switched to iframe
+2025-10-12T20:41:23: Worker worker-1: Switched to iframe
+2025-10-12T20:41:23: Worker worker-1: Error extracting image 6
+2025-10-12T20:41:23: Worker worker-1: Switched back to main content
+2025-10-12T20:41:23: Worker worker-1: Switched to iframe
+2025-10-12T20:41:23: Worker worker-1: Switched back to main content
+2025-10-12T20:41:23: Worker worker-1: Switched to iframe
+2025-10-12T20:41:23: Worker worker-1: Switched to iframe
+2025-10-12T20:41:23: Worker worker-1: Error extracting image 1
+2025-10-12T20:41:23: Worker worker-1: Switched back to main content
+2025-10-12T20:41:23: Worker worker-1: Switched to iframe
+2025-10-12T20:41:23: Worker worker-1: Switched to iframe
+2025-10-12T20:41:23: Worker worker-1: Switched back to main content
+2025-10-12T20:41:23: Worker worker-1: Switched to iframe
+2025-10-12T20:41:23: Worker worker-1: Health check image generated successfully at 2025-10-12 15:11:23.628591+00:00
+2025-10-12T20:41:25: Health check image sent successfully to Telegram bot
+2025-10-12T20:41:27: Worker worker-1: Style selected: Painted Anime
+2025-10-12T20:41:28: Worker worker-1: Prompt entered
+2025-10-12T20:41:29: Worker worker-1: Generate button clicked
+2025-10-12T20:41:44: Worker worker-1: Switched to iframe
+2025-10-12T20:41:44: Worker worker-1: Error extracting image 1
+2025-10-12T20:41:44: Worker worker-1: Switched back to main content
+2025-10-12T20:41:44: Worker worker-1: Switched to iframe
+2025-10-12T20:41:44: Worker worker-1: Switched to iframe
+2025-10-12T20:41:44: Worker worker-1: Error extracting image 2
+2025-10-12T20:41:44: Worker worker-1: Switched back to main content
+2025-10-12T20:41:44: Worker worker-1: Switched to iframe
+2025-10-12T20:41:44: Worker worker-1: Switched to iframe
+2025-10-12T20:41:44: Worker worker-1: Error extracting image 3
+2025-10-12T20:41:44: Worker worker-1: Switched back to main content
+2025-10-12T20:41:44: Worker worker-1: Switched to iframe
+2025-10-12T20:41:44: Worker worker-1: Switched to iframe
+2025-10-12T20:41:44: Worker worker-1: Error extracting image 4
+2025-10-12T20:41:44: Worker worker-1: Switched back to main content
+2025-10-12T20:41:44: Worker worker-1: Switched to iframe
+2025-10-12T20:41:44: Worker worker-1: Switched to iframe
+2025-10-12T20:41:44: Worker worker-1: Error extracting image 5
+2025-10-12T20:41:44: Worker worker-1: Switched back to main content
+2025-10-12T20:41:44: Worker worker-1: Switched to iframe
+2025-10-12T20:41:44: Worker worker-1: Switched to iframe
+2025-10-12T20:41:44: Worker worker-1: Error extracting image 6
+2025-10-12T20:41:44: Worker worker-1: Switched back to main content
+2025-10-12T20:41:45: Worker worker-1: Switched to iframe
+2025-10-12T20:41:45: Worker worker-1: Switched back to main content
+2025-10-12T20:41:45: Worker worker-1: Switched to iframe
+2025-10-12T20:41:45: Worker worker-1: Switched to iframe
+2025-10-12T20:41:45: Worker worker-1: Error extracting image 1
+2025-10-12T20:41:45: Worker worker-1: Switched back to main content
+2025-10-12T20:41:45: Worker worker-1: Switched to iframe
+2025-10-12T20:41:45: Worker worker-1: Switched to iframe
+2025-10-12T20:41:45: Worker worker-1: Error extracting image 2
+2025-10-12T20:41:45: Worker worker-1: Switched back to main content
+2025-10-12T20:41:45: Worker worker-1: Switched to iframe
+2025-10-12T20:41:45: Worker worker-1: Switched to iframe
+2025-10-12T20:41:45: Worker worker-1: Error extracting image 3
+2025-10-12T20:41:45: Worker worker-1: Switched back to main content
+2025-10-12T20:41:45: Worker worker-1: Switched to iframe
+2025-10-12T20:41:45: Worker worker-1: Switched to iframe
+2025-10-12T20:41:45: Worker worker-1: Error extracting image 4
+2025-10-12T20:41:45: Worker worker-1: Switched back to main content
+2025-10-12T20:41:45: Worker worker-1: Switched to iframe
+2025-10-12T20:41:45: Worker worker-1: Switched to iframe
+2025-10-12T20:41:45: Worker worker-1: Error extracting image 5
+2025-10-12T20:41:45: Worker worker-1: Switched back to main content
+2025-10-12T20:41:45: Worker worker-1: Switched to iframe
+2025-10-12T20:41:45: Worker worker-1: Switched to iframe
+2025-10-12T20:41:45: Worker worker-1: Error extracting image 6
+2025-10-12T20:41:45: Worker worker-1: Switched back to main content
+2025-10-12T20:41:45: Worker worker-1: Switched to iframe
+2025-10-12T20:41:45: Worker worker-1: Switched back to main content
+2025-10-12T20:41:45: Worker worker-1: Switched to iframe
+2025-10-12T20:41:45: Worker worker-1: Switched to iframe
+2025-10-12T20:41:45: Worker worker-1: Error extracting image 1
+2025-10-12T20:41:45: Worker worker-1: Switched back to main content
+2025-10-12T20:41:46: Worker worker-1: Switched to iframe
+2025-10-12T20:41:46: Worker worker-1: Switched to iframe
+2025-10-12T20:41:46: Worker worker-1: Error extracting image 2
+2025-10-12T20:41:46: Worker worker-1: Switched back to main content
+2025-10-12T20:41:46: Worker worker-1: Switched to iframe
+2025-10-12T20:41:46: Worker worker-1: Switched to iframe
+2025-10-12T20:41:46: Worker worker-1: Error extracting image 3
+2025-10-12T20:41:46: Worker worker-1: Switched back to main content
+2025-10-12T20:41:46: Worker worker-1: Switched to iframe
+2025-10-12T20:41:46: Worker worker-1: Switched to iframe
+2025-10-12T20:41:46: Worker worker-1: Error extracting image 4
+2025-10-12T20:41:46: Worker worker-1: Switched back to main content
+2025-10-12T20:41:46: Worker worker-1: Switched to iframe
+2025-10-12T20:41:46: Worker worker-1: Switched to iframe
+2025-10-12T20:41:46: Worker worker-1: Error extracting image 5
+2025-10-12T20:41:46: Worker worker-1: Switched back to main content
+2025-10-12T20:41:46: Worker worker-1: Switched to iframe
+2025-10-12T20:41:46: Worker worker-1: Switched to iframe
+2025-10-12T20:41:46: Worker worker-1: Error extracting image 6
+2025-10-12T20:41:46: Worker worker-1: Switched back to main content
+2025-10-12T20:41:46: Worker worker-1: Switched to iframe
+2025-10-12T20:41:46: Worker worker-1: Switched back to main content
+2025-10-12T20:41:46: Worker worker-1: Switched to iframe
+2025-10-12T20:41:46: Worker worker-1: Switched to iframe
+2025-10-12T20:41:46: Worker worker-1: Error extracting image 1
+2025-10-12T20:41:46: Worker worker-1: Switched back to main content
+2025-10-12T20:41:46: Worker worker-1: Switched to iframe
+2025-10-12T20:41:46: Worker worker-1: Switched to iframe
+2025-10-12T20:41:47: Worker worker-1: Error extracting image 2
+2025-10-12T20:41:47: Worker worker-1: Switched back to main content
+2025-10-12T20:41:47: Worker worker-1: Switched to iframe
+2025-10-12T20:41:47: Worker worker-1: Switched to iframe
+2025-10-12T20:41:47: Worker worker-1: Error extracting image 3
+2025-10-12T20:41:47: Worker worker-1: Switched back to main content
+2025-10-12T20:41:47: Worker worker-1: Switched to iframe
+2025-10-12T20:41:47: Worker worker-1: Switched to iframe
+2025-10-12T20:41:47: Worker worker-1: Error extracting image 4
+2025-10-12T20:41:47: Worker worker-1: Switched back to main content
+2025-10-12T20:41:47: Worker worker-1: Switched to iframe
+2025-10-12T20:41:47: Worker worker-1: Switched to iframe
+2025-10-12T20:41:47: Worker worker-1: Error extracting image 5
+2025-10-12T20:41:47: Worker worker-1: Switched back to main content
+2025-10-12T20:41:47: Worker worker-1: Switched to iframe
+2025-10-12T20:41:47: Worker worker-1: Switched to iframe
+2025-10-12T20:41:47: Worker worker-1: Error extracting image 6
+2025-10-12T20:41:47: Worker worker-1: Switched back to main content
+2025-10-12T20:41:47: Worker worker-1: Switched to iframe
+2025-10-12T20:41:47: Worker worker-1: Switched back to main content
+2025-10-12T20:41:47: Worker worker-1: Switched to iframe
+2025-10-12T20:41:47: Worker worker-1: Switched to iframe
+2025-10-12T20:41:47: Worker worker-1: Error extracting image 1
+2025-10-12T20:41:47: Worker worker-1: Switched back to main content
+2025-10-12T20:41:47: Worker worker-1: Switched to iframe
+2025-10-12T20:41:47: Worker worker-1: Switched to iframe
+2025-10-12T20:41:47: Worker worker-1: Error extracting image 2
+2025-10-12T20:41:47: Worker worker-1: Switched back to main content
+2025-10-12T20:41:47: Worker worker-1: Switched to iframe
+2025-10-12T20:41:47: Worker worker-1: Switched to iframe
+2025-10-12T20:41:47: Worker worker-1: Error extracting image 3
+2025-10-12T20:41:47: Worker worker-1: Switched back to main content
+2025-10-12T20:41:48: Worker worker-1: Switched to iframe
+2025-10-12T20:41:48: Worker worker-1: Switched to iframe
+2025-10-12T20:41:48: Worker worker-1: Error extracting image 4
+2025-10-12T20:41:48: Worker worker-1: Switched back to main content
+2025-10-12T20:41:48: Worker worker-1: Switched to iframe
+2025-10-12T20:41:48: Worker worker-1: Switched to iframe
+2025-10-12T20:41:48: Worker worker-1: Error extracting image 5
+2025-10-12T20:41:48: Worker worker-1: Switched back to main content
+2025-10-12T20:41:48: Worker worker-1: Switched to iframe
+2025-10-12T20:41:48: Worker worker-1: Switched to iframe
+2025-10-12T20:41:48: Worker worker-1: Switched back to main content
+2025-10-12T20:41:48: Worker worker-1: Switched to iframe
+2025-10-12T20:41:48: Worker worker-1: Health check image generated successfully at 2025-10-12 15:11:48.508268+00:00
+2025-10-12T20:41:51: Health check image sent successfully to Telegram bot
+2025-10-12T20:42:38: Worker worker-1: Initializing Gen object...
+2025-10-12T20:42:38: 
+2025-10-12T20:42:38: Worker worker-1: Using directories:
+2025-10-12T20:42:38:   - Downloads: C:\Users\Sahan\Dark\Promise\genApp\backend\worker_data_worker-1\downloaded_files
+2025-10-12T20:42:38:   - Chrome Profile: C:\Users\Sahan\Dark\Promise\genApp\backend\worker_data_worker-1\chrome_profile
+2025-10-12T20:42:57: Worker worker-1: Perchance page opened
+2025-10-12T20:43:00: Worker worker-1: LocalStorage set
+2025-10-12T20:43:06: Worker worker-1: Image generation page opened
+2025-10-12T20:43:08: Worker worker-1: LocalStorage set for image generation page
+2025-10-12T20:43:12: Worker worker-1: Page opened
+2025-10-12T20:43:17: Worker worker-1: Switched to iframe
+2025-10-12T20:43:18: Worker worker-1: Prompt entered
+2025-10-12T20:43:18: Worker worker-1: Generate button clicked
+2025-10-12T20:43:33: Worker worker-1: Switched to iframe
+2025-10-12T20:43:33: Worker worker-1: Error extracting image 1
+2025-10-12T20:43:33: Worker worker-1: Switched back to main content
+2025-10-12T20:43:33: Worker worker-1: Switched to iframe
+2025-10-12T20:43:33: Worker worker-1: Switched to iframe
+2025-10-12T20:43:33: Worker worker-1: Error extracting image 2
+2025-10-12T20:43:33: Worker worker-1: Switched back to main content
+2025-10-12T20:43:33: Worker worker-1: Switched to iframe
+2025-10-12T20:43:33: Worker worker-1: Switched to iframe
+2025-10-12T20:43:33: Worker worker-1: Switched back to main content
+2025-10-12T20:43:33: Worker worker-1: Switched to iframe
+2025-10-12T20:43:33: Worker worker-1: Image extracted successfully
+2025-10-12T20:43:33: Worker worker-1: Image saved as C:\Users\Sahan\Dark\Promise\genApp\backend\worker_data_worker-1\downloaded_files\output_image.png
+2025-10-12T20:43:36: Worker worker-1: Initialization image sent successfully to Telegram bot
+2025-10-12T20:43:36: Worker worker-1: Initialization complete
+2025-10-12T20:43:36: Starting Flask server worker worker-1 on port 5001...
+2025-10-12T20:43:36: Available API endpoints:
+2025-10-12T20:43:36: - POST /api/register (User registration)
+2025-10-12T20:43:36: - GET/POST /api/verify (Token verification)
+2025-10-12T20:43:36: - POST /api/generate (Image generation)
+2025-10-12T20:43:36: - GET /api/user/tokens (Get token count)
+2025-10-12T20:43:36: - POST /api/user/tokens/add (Add tokens)
+2025-10-12T20:43:36: - GET /api/styles (Get available styles)
+2025-10-12T20:43:36: - GET /api/health (Basic health check)
+2025-10-12T20:43:36: 
+2025-10-12T20:43:36: Worker worker-1: Started single worker thread
+2025-10-12T20:43:36:  * Serving Flask app 'server'
+2025-10-12T20:43:36:  * Debug mode: off
+2025-10-12T20:46:30: Worker worker-1: Initializing Gen object...
+2025-10-12T20:46:30: 
+2025-10-12T20:46:30: Worker worker-1: Using directories:
+2025-10-12T20:46:30:   - Downloads: C:\Users\Sahan\Dark\Promise\genApp\backend\worker_data_worker-1\downloaded_files
+2025-10-12T20:46:30:   - Chrome Profile: C:\Users\Sahan\Dark\Promise\genApp\backend\worker_data_worker-1\chrome_profile
+2025-10-12T20:46:50: Worker worker-1: Perchance page opened
+2025-10-12T20:46:52: Worker worker-1: LocalStorage set
+2025-10-12T20:46:55: Worker worker-1: Image generation page opened
+2025-10-12T20:46:57: Worker worker-1: LocalStorage set for image generation page
+2025-10-12T20:47:01: Worker worker-1: Page opened
+2025-10-12T20:47:06: Worker worker-1: Switched to iframe
+2025-10-12T20:47:07: Worker worker-1: Prompt entered
+2025-10-12T20:47:07: Worker worker-1: Generate button clicked
+2025-10-12T20:47:23: Worker worker-1: Switched to iframe
+2025-10-12T20:47:23: Worker worker-1: Error extracting image 1
+2025-10-12T20:47:23: Worker worker-1: Switched back to main content
+2025-10-12T20:47:23: Worker worker-1: Switched to iframe
+2025-10-12T20:47:23: Worker worker-1: Switched to iframe
+2025-10-12T20:47:23: Worker worker-1: Error extracting image 2
+2025-10-12T20:47:23: Worker worker-1: Switched back to main content
+2025-10-12T20:47:23: Worker worker-1: Switched to iframe
+2025-10-12T20:47:23: Worker worker-1: Switched to iframe
+2025-10-12T20:47:23: Worker worker-1: Error extracting image 3
+2025-10-12T20:47:23: Worker worker-1: Switched back to main content
+2025-10-12T20:47:23: Worker worker-1: Switched to iframe
+2025-10-12T20:47:23: Worker worker-1: Switched to iframe
+2025-10-12T20:47:23: Worker worker-1: Switched back to main content
+2025-10-12T20:47:23: Worker worker-1: Switched to iframe
+2025-10-12T20:47:23: Worker worker-1: Image extracted successfully
+2025-10-12T20:47:23: Worker worker-1: Image saved as C:\Users\Sahan\Dark\Promise\genApp\backend\worker_data_worker-1\downloaded_files\output_image.png
+2025-10-12T20:47:24: Worker worker-1: Initialization image sent successfully to Telegram bot
+2025-10-12T20:47:24: Worker worker-1: Initialization complete
+2025-10-12T20:47:24: Starting Flask server worker worker-1 on port 5001...
+2025-10-12T20:47:24: Available API endpoints:
+2025-10-12T20:47:24: - POST /api/register (User registration)
+2025-10-12T20:47:24: - GET/POST /api/verify (Token verification)
+2025-10-12T20:47:24: - POST /api/generate (Image generation)
+2025-10-12T20:47:24: - GET /api/user/tokens (Get token count)
+2025-10-12T20:47:24: - POST /api/user/tokens/add (Add tokens)
+2025-10-12T20:47:24: - GET /api/styles (Get available styles)
+2025-10-12T20:47:24: - GET /api/health (Basic health check)
+2025-10-12T20:47:24: - GET /api/health-generate (Health check with image generation)
+2025-10-12T20:47:24: Worker worker-1: Started single worker thread
+2025-10-12T20:47:24:  * Serving Flask app 'server'
+2025-10-12T20:47:24:  * Debug mode: off
+2025-10-12T20:56:29: Worker worker-1: Style selected: Painted Anime
+2025-10-12T20:56:30: Worker worker-1: Prompt entered
+2025-10-12T20:56:30: Worker worker-1: Generate button clicked
+2025-10-12T20:56:45: Worker worker-1: Switched to iframe
+2025-10-12T20:56:45: Worker worker-1: Error extracting image 1
+2025-10-12T20:56:45: Worker worker-1: Switched back to main content
+2025-10-12T20:56:45: Worker worker-1: Switched to iframe
+2025-10-12T20:56:45: Worker worker-1: Switched to iframe
+2025-10-12T20:56:45: Worker worker-1: Switched back to main content
+2025-10-12T20:56:45: Worker worker-1: Switched to iframe
+2025-10-12T20:56:45: Worker worker-1: Health check image generated successfully at 2025-10-12 15:26:45.895193+00:00
+2025-10-12T20:56:48: Health check image sent successfully to Telegram bot

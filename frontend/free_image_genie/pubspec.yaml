@@ -50,6 +50,7 @@ dependencies:
   gal: ^2.3.0
   photo_manager: ^3.5.0
   google_mobile_ads: ^5.1.0
+  flutter_secure_storage: ^9.2.2
 
 dev_dependencies:
   flutter_test:

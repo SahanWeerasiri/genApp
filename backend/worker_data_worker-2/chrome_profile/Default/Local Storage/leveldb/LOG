@@ -1,0 +1,6 @@
+2025/10/12-20:46:39.434 4464 Reusing MANIFEST C:\Users\Sahan\Dark\Promise\genApp\backend\worker_data_worker-2\chrome_profile\Default\Local Storage\leveldb/MANIFEST-000001
+2025/10/12-20:46:39.452 4464 Recovering log #3
+2025/10/12-20:46:39.455 4464 Reusing old log C:\Users\Sahan\Dark\Promise\genApp\backend\worker_data_worker-2\chrome_profile\Default\Local Storage\leveldb/000003.log 
+2025/10/12-20:46:55.231 423c Level-0 table #5: started
+2025/10/12-20:46:55.240 423c Level-0 table #5: 19031 bytes OK
+2025/10/12-20:46:55.241 423c Delete type=0 #3

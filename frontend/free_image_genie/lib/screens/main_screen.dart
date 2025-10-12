@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'home/home_screen.dart';
-import 'gallery/gallery_screen.dart';
 import 'profile/profile_screen.dart';
 import '../utils/logger.dart';
 
@@ -14,11 +13,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
 
-  final List<Widget> _screens = [
-    const HomeScreen(),
-    const GalleryScreen(),
-    const ProfileScreen(),
-  ];
+  final List<Widget> _screens = [const HomeScreen(), const ProfileScreen()];
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +31,6 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home_rounded),
             label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.photo_library_rounded),
-            label: 'Gallery',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_rounded),
