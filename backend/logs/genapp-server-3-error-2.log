@@ -269,3 +269,150 @@
 2025-10-12T20:56:49: INFO:werkzeug:127.0.0.1 - - [12/Oct/2025 20:56:49] "GET /api/health-generate HTTP/1.1" 200 -
 2025-10-12T21:06:59: INFO:werkzeug:127.0.0.1 - - [12/Oct/2025 21:06:59] "GET /api/health-generate HTTP/1.1" 200 -
 2025-10-12T21:07:01: INFO:werkzeug:127.0.0.1 - - [12/Oct/2025 21:07:01] "GET /api/health-generate HTTP/1.1" 200 -
+2025-10-12T21:37:29: INFO:firestore_service:Firestore service initialized for project: image-genie-ff577
+2025-10-12T21:37:29: INFO:in_memory_store:In-memory token store initialized
+2025-10-12T21:37:52: Traceback (most recent call last):
+2025-10-12T21:37:52:   File "C:\Users\Sahan\Dark\Promise\genApp\backend\gen.py", line 52, in __init__
+2025-10-12T21:37:52:     self.driver.execute_script("window.localStorage.setItem('sensitiveContentVisibility', 'warn');")
+2025-10-12T21:37:52:     ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-12T21:37:52:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 551, in execute_script
+2025-10-12T21:37:52:     return self.execute(command, {"script": script, "args": converted_args})["value"]
+2025-10-12T21:37:52:            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-12T21:37:52:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 454, in execute
+2025-10-12T21:37:52:     self.error_handler.check_response(response)
+2025-10-12T21:37:52:     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-10-12T21:37:52:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+2025-10-12T21:37:52:     raise exception_class(message, screen, stacktrace)
+2025-10-12T21:37:52: selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+2025-10-12T21:37:52: from unknown error: web view not found
+2025-10-12T21:37:52:   (Session info: chrome=141.0.7390.66)
+2025-10-12T21:37:52: Stacktrace:
+2025-10-12T21:37:52: 	GetHandleVerifier [0x0x7ff6251b9f25+80677]
+2025-10-12T21:37:52: 	GetHandleVerifier [0x0x7ff6251b9f80+80768]
+2025-10-12T21:37:52: 	(No symbol) [0x0x7ff624f602bf]
+2025-10-12T21:37:52: 	(No symbol) [0x0x7ff624f38041]
+2025-10-12T21:37:52: 	(No symbol) [0x0x7ff624fe8b8e]
+2025-10-12T21:37:52: 	(No symbol) [0x0x7ff6250092d2]
+2025-10-12T21:37:52: 	(No symbol) [0x0x7ff624fe12e3]
+2025-10-12T21:37:52: 	(No symbol) [0x0x7ff624fa9770]
+2025-10-12T21:37:52: 	(No symbol) [0x0x7ff624faa5a3]
+2025-10-12T21:37:52: 	GetHandleVerifier [0x0x7ff62549817d+3087741]
+2025-10-12T21:37:52: 	GetHandleVerifier [0x0x7ff62549223a+3063354]
+2025-10-12T21:37:52: 	GetHandleVerifier [0x0x7ff6254b32c5+3198661]
+2025-10-12T21:37:52: 	GetHandleVerifier [0x0x7ff6251d412e+187694]
+2025-10-12T21:37:52: 	GetHandleVerifier [0x0x7ff6251db20f+216591]
+2025-10-12T21:37:52: 	GetHandleVerifier [0x0x7ff6251c2ee4+117476]
+2025-10-12T21:37:52: 	GetHandleVerifier [0x0x7ff6251c309f+117919]
+2025-10-12T21:37:52: 	GetHandleVerifier [0x0x7ff6251a91a8+11688]
+2025-10-12T21:37:52: 	BaseThreadInitThunk [0x0x7ffa4d61e8d7+23]
+2025-10-12T21:37:52: 	RtlUserThreadStart [0x0x7ffa4e968d9c+44]
+2025-10-12T21:37:52: 
+2025-10-12T21:37:52: INFO:werkzeug:
+2025-10-12T21:37:52: WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+2025-10-12T21:37:52:  * Running on all addresses (0.0.0.0)
+2025-10-12T21:37:52:  * Running on http://127.0.0.1:5003
+2025-10-12T21:37:52:  * Running on http://192.168.1.2:5003
+2025-10-12T21:37:52: INFO:werkzeug:Press CTRL+C to quit
+2025-10-12T21:55:37: INFO:firestore_service:Firestore service initialized for project: image-genie-ff577
+2025-10-12T21:55:37: INFO:in_memory_store:In-memory token store initialized
+2025-10-12T21:56:41: INFO:werkzeug:WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+2025-10-12T21:56:41:  * Running on all addresses (0.0.0.0)
+2025-10-12T21:56:41:  * Running on http://127.0.0.1:5003
+2025-10-12T21:56:41:  * Running on http://192.168.1.2:5003
+2025-10-12T21:56:41: INFO:werkzeug:Press CTRL+C to quit
+2025-10-12T21:59:39: INFO:firestore_service:Firestore service initialized for project: image-genie-ff577
+2025-10-12T21:59:39: INFO:in_memory_store:In-memory token store initialized
+2025-10-12T22:00:40: INFO:werkzeug:WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+2025-10-12T22:00:40:  * Running on all addresses (0.0.0.0)
+2025-10-12T22:00:40:  * Running on http://127.0.0.1:5003
+2025-10-12T22:00:40:  * Running on http://192.168.1.2:5003
+2025-10-12T22:00:40: INFO:werkzeug:Press CTRL+C to quit
+2025-10-12T22:00:46: INFO:firestore_service:Retrieved profile for user uz17AKYoaQNqUxZwisTZ32rmrz73
+2025-10-12T22:00:46: INFO:firestore_service:User uz17AKYoaQNqUxZwisTZ32rmrz73 has 51 tokens
+2025-10-12T22:00:47: INFO:firestore_service:Retrieved profile for user uz17AKYoaQNqUxZwisTZ32rmrz73
+2025-10-12T22:00:49: INFO:firestore_service:Updated user profile for uz17AKYoaQNqUxZwisTZ32rmrz73
+2025-10-12T22:00:49: INFO:firestore_service:Token consumed for user uz17AKYoaQNqUxZwisTZ32rmrz73. Remaining: 50
+2025-10-12T22:01:17: INFO:werkzeug:192.168.1.3 - - [12/Oct/2025 22:01:17] "POST /api/generate HTTP/1.1" 200 -
+2025-10-12T22:01:25: INFO:firestore_service:Retrieved profile for user uz17AKYoaQNqUxZwisTZ32rmrz73
+2025-10-12T22:01:25: INFO:firestore_service:User uz17AKYoaQNqUxZwisTZ32rmrz73 has 50 tokens
+2025-10-12T22:01:27: INFO:firestore_service:Retrieved profile for user uz17AKYoaQNqUxZwisTZ32rmrz73
+2025-10-12T22:01:28: INFO:firestore_service:Updated user profile for uz17AKYoaQNqUxZwisTZ32rmrz73
+2025-10-12T22:01:28: INFO:firestore_service:Token consumed for user uz17AKYoaQNqUxZwisTZ32rmrz73. Remaining: 49
+2025-10-12T22:01:53: INFO:werkzeug:192.168.1.3 - - [12/Oct/2025 22:01:53] "POST /api/generate HTTP/1.1" 200 -
+2025-10-12T22:02:39: INFO:firestore_service:Retrieved profile for user uz17AKYoaQNqUxZwisTZ32rmrz73
+2025-10-12T22:02:39: INFO:firestore_service:User uz17AKYoaQNqUxZwisTZ32rmrz73 has 49 tokens
+2025-10-12T22:02:40: INFO:firestore_service:Retrieved profile for user uz17AKYoaQNqUxZwisTZ32rmrz73
+2025-10-12T22:02:41: INFO:firestore_service:Updated user profile for uz17AKYoaQNqUxZwisTZ32rmrz73
+2025-10-12T22:02:41: INFO:firestore_service:Token consumed for user uz17AKYoaQNqUxZwisTZ32rmrz73. Remaining: 48
+2025-10-12T22:02:59: INFO:werkzeug:192.168.1.3 - - [12/Oct/2025 22:02:59] "POST /api/generate HTTP/1.1" 200 -
+2025-10-12T22:07:05: INFO:firestore_service:Firestore service initialized for project: image-genie-ff577
+2025-10-12T22:07:05: INFO:in_memory_store:In-memory token store initialized
+2025-10-12T22:08:09: INFO:werkzeug:WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+2025-10-12T22:08:09:  * Running on all addresses (0.0.0.0)
+2025-10-12T22:08:09:  * Running on http://127.0.0.1:5003
+2025-10-12T22:08:09:  * Running on http://192.168.1.2:5003
+2025-10-12T22:08:09: INFO:werkzeug:Press CTRL+C to quit
+2025-10-12T22:10:49: INFO:firestore_service:Retrieved profile for user uz17AKYoaQNqUxZwisTZ32rmrz73
+2025-10-12T22:10:49: INFO:firestore_service:User uz17AKYoaQNqUxZwisTZ32rmrz73 has 48 tokens
+2025-10-12T22:10:51: INFO:firestore_service:Retrieved profile for user uz17AKYoaQNqUxZwisTZ32rmrz73
+2025-10-12T22:10:52: INFO:firestore_service:Updated user profile for uz17AKYoaQNqUxZwisTZ32rmrz73
+2025-10-12T22:10:52: INFO:firestore_service:Token consumed for user uz17AKYoaQNqUxZwisTZ32rmrz73. Remaining: 47
+2025-10-12T22:11:23: INFO:werkzeug:192.168.1.3 - - [12/Oct/2025 22:11:23] "POST /api/generate HTTP/1.1" 200 -
+2025-10-12T22:20:31: INFO:firestore_service:Firestore service initialized for project: image-genie-ff577
+2025-10-12T22:20:31: INFO:in_memory_store:In-memory token store initialized
+2025-10-12T22:20:53: Traceback (most recent call last):
+2025-10-12T22:20:53:   File "C:\Users\Sahan\Dark\Promise\genApp\backend\gen.py", line 52, in __init__
+2025-10-12T22:20:53:     self.driver.execute_script("window.localStorage.setItem('sensitiveContentVisibility', 'warn');")
+2025-10-12T22:20:53:     ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-12T22:20:53:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 551, in execute_script
+2025-10-12T22:20:53:     return self.execute(command, {"script": script, "args": converted_args})["value"]
+2025-10-12T22:20:53:            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-12T22:20:53:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 454, in execute
+2025-10-12T22:20:53:     self.error_handler.check_response(response)
+2025-10-12T22:20:53:     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+2025-10-12T22:20:53:   File "C:\USERS\SAHAN\APPDATA\LOCAL\PROGRAMS\PYTHON\PYTHON313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+2025-10-12T22:20:53:     raise exception_class(message, screen, stacktrace)
+2025-10-12T22:20:53: selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+2025-10-12T22:20:53: from unknown error: web view not found
+2025-10-12T22:20:53:   (Session info: chrome=141.0.7390.66)
+2025-10-12T22:20:53: Stacktrace:
+2025-10-12T22:20:53: 	GetHandleVerifier [0x0x7ff6251b9f25+80677]
+2025-10-12T22:20:53: 	GetHandleVerifier [0x0x7ff6251b9f80+80768]
+2025-10-12T22:20:53: 	(No symbol) [0x0x7ff624f602bf]
+2025-10-12T22:20:53: 	(No symbol) [0x0x7ff624f38041]
+2025-10-12T22:20:53: 	(No symbol) [0x0x7ff624fe8b8e]
+2025-10-12T22:20:53: 	(No symbol) [0x0x7ff6250092d2]
+2025-10-12T22:20:53: 	(No symbol) [0x0x7ff624fe12e3]
+2025-10-12T22:20:53: 	(No symbol) [0x0x7ff624fa9770]
+2025-10-12T22:20:53: 	(No symbol) [0x0x7ff624faa5a3]
+2025-10-12T22:20:53: 	GetHandleVerifier [0x0x7ff62549817d+3087741]
+2025-10-12T22:20:53: 	GetHandleVerifier [0x0x7ff62549223a+3063354]
+2025-10-12T22:20:53: 	GetHandleVerifier [0x0x7ff6254b32c5+3198661]
+2025-10-12T22:20:53: 	GetHandleVerifier [0x0x7ff6251d412e+187694]
+2025-10-12T22:20:53: 	GetHandleVerifier [0x0x7ff6251db20f+216591]
+2025-10-12T22:20:53: 	GetHandleVerifier [0x0x7ff6251c2ee4+117476]
+2025-10-12T22:20:53: 	GetHandleVerifier [0x0x7ff6251c309f+117919]
+2025-10-12T22:20:53: 	GetHandleVerifier [0x0x7ff6251a91a8+11688]
+2025-10-12T22:20:53: 	BaseThreadInitThunk [0x0x7ffa4d61e8d7+23]
+2025-10-12T22:20:53: 	RtlUserThreadStart [0x0x7ffa4e968d9c+44]
+2025-10-12T22:20:53: 
+2025-10-12T22:20:53: INFO:werkzeug:WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+2025-10-12T22:20:53:  * Running on all addresses (0.0.0.0)
+2025-10-12T22:20:53:  * Running on http://127.0.0.1:5003
+2025-10-12T22:20:53:  * Running on http://192.168.1.2:5003
+2025-10-12T22:20:53: INFO:werkzeug:Press CTRL+C to quit
+2025-10-12T22:22:00: INFO:firestore_service:Retrieved profile for user uz17AKYoaQNqUxZwisTZ32rmrz73
+2025-10-12T22:22:00: INFO:werkzeug:192.168.1.3 - - [12/Oct/2025 22:22:00] "POST /api/register HTTP/1.1" 200 -
+2025-10-12T22:22:25: INFO:firestore_service:Firestore service initialized for project: image-genie-ff577
+2025-10-12T22:22:25: INFO:in_memory_store:In-memory token store initialized
+2025-10-12T22:23:17: INFO:werkzeug:WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+2025-10-12T22:23:17:  * Running on all addresses (0.0.0.0)
+2025-10-12T22:23:17:  * Running on http://127.0.0.1:5003
+2025-10-12T22:23:17:  * Running on http://192.168.1.2:5003
+2025-10-12T22:23:17: INFO:werkzeug:Press CTRL+C to quit
+2025-10-12T22:24:20: INFO:firestore_service:Retrieved profile for user uz17AKYoaQNqUxZwisTZ32rmrz73
+2025-10-12T22:24:20: INFO:firestore_service:User uz17AKYoaQNqUxZwisTZ32rmrz73 has 44 tokens
+2025-10-12T22:24:21: INFO:firestore_service:Retrieved profile for user uz17AKYoaQNqUxZwisTZ32rmrz73
+2025-10-12T22:24:23: INFO:firestore_service:Updated user profile for uz17AKYoaQNqUxZwisTZ32rmrz73
+2025-10-12T22:24:23: INFO:firestore_service:Token consumed for user uz17AKYoaQNqUxZwisTZ32rmrz73. Remaining: 43
+2025-10-12T22:24:44: INFO:werkzeug:192.168.1.3 - - [12/Oct/2025 22:24:44] "POST /api/generate HTTP/1.1" 200 -

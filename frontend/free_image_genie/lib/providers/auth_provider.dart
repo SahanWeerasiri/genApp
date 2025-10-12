@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -28,8 +29,16 @@ class AuthProvider extends ChangeNotifier {
   // Firebase Auth instance
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-  // Backend API configuration
-  static const String _baseUrl = 'http://68.233.117.166:5000';
+  // Backend API configuration - Multiple workers for load balancing
+  static const String _baseIp = 'http://192.168.1.2';
+  static const List<int> _workerPorts = [5001, 5002, 5003];
+  static final Random _random = Random();
+
+  /// Get a random worker URL for load balancing
+  static String get _baseUrl {
+    final randomPort = _workerPorts[_random.nextInt(_workerPorts.length)];
+    return '$_baseIp:$randomPort';
+  }
 
   // Getters
   bool get isAuthenticated => _isAuthenticated;
@@ -42,7 +51,21 @@ class AuthProvider extends ChangeNotifier {
   String get errorMessage => _errorMessage;
 
   AuthProvider() {
+    _initializeGoogleSignIn();
     _initializeAuth();
+  }
+
+  // Initialize GoogleSignIn with serverClientId
+  Future<void> _initializeGoogleSignIn() async {
+    try {
+      await _googleSignIn.initialize(
+        serverClientId:
+            '55625441561-ru9e5qejc9lhs7kifti53f8d58ktr5ur.apps.googleusercontent.com',
+      );
+      AppLogger.info('GoogleSignIn initialized with serverClientId');
+    } catch (e) {
+      AppLogger.error('Failed to initialize GoogleSignIn: $e');
+    }
   }
 
   Future<void> _initializeAuth() async {
@@ -61,7 +84,7 @@ class AuthProvider extends ChangeNotifier {
           return;
         } else {
           AppLogger.info('Stored token is invalid, attempting refresh...');
-          final refreshSuccess = await _refreshAccessToken();
+          final refreshSuccess = await refreshAccessToken();
           if (refreshSuccess) {
             AppLogger.info('Token refreshed successfully');
             _setLoading(false);
@@ -89,7 +112,9 @@ class AuthProvider extends ChangeNotifier {
 
   Future<bool> _verifyToken(String token) async {
     try {
-      final url = Uri.parse('$_baseUrl/api/verify');
+      final baseUrl = _baseUrl; // Get random worker URL
+      final url = Uri.parse('$baseUrl/api/verify');
+      AppLogger.info('Verifying token with worker: $baseUrl');
       final response = await http.post(
         url,
         headers: {'Content-Type': 'application/json'},
@@ -118,12 +143,14 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  Future<bool> _refreshAccessToken() async {
+  Future<bool> refreshAccessToken() async {
     try {
       final refreshToken = await _secureStorage.read(key: _refreshTokenKey);
       if (refreshToken == null) return false;
 
-      final url = Uri.parse('$_baseUrl/api/refresh');
+      final baseUrl = _baseUrl; // Get random worker URL
+      final url = Uri.parse('$baseUrl/api/refresh');
+      AppLogger.info('Refreshing token with worker: $baseUrl');
       final response = await http.post(
         url,
         headers: {'Content-Type': 'application/json'},
@@ -160,7 +187,7 @@ class AuthProvider extends ChangeNotifier {
       await _firebaseAuth.signOut();
       await _googleSignIn.signOut();
 
-      // Start Google Sign-In flow
+      // Start Google Sign-In flow using authenticate method
       final GoogleSignInAccount? googleUser = await _googleSignIn
           .authenticate();
 
@@ -211,7 +238,8 @@ class AuthProvider extends ChangeNotifier {
     GoogleSignInAccount googleUser,
   ) async {
     try {
-      final url = Uri.parse('$_baseUrl/api/register');
+      final baseUrl = _baseUrl; // Get random worker URL
+      final url = Uri.parse('$baseUrl/api/register');
 
       final requestBody = {
         'uid': firebaseUser.uid,
@@ -220,7 +248,8 @@ class AuthProvider extends ChangeNotifier {
         'photoUrl': firebaseUser.photoURL ?? googleUser.photoUrl ?? '',
       };
 
-      AppLogger.info('Registering with backend: ${requestBody['email']}');
+      AppLogger.info('Registering with backend worker: $baseUrl');
+      AppLogger.info('Registering user: ${requestBody['email']}');
 
       final response = await http.post(
         url,
@@ -268,6 +297,42 @@ class AuthProvider extends ChangeNotifier {
   Future<void> updateTokenCount(int newCount) async {
     _tokenCount = newCount;
     notifyListeners();
+  }
+
+  /// Refresh token count from backend
+  Future<void> refreshTokenCount() async {
+    try {
+      final baseUrl = _baseUrl; // Get random worker URL
+      final url = Uri.parse('$baseUrl/api/user/tokens');
+      final accessToken = await getAccessToken();
+
+      if (accessToken == null) {
+        AppLogger.error('No access token available for token refresh');
+        return;
+      }
+
+      final headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $accessToken',
+      };
+
+      AppLogger.info('Refreshing token count from worker: $baseUrl');
+      final response = await http.get(url, headers: headers);
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        final newTokenCount = data['tokenCount'] as int;
+        _tokenCount = newTokenCount;
+        notifyListeners();
+        AppLogger.info('Token count refreshed: $newTokenCount');
+      } else {
+        AppLogger.error(
+          'Failed to refresh token count: ${response.statusCode}',
+        );
+      }
+    } catch (e) {
+      AppLogger.error('Error refreshing token count: $e');
+    }
   }
 
   String _getErrorMessage(dynamic error) {

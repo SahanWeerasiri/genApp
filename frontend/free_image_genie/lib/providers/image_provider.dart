@@ -2,9 +2,11 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:gal/gal.dart';
 import 'package:path_provider/path_provider.dart';
 import '../services/api_service.dart';
+import '../providers/auth_provider.dart';
 import '../utils/logger.dart';
 
 class ImageProvider extends ChangeNotifier {
@@ -43,7 +45,14 @@ class ImageProvider extends ChangeNotifier {
         _currentImageBytes = imageBytes;
         _currentImageUrl = null; // Clear URL since we're using bytes
 
-        // Note: Token reduction is now handled by the backend and AuthProvider
+        // Refresh the token count in the auth provider after successful generation
+        final authProvider = Provider.of<AuthProvider>(context, listen: false);
+        final updatedTokenCount = await ApiService.getUserTokens(context);
+        if (updatedTokenCount != null) {
+          await authProvider.updateTokenCount(updatedTokenCount);
+          AppLogger.info('Token count refreshed: $updatedTokenCount');
+        }
+
         AppLogger.info('Image generated successfully');
       } else {
         throw Exception('Failed to generate image');

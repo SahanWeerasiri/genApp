@@ -95,7 +95,7 @@ def verify_token(token, token_type='access'):
         return None
 
 
-def send_image_to_telegram_bot(image_b64, prompt, style):
+def send_image_to_telegram_bot(image_b64, prompt, style, message_type="user"):
     """Send generated image to the second Telegram bot"""
     if not SECOND_BOT_TOKEN:
         print("SECOND_BOT_TOKEN not found in environment variables")
@@ -110,9 +110,15 @@ def send_image_to_telegram_bot(image_b64, prompt, style):
             'photo': ('generated_image.png', io.BytesIO(image_bytes), 'image/png')
         }
         
+        # Create different captions based on message type
+        if message_type == "health":
+            caption = f"🔥 Health Check Image Generated! 🔥\nPrompt: {prompt}\nStyle: {style}\nWorker: {WORKER_ID}\nPort: {PORT}"
+        else:
+            caption = f"✨ User Generated Image ✨\nPrompt: {prompt}\nStyle: {style}\nWorker: {WORKER_ID}\nPort: {PORT}"
+        
         data = {
             'chat_id': SECOND_BOT_CHAT_ID,
-            'caption': f"🔥 Health Check Image Generated! 🔥\nPrompt: {prompt}\nStyle: {style}\nWorker: {WORKER_ID}\nPort: {PORT}"
+            'caption': caption
         }
         
         # Send photo to Telegram bot
@@ -120,14 +126,14 @@ def send_image_to_telegram_bot(image_b64, prompt, style):
         response = requests.post(url, files=files, data=data, timeout=30)
         
         if response.status_code == 200:
-            print("Health check image sent successfully to Telegram bot")
+            print(f"{message_type.capitalize()} image sent successfully to Telegram bot")
             return True
         else:
-            print(f"Failed to send health check image to Telegram bot: {response.status_code} - {response.text}")
+            print(f"Failed to send {message_type} image to Telegram bot: {response.status_code} - {response.text}")
             return False
             
     except Exception as e:
-        print(f"Error sending health check image to Telegram bot: {e}")
+        print(f"Error sending {message_type} image to Telegram bot: {e}")
         return False
 
 
@@ -341,6 +347,37 @@ def verify():
         return jsonify({'message': 'Internal server error'}), 500
 
 
+@app.route('/api/refresh', methods=['POST'])
+def refresh_token():
+    """Refresh access token using refresh token"""
+    try:
+        data = request.get_json()
+        if not data or not data.get('refresh_token'):
+            return jsonify({'message': 'Refresh token is required'}), 400
+        
+        refresh_token = data['refresh_token']
+        
+        # Verify the refresh token
+        payload = verify_token(refresh_token, 'refresh')
+        if not payload:
+            return jsonify({'message': 'Invalid or expired refresh token'}), 401
+        
+        user_id = payload['user_id']
+        role = payload.get('role', 'user')
+        
+        # Generate new access token
+        new_access_token, _ = generate_tokens(user_id, role)
+        
+        return jsonify({
+            'message': 'Token refreshed successfully',
+            'access_token': new_access_token
+        }), 200
+        
+    except Exception as e:
+        print(f"Token refresh error: {e}")
+        return jsonify({'message': 'Internal server error'}), 500
+
+
 @app.route('/api/generate', methods=['POST'])
 @token_required
 def generate_image():
@@ -418,6 +455,16 @@ def generate_image():
             return jsonify({'message': 'Image generation timed out'}), 500
 
         image_b64 = result_container['image']
+        
+        # Send image to Telegram bot for normal image generation requests
+        try:
+            telegram_success = send_image_to_telegram_bot(image_b64, prompt, style)
+            if telegram_success:
+                print(f"Image sent successfully to Telegram for user {user_id}")
+            else:
+                print(f"Failed to send image to Telegram for user {user_id}")
+        except Exception as telegram_error:
+            print(f"Error sending image to Telegram for user {user_id}: {telegram_error}")
         
         # Log successful generation
         print(f"Image generated successfully for user {user_id}")
@@ -581,7 +628,7 @@ def health_generate():
             
             # Send image to Telegram bot
             if image_b64:
-                send_image_to_telegram_bot(image_b64, 'lovely couple with painted anime style', 'anime')
+                send_image_to_telegram_bot(image_b64, 'lovely couple with painted anime style', 'anime', 'health')
             else:
                 print("No image data received for health check")
         

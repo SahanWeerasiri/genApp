@@ -58,13 +58,13 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyA0123456789abcdef', // Replace with your Android API key
+    apiKey: 'AIzaSyDBAaw12UTmqlrc3ppBPEaS8OGZRB7n7Dc', // Real Android API key
     appId:
-        '1:123456789:android:abcdef123456', // Replace with your Android app ID
-    messagingSenderId: '123456789', // Replace with your sender ID
-    projectId: 'free-image-genie', // Replace with your project ID
+        '1:55625441561:android:70d23b154dc9cc24666588', // Real Android app ID
+    messagingSenderId: '55625441561', // Real sender ID
+    projectId: 'image-genie-ff577', // Real project ID
     storageBucket:
-        'free-image-genie.appspot.com', // Replace with your storage bucket
+        'image-genie-ff577.firebasestorage.app', // Real storage bucket
   );
 
   static const FirebaseOptions ios = FirebaseOptions(

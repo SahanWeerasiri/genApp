@@ -1,2 +1,3 @@
-2025/10/12-20:50:32.302 2c50 Creating DB C:\Users\Sahan\Dark\Promise\genApp\backend\worker_data_worker-3\chrome_profile\Default\Service Worker\Database since it was missing.
-2025/10/12-20:50:32.321 2c50 Reusing MANIFEST C:\Users\Sahan\Dark\Promise\genApp\backend\worker_data_worker-3\chrome_profile\Default\Service Worker\Database/MANIFEST-000001
+2025/10/12-22:22:31.738 4dec Reusing MANIFEST C:\Users\Sahan\Dark\Promise\genApp\backend\worker_data_worker-3\chrome_profile\Default\Service Worker\Database/MANIFEST-000001
+2025/10/12-22:22:31.738 4dec Recovering log #3
+2025/10/12-22:22:31.739 4dec Reusing old log C:\Users\Sahan\Dark\Promise\genApp\backend\worker_data_worker-3\chrome_profile\Default\Service Worker\Database/000003.log 
