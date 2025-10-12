@@ -3,12 +3,13 @@ import 'dart:math';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../utils/logger.dart';
 import '../providers/auth_provider.dart';
 
 class ApiService {
   // Backend API configuration - Multiple workers for load balancing
-  static const String _baseIp = 'http://192.168.1.2';
+  static String get _baseIp => 'http://${dotenv.env['BASE_IP'] ?? '192.168.1.2'}';
   static const List<int> _workerPorts = [5001, 5002, 5003];
   static final Random _random = Random();
 

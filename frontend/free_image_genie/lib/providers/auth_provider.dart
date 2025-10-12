@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../utils/logger.dart';
 
 class AuthProvider extends ChangeNotifier {
@@ -30,7 +31,7 @@ class AuthProvider extends ChangeNotifier {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   // Backend API configuration - Multiple workers for load balancing
-  static const String _baseIp = 'http://192.168.1.2';
+  static String get _baseIp => 'http://${dotenv.env['BASE_IP'] ?? '192.168.1.2'}';
   static const List<int> _workerPorts = [5001, 5002, 5003];
   static final Random _random = Random();
 
