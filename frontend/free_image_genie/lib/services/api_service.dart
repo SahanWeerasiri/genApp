@@ -9,8 +9,9 @@ import '../providers/auth_provider.dart';
 
 class ApiService {
   // Backend API configuration - Multiple workers for load balancing
-  static String get _baseIp => 'http://${dotenv.env['BASE_IP'] ?? '192.168.1.2'}';
-  static const List<int> _workerPorts = [5001, 5002, 5003];
+  static String get _baseIp =>
+      'http://${dotenv.env['BASE_IP'] ?? '192.168.1.2'}';
+  static const List<int> _workerPorts = [5001];
   static final Random _random = Random();
 
   /// Get a random worker URL for load balancing
