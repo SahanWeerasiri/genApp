@@ -21,7 +21,7 @@ dotenv.load_dotenv()
 app = Flask(__name__)
 
 # Get configuration from environment variables
-PORT = int(os.getenv('PORT', 5000))
+PORT = int(os.getenv('PORT', 5001))
 
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'your-secret-key-change-this')
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = datetime.timedelta(minutes=15)
@@ -43,28 +43,60 @@ worker_queues = {}
 worker_gens = {}
 worker_locks = {}
 worker_threads = {}
+worker_initialization_status = {}
 
-# Initialize workers
+# Initialize worker queues and locks immediately
 for worker_id in WORKERS:
-    print(f"Initializing {worker_id}...")
+    print(f"Setting up {worker_id} infrastructure...")
     worker_queues[worker_id] = queue.Queue()
     worker_locks[worker_id] = threading.Lock()
-    
-    # Initialize Gen object for each worker
-    print(f"{worker_id}: Creating Gen object...")
-    worker_gens[worker_id] = Gen(worker_id=worker_id)
+    worker_gens[worker_id] = None  # Will be initialized asynchronously
+    worker_initialization_status[worker_id] = 'pending'
 
 # Global load balancer index
 current_worker_index = 0
 worker_selection_lock = threading.Lock()
 
 
+def initialize_worker_gen(worker_id):
+    """Initialize Gen object for a worker asynchronously"""
+    try:
+        print(f"{worker_id}: Starting Gen initialization...")
+        worker_initialization_status[worker_id] = 'initializing'
+        
+        # Initialize Gen object for this worker
+        gen_instance = Gen(worker_id=worker_id)
+        
+        # Store the initialized Gen instance
+        worker_gens[worker_id] = gen_instance
+        worker_initialization_status[worker_id] = 'ready'
+        
+        print(f"{worker_id}: Gen initialization completed successfully")
+        
+    except Exception as e:
+        print(f"{worker_id}: Gen initialization failed: {e}")
+        worker_initialization_status[worker_id] = 'failed'
+        # Keep worker_gens[worker_id] as None
+
+
+def get_available_workers():
+    """Get list of workers that are ready to process jobs"""
+    return [worker_id for worker_id in WORKERS 
+            if worker_initialization_status[worker_id] == 'ready' and worker_gens[worker_id] is not None]
+
+
 def get_next_worker():
-    """Round-robin worker selection"""
+    """Round-robin worker selection from available workers only"""
     global current_worker_index
     with worker_selection_lock:
-        worker_id = WORKERS[current_worker_index]
-        current_worker_index = (current_worker_index + 1) % len(WORKERS)
+        available_workers = get_available_workers()
+        
+        if not available_workers:
+            return None  # No workers available
+            
+        # Use modulo with available workers count
+        worker_id = available_workers[current_worker_index % len(available_workers)]
+        current_worker_index = (current_worker_index + 1) % len(available_workers)
         return worker_id
 
 
@@ -454,6 +486,13 @@ def generate_image():
 
         # Select worker using round-robin
         selected_worker = get_next_worker()
+        
+        if not selected_worker:
+            return jsonify({
+                'message': 'No workers available. Please try again later.',
+                'error_code': 'NO_WORKERS_AVAILABLE'
+            }), 503  # Service Unavailable
+            
         print(f"Assigning job to {selected_worker}")
 
         # Prepare synchronization primitives
@@ -649,6 +688,16 @@ def health_generate():
         # Select a worker for health check
         selected_worker = get_next_worker()
         
+        if not selected_worker:
+            return jsonify({
+                'status': 'degraded',
+                'message': 'No workers available for health check',
+                'port': PORT,
+                'timestamp': datetime.datetime.now(datetime.UTC).isoformat(),
+                'worker_statuses': worker_initialization_status,
+                'worker_queue_sizes': {worker: worker_queues[worker].qsize() for worker in WORKERS}
+            }), 503
+        
         # Submit a simple job to keep the generation system warm
         def dummy_callback(image_b64, error=None):
             if error:
@@ -677,6 +726,7 @@ def health_generate():
             'worker_used': selected_worker,
             'port': PORT,
             'timestamp': datetime.datetime.now(datetime.UTC).isoformat(),
+            'worker_statuses': worker_initialization_status,
             'worker_queue_sizes': {worker: worker_queues[worker].qsize() for worker in WORKERS}
         }), 200
         
@@ -692,9 +742,18 @@ def health_generate():
 @app.route('/api/health', methods=['GET'])
 def health_check():
     """Health check endpoint"""
+    available_workers = get_available_workers()
+    total_workers = len(WORKERS)
+    
+    status = 'healthy' if available_workers else 'degraded'
+    if len(available_workers) < total_workers:
+        status = 'degraded'
+    
     return jsonify({
-        'status': 'healthy',
+        'status': status,
         'workers': WORKERS,
+        'available_workers': available_workers,
+        'worker_statuses': worker_initialization_status,
         'port': PORT,
         'worker_queue_sizes': {worker: worker_queues[worker].qsize() for worker in WORKERS},
         'total_active_jobs': sum(worker_queues[worker].qsize() for worker in WORKERS),
@@ -717,11 +776,24 @@ def gen_worker(worker_id):
     """Worker function that processes jobs using the worker-specific Gen instance"""
     print(f"Starting worker thread: {worker_id}")
     
+    # Initialize Gen object asynchronously in the worker thread
+    initialize_worker_gen(worker_id)
+    
     while True:
         try:
             job = worker_queues[worker_id].get()  # Wait for a job
             if job is None:
                 break  # Shutdown signal
+            
+            # Check if worker is ready
+            if worker_initialization_status[worker_id] != 'ready' or worker_gens[worker_id] is None:
+                print(f"{worker_id}: Worker not ready, skipping job")
+                if 'callback' in job:
+                    try:
+                        job['callback'](None, error=f"Worker {worker_id} not ready")
+                    except TypeError:
+                        job['callback'](None)
+                continue
             
             try:
                 # Use the worker-specific Gen instance with thread safety
@@ -765,13 +837,15 @@ if __name__ == '__main__':
     print("- GET /api/health-generate (Health check with image generation)")
     
     # Start worker threads for both workers
+    # Worker initialization will happen asynchronously in each thread
     for worker_id in WORKERS:
         worker_thread = threading.Thread(target=gen_worker, args=(worker_id,))
         worker_thread.daemon = True
         worker_thread.start()
         worker_threads[worker_id] = worker_thread
-        print(f"Started worker thread: {worker_id}")
+        print(f"Started worker thread: {worker_id} (initialization will happen asynchronously)")
     
-    print("All worker threads started successfully!")
+    print("All worker threads started! Workers will initialize in the background.")
+    print(f"Server will be available immediately on port {PORT}")
 
     app.run(debug=False, host='0.0.0.0', port=PORT, use_reloader=False)
