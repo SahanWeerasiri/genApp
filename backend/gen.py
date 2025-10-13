@@ -23,24 +23,20 @@ class Gen:
         base_dir = os.path.dirname(os.path.abspath(__file__))
         self.worker_dir = os.path.join(base_dir, f"worker_data_{worker_id}")
         self.downloaded_files = os.path.join(self.worker_dir, "downloaded_files")
-        self.chrome_profile = os.path.join(self.worker_dir, "chrome_profile")
         
         # Create directories if they don't exist
         os.makedirs(self.downloaded_files, exist_ok=True)
-        os.makedirs(self.chrome_profile, exist_ok=True)
         
         print(f"Worker {worker_id}: Using directories:")
         print(f"  - Downloads: {self.downloaded_files}")
-        print(f"  - Chrome Profile: {self.chrome_profile}")
         
         self.driver = None
         url = "https://perchance.org/unrestricted-ai-image-generator"
         try:
-            # Set up driver with worker-specific profile
+            # Set up driver without chrome profile
             self.driver = Driver(
                 uc=True, 
-                headless=True,
-                user_data_dir=self.chrome_profile,  # Worker-specific Chrome profile
+                headless=True
             )
 
             self.driver.uc_open_with_reconnect('https://perchance.org', 1)
